@@ -256,7 +256,7 @@ def generate_properties(n=1000):
             "auction_start_price": auction_start_price,
             "hoa_fee": hoa_fee,
             "description": description,
-            "image_url": f"https://images.xome.com/properties/{uuid.uuid4().hex[:8]}.jpg",
+            "image_url": f"https://picsum.photos/seed/{uuid.uuid4().hex[:8]}/800/600",
             "latitude": round(lat, 6),
             "longitude": round(lon, 6),
         })
@@ -569,3 +569,53 @@ orphan_recs = spark.sql(f"""
 display(orphan_recs)
 
 print("Data generation complete!")
+
+# COMMAND ----------
+
+# MAGIC %md
+# MAGIC ## Set Primary Keys and Foreign Keys
+
+# COMMAND ----------
+
+# Set NOT NULL on primary key columns first
+pk_columns = {
+    "users": "user_id",
+    "properties": "property_id",
+    "browsing_activity": "activity_id",
+    "recommendations": "recommendation_id",
+}
+
+for table, col in pk_columns.items():
+    fqn = f"{CATALOG}.{SCHEMA}.{table}"
+    spark.sql(f"ALTER TABLE {fqn} ALTER COLUMN {col} SET NOT NULL")
+    print(f"SET NOT NULL: {table}.{col}")
+
+# COMMAND ----------
+
+# Primary Keys
+for table, col in pk_columns.items():
+    fqn = f"{CATALOG}.{SCHEMA}.{table}"
+    spark.sql(f"ALTER TABLE {fqn} ADD CONSTRAINT pk_{table} PRIMARY KEY ({col}) NOT ENFORCED")
+    print(f"PK set: {table}.{col}")
+
+# COMMAND ----------
+
+# Foreign Keys
+fk_definitions = [
+    ("browsing_activity", "user_id", "users", "user_id", "fk_browsing_user"),
+    ("browsing_activity", "property_id", "properties", "property_id", "fk_browsing_property"),
+    ("recommendations", "user_id", "users", "user_id", "fk_recommendations_user"),
+    ("recommendations", "property_id", "properties", "property_id", "fk_recommendations_property"),
+]
+
+for child_table, child_col, parent_table, parent_col, constraint_name in fk_definitions:
+    child_fqn = f"{CATALOG}.{SCHEMA}.{child_table}"
+    parent_fqn = f"{CATALOG}.{SCHEMA}.{parent_table}"
+    spark.sql(f"""
+        ALTER TABLE {child_fqn}
+        ADD CONSTRAINT {constraint_name} FOREIGN KEY ({child_col})
+        REFERENCES {parent_fqn} ({parent_col}) NOT ENFORCED
+    """)
+    print(f"FK set: {child_table}.{child_col} -> {parent_table}.{parent_col}")
+
+print("\nAll primary keys and foreign keys set successfully!")
