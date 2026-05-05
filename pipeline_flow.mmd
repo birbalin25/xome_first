@@ -1,24 +1,23 @@
 flowchart TD
     classDef ui fill:#4ade80,stroke:#16a34a,stroke-width:2px,color:#000
     classDef api fill:#60a5fa,stroke:#2563eb,stroke-width:2px,color:#000
-    classDef gnode fill:#f9a8d4,stroke:#ec4899,stroke-width:2px,color:#000
-    classDef errn fill:#fca5a5,stroke:#ef4444,stroke-width:2px,color:#000
+    classDef gn fill:#f9a8d4,stroke:#ec4899,stroke-width:2px,color:#000
+    classDef er fill:#fca5a5,stroke:#ef4444,stroke-width:2px,color:#000
     classDef llm fill:#c084fc,stroke:#9333ea,stroke-width:2px,color:#000
     classDef db fill:#7dd3fc,stroke:#0ea5e9,stroke-width:2px,color:#000
-    classDef se fill:#e9d5ff,stroke:#a855f7,stroke-width:3px,color:#000
+    classDef pt fill:#e9d5ff,stroke:#a855f7,stroke-width:3px,color:#000
 
-    %% ── Layer 1: Frontend ──
+    %% ── Frontend ──
     subgraph FE["Frontend — React + TailwindCSS"]
         direction LR
-        D["Dashboard View<br/>Filters, Users, Properties,<br/>Generate Email"]:::ui
+        D["Dashboard View<br/>Filters → Users → Properties<br/>→ Generate Email"]:::ui
         C["Chat View<br/>Natural language input"]:::ui
     end
 
-    %% ── Layer 2: REST API ──
-    subgraph API["FastAPI REST API — Port 8000"]
+    %% ── REST API ──
+    subgraph API["FastAPI — Port 8000"]
         direction LR
         subgraph SQL_EP["Direct SQL Endpoints"]
-            direction TB
             A1["GET /filters"]:::api
             A2["POST /users"]:::api
             A3["GET /users/:id/profile"]:::api
@@ -26,69 +25,69 @@ flowchart TD
             A5["POST /save-email"]:::api
         end
         subgraph LG_EP["LangGraph Endpoints"]
-            direction TB
-            G1["POST /generate-email<br/>source=dashboard"]:::api
-            G2["POST /chat/message<br/>source=chat"]:::api
-            G3["POST /invocations<br/>MLflow"]:::api
+            G1["POST /generate-email"]:::api
+            G2["POST /chat/message"]:::api
+            G3["POST /invocations"]:::api
         end
     end
 
-    %% ── Layer 3: LangGraph ──
-    subgraph LG["LangGraph StateGraph — 6 Nodes"]
-        direction TB
-        S(["START"]):::se
-        P1["1. process_input<br/>Dashboard: use user_id<br/>Chat: regex + LLM extraction<br/>→ fetch user profile"]:::gnode
-        P2["2. retrieve_candidates<br/>Dashboard: use properties_input<br/>Chat: query recommendations table"]:::gnode
-        P3["3. rank_and_select<br/>Dashboard: pass-through<br/>Chat: sort by score, top 5"]:::gnode
-        P4["4. enrich_context<br/>Fetch last 20 browsing<br/>activities (both paths)"]:::gnode
-        P5["5. generate_email<br/>Build prompt → Claude LLM<br/>→ parse subject/html/text"]:::gnode
-        ERR["6. handle_error<br/>Format error for<br/>dashboard or chat"]:::errn
-        E(["END"]):::se
-
-        S --> P1
-        P1 -->|ok| P2
-        P1 -.->|error| ERR
-        P2 --> P3
-        P3 -->|ok| P4
-        P3 -.->|error| ERR
-        P4 --> P5
-        P5 --> E
-        ERR --> E
-    end
-
-    %% ── Layer 4: External Services ──
-    subgraph EXT["External Services"]
+    %% ── LangGraph + Data + LLM (single layer) ──
+    subgraph CORE["LangGraph Pipeline + Data + LLM"]
         direction LR
-        LLM["Claude Sonnet 4.6<br/>Foundation Model API"]:::llm
-        subgraph UC["Unity Catalog — Delta Tables"]
-            direction LR
-            T1["users<br/>500"]:::db
-            T2["properties<br/>1K"]:::db
-            T3["browsing<br/>10K"]:::db
-            T4["recommendations<br/>5K"]:::db
+
+        subgraph LG["StateGraph — 6 Nodes"]
+            direction TB
+            S(["START"]):::pt
+            P1["1. process_input<br/>Extract user_id, fetch profile<br/>reads: users"]:::gn
+            P2["2. retrieve_candidates<br/>Get recommended properties<br/>reads: recommendations, properties"]:::gn
+            P3["3. rank_and_select<br/>Sort by score, pick top 5"]:::gn
+            P4["4. enrich_context<br/>Fetch browsing history<br/>reads: browsing_activity"]:::gn
+            P5["5. generate_email<br/>Prompt → Claude → parse"]:::gn
+            ERR["6. handle_error<br/>Format error response"]:::er
+            EN(["END"]):::pt
+
+            S --> P1
+            P1 -->|ok| P2
+            P1 -.->|error| ERR
+            P2 --> P3
+            P3 -->|ok| P4
+            P3 -.->|error| ERR
+            P4 --> P5
+            P5 --> EN
+            ERR --> EN
         end
-        VOL["UC Volume<br/>campaign_emails"]:::db
+
+        LLM["Claude Sonnet 4.6<br/>Foundation Model API"]:::llm
+
+        subgraph UC["Unity Catalog"]
+            direction TB
+            T1["users · 500"]:::db
+            T2["properties · 1K"]:::db
+            T3["recommendations · 5K"]:::db
+            T4["browsing · 10K"]:::db
+            VOL["Volume: campaign_emails"]:::db
+        end
     end
 
-    %% ── Layer 5: Output ──
+    %% ── Output ──
     subgraph OUT["Output"]
         direction LR
         O1["Dashboard<br/>Email Preview + Save"]:::ui
         O2["Chat<br/>Reply + Inline Email"]:::ui
     end
 
-    %% ── Connections ──
+    %% ── Vertical flow ──
     D -->|"user_id + properties"| G1
-    D -.->|"browse data"| SQL_EP
+    D -.->|"filters, users, listings"| SQL_EP
     C -->|"raw_message"| G2
-    G1 --> S
-    G2 --> S
-    G3 --> S
-    P1 --> T1
-    P2 --> T4
-    P4 --> T3
+    G1 & G2 & G3 --> S
     P5 --> LLM
     SQL_EP --> UC
-    E -->|dashboard| O1
-    E -->|chat| O2
+    EN -->|dashboard| O1
+    EN -->|chat| O2
     O1 -->|save| VOL
+
+    %% ── Data reads ──
+    P1 -.-> T1
+    P2 -.-> T3
+    P4 -.-> T4
