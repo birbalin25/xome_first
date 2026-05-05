@@ -9,23 +9,36 @@ An AI-powered real estate campaign platform that generates personalized emails p
 
 ## How It Works
 
-The platform offers **two paths** to generate campaign emails, both sharing the same core logic:
+The platform offers **two independent paths** to generate campaign emails. Each path is self-contained — they do **not** call each other. The only shared piece is `email_generator.py` (prompt formatting, LLM invocation, response parsing).
 
-### Path 1: Dashboard UI (REST API)
+### Path 1: Dashboard UI (REST API) — does NOT use LangGraph
+
+The React frontend calls REST endpoints in `campaign_api.py` directly. Each endpoint runs its own SQL queries and orchestration. The LangGraph `StateGraph` is **never triggered** — the UI handles the step-by-step workflow through user interactions instead of an autonomous agent pipeline.
 
 1. Use the filter sidebar to narrow down by city, state, price range, property type, or buyer segment
-2. Click **Search Users** to find matching high-intent buyers (top 20)
-3. Select a user from the dropdown — their profile and top 5 recommended properties load automatically
-4. Click **Generate Email** — Claude Sonnet 4.6 generates a personalized HTML email with subject line, property showcase, and segment-appropriate messaging
+2. Click **Search Users** → calls `POST /api/campaign/users` to find matching high-intent buyers (top 20)
+3. Select a user from the dropdown → calls `GET /api/campaign/users/{id}/profile` and `POST /api/campaign/users/{id}/listings` to load their profile and top 5 recommended properties
+4. Click **Generate Email** → calls `POST /api/campaign/generate-email` which invokes Claude Sonnet 4.6 via `email_generator.py` to produce a personalized HTML email
 5. Preview the email (HTML or plain text), click property links to see detail modals
-6. Click **Save to Volume** to persist the email as a `.txt` file in Unity Catalog
+6. Click **Save to Volume** → calls `POST /api/campaign/save-email` to persist the email as a `.txt` file in Unity Catalog
 
-### Path 2: Chat Agent (LangGraph)
+**Call chain:** `React UI → campaign_api.py (REST) → email_generator.py → Claude LLM`
+
+### Path 2: Chat Agent (LangGraph) — does NOT use the REST API
+
+A natural language message hits the `/invocations` endpoint, which triggers the LangGraph `StateGraph` pipeline. The REST API endpoints and React frontend are **never involved** — the agent autonomously handles all data fetching, ranking, and email generation through its 5-node graph.
 
 1. Send a message to `/invocations`: _"Generate a campaign email for user `<user_id>`"_
-2. The LangGraph agent extracts the user ID, fetches their profile, retrieves recommendations, ranks by score, enriches with browsing context, and generates the email — all through a 5-node pipeline
+2. The LangGraph agent runs: `process_input → retrieve_candidates → rank_and_select → enrich_context → generate_email`
+3. Each node uses SQL tool functions from `tools.py` to fetch data, and the final node calls `email_generator.py` to generate the email
 
-**Critical rule:** Campaign properties come exclusively from the `recommendations` table. Browsing data is used for personalization tone only.
+**Call chain:** `/invocations → agent.py (LangGraph StateGraph) → email_generator.py → Claude LLM`
+
+### Why two paths?
+
+The LangGraph agent (Path 2) was built first as a chat-based interface. The dashboard (Path 1) was added later to provide a visual, interactive experience where users can see property cards, apply filters, and preview emails — without needing to type natural language prompts. Path 1 bypasses LangGraph because the UI already controls the workflow step by step.
+
+**Critical rule (both paths):** Campaign properties come exclusively from the `recommendations` table. Browsing data is used for personalization tone only.
 
 ---
 
