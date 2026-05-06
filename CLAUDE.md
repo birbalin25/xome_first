@@ -47,25 +47,33 @@ Browser → FastAPI (port 8000) → serves frontend/dist/ (static) + REST API (/
 
 ```mermaid
 graph TD
-    subgraph Frontend["React Frontend (already fetched)"]
-        FE_PROFILE["user_profile"]
-        FE_PROPS["properties"]
+    subgraph Legend
+        direction LR
+        L1[Node] -->|solid = graph flow| L2[Node]
+        L3[Data] -. dashed = data from frontend .-> L4[Node]
+    end
+
+    subgraph Frontend["React Frontend -- already fetched"]
+        FE_PROFILE[user_profile]
+        FE_PROPS[properties]
     end
 
     START([START]) --> process_input
-    FE_PROFILE -.->|"dashboard: skip DB query"| process_input
+
+    FE_PROFILE -. dashboard: reuses profile, skips DB .-> process_input
     process_input -->|error| handle_error
     process_input -->|ok| retrieve_candidates
 
-    FE_PROPS -.->|"dashboard: skip DB query"| retrieve_candidates
+    FE_PROPS -. dashboard: reuses properties, skips DB .-> retrieve_candidates
     retrieve_candidates --> rank_and_select
     rank_and_select -->|error| handle_error
-    rank_and_select -->|"dashboard: pass-through"| enrich_context
+    rank_and_select -->|dashboard: pass-through| enrich_context
 
-    enrich_context -->|"Lakebase query: browsing_activity"| generate_email
-    generate_email -->|"Claude LLM call"| END_NODE([END])
+    enrich_context -->|Lakebase query: browsing_activity| generate_email
+    generate_email -->|Claude LLM call| END_NODE([END])
     handle_error --> END_NODE
 
+    style Legend fill:#fff,stroke:#ccc,stroke-dasharray: 5 5
     style Frontend fill:#e8f4e8,stroke:#4a9,stroke-width:2px
     style process_input fill:#f0f0f0,stroke:#999
     style retrieve_candidates fill:#f0f0f0,stroke:#999
