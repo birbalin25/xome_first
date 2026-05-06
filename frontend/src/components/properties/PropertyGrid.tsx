@@ -4,11 +4,15 @@ import PropertyCard from "./PropertyCard";
 interface PropertyGridProps {
   properties: Property[];
   loading: boolean;
+  selectedIds?: Set<string>;
+  onToggle?: (propertyId: string) => void;
 }
 
 export default function PropertyGrid({
   properties,
   loading,
+  selectedIds,
+  onToggle,
 }: PropertyGridProps) {
   if (loading) {
     return (
@@ -34,7 +38,12 @@ export default function PropertyGrid({
   return (
     <div className="grid grid-cols-1 gap-5 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 2xl:grid-cols-5">
       {properties.map((p) => (
-        <PropertyCard key={p.property_id} property={p} />
+        <PropertyCard
+          key={p.property_id}
+          property={p}
+          selected={selectedIds?.has(p.property_id)}
+          onToggle={onToggle}
+        />
       ))}
     </div>
   );

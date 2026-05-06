@@ -41,6 +41,7 @@ export default function AppShell() {
   // ── Properties ──────────────────────────────
   const [properties, setProperties] = useState<Property[]>([]);
   const [propsLoading, setPropsLoading] = useState(false);
+  const [selectedPropertyIds, setSelectedPropertyIds] = useState<Set<string>>(new Set());
 
   // ── Email ───────────────────────────────────
   const [email, setEmail] = useState<GeneratedEmail | null>(null);
@@ -104,6 +105,7 @@ export default function AppShell() {
         ]);
         setUserProfile(profile);
         setProperties(listings);
+        setSelectedPropertyIds(new Set(listings.map((p) => p.property_id)));
       } catch (err) {
         console.error("Failed to load user data", err);
       } finally {
@@ -113,20 +115,32 @@ export default function AppShell() {
     [filters.city, filters.state, filters.listing_count]
   );
 
+  // ── Toggle property selection ──────────────
+  const handleToggleProperty = useCallback((propertyId: string) => {
+    setSelectedPropertyIds((prev) => {
+      const next = new Set(prev);
+      if (next.has(propertyId)) next.delete(propertyId);
+      else next.add(propertyId);
+      return next;
+    });
+  }, []);
+
   // ── Generate email ──────────────────────────
+  const selectedProperties = properties.filter((p) => selectedPropertyIds.has(p.property_id));
+
   const handleGenerateEmail = useCallback(async () => {
-    if (!selectedUserId || properties.length === 0) return;
+    if (!selectedUserId || selectedProperties.length === 0) return;
     setGenerating(true);
     setSavedPath("");
     try {
-      const result = await api.generateEmail(selectedUserId, properties);
+      const result = await api.generateEmail(selectedUserId, selectedProperties);
       setEmail(result);
     } catch (err) {
       console.error("Failed to generate email", err);
     } finally {
       setGenerating(false);
     }
-  }, [selectedUserId, properties]);
+  }, [selectedUserId, selectedProperties]);
 
   // ── Save email ──────────────────────────────
   const handleSaveEmail = useCallback(async () => {
@@ -138,24 +152,28 @@ export default function AppShell() {
         subject: email.subject,
         html: email.html,
         plain_text: email.plain_text,
-        properties: properties.map((p) => ({
+        properties: selectedProperties.map((p) => ({
           property_id: p.property_id,
           recommendation_id: p.recommendation_id,
         })),
       });
       setSavedPath(result.path);
 
-      // Optimistically update properties with today's campaign date
+      // Optimistically update selected properties with today's campaign date
       const today = new Date().toISOString().split("T")[0];
       setProperties((prev) =>
-        prev.map((p) => ({ ...p, campaign_sent_date: p.campaign_sent_date ?? today }))
+        prev.map((p) =>
+          selectedPropertyIds.has(p.property_id)
+            ? { ...p, campaign_sent_date: p.campaign_sent_date ?? today }
+            : p
+        )
       );
     } catch (err) {
       console.error("Failed to save email", err);
     } finally {
       setSaving(false);
     }
-  }, [email, selectedUserId, properties]);
+  }, [email, selectedUserId, selectedProperties, selectedPropertyIds]);
 
   return (
     <div className="flex h-[calc(100vh-64px)]">
@@ -189,14 +207,19 @@ export default function AppShell() {
             <h2 className="mb-3 text-lg font-semibold text-gray-800">
               Top Recommended Listings
             </h2>
-            <PropertyGrid properties={properties} loading={propsLoading} />
+            <PropertyGrid
+              properties={properties}
+              loading={propsLoading}
+              selectedIds={selectedPropertyIds}
+              onToggle={handleToggleProperty}
+            />
           </div>
 
           {/* Email actions + preview */}
           <div className="space-y-4">
             <EmailActions
               selectedUserId={selectedUserId}
-              properties={properties}
+              properties={selectedProperties}
               email={email}
               onGenerate={handleGenerateEmail}
               onSave={handleSaveEmail}

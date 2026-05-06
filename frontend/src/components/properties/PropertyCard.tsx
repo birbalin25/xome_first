@@ -1,9 +1,11 @@
-import { Bath, BedDouble, Maximize, Star } from "lucide-react";
+import { Bath, BedDouble, Check, Maximize, Star } from "lucide-react";
 import type { Property } from "../../types";
 import { formatDate, formatPrice } from "../../lib/utils";
 
 interface PropertyCardProps {
   property: Property;
+  selected?: boolean;
+  onToggle?: (propertyId: string) => void;
 }
 
 const STATUS_STYLES: Record<string, string> = {
@@ -12,7 +14,7 @@ const STATUS_STYLES: Record<string, string> = {
   auction: "bg-red-500 text-white animate-pulse",
 };
 
-export default function PropertyCard({ property: p }: PropertyCardProps) {
+export default function PropertyCard({ property: p, selected, onToggle }: PropertyCardProps) {
   const status = (p.listing_status || "active").toLowerCase();
   const statusClass = STATUS_STYLES[status] || STATUS_STYLES.active;
   const score = parseFloat(p.recommendation_score || "0");
@@ -21,9 +23,20 @@ export default function PropertyCard({ property: p }: PropertyCardProps) {
     p.image_url || `https://picsum.photos/seed/${p.property_id}/600/400`;
 
   return (
-    <div className="group overflow-hidden rounded-xl border border-gray-200 bg-white shadow-sm transition hover:shadow-md">
+    <div
+      onClick={() => onToggle?.(p.property_id)}
+      className={`group cursor-pointer overflow-hidden rounded-xl border-2 bg-white shadow-sm transition hover:shadow-md ${
+        selected ? "border-xome-500 ring-2 ring-xome-200" : "border-gray-200"
+      }`}
+    >
       {/* Image */}
       <div className="relative h-48 overflow-hidden bg-gray-100">
+        {/* Selection tick */}
+        {selected && (
+          <div className="absolute right-3 top-3 z-10 flex h-6 w-6 items-center justify-center rounded-full bg-xome-600 shadow">
+            <Check className="h-4 w-4 text-white" strokeWidth={3} />
+          </div>
+        )}
         <img
           src={imageUrl}
           alt={p.address}
