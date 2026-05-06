@@ -47,15 +47,31 @@ Browser → FastAPI (port 8000) → serves frontend/dist/ (static) + REST API (/
 
 ```mermaid
 graph TD
+    subgraph Frontend["React Frontend (already fetched)"]
+        FE_PROFILE["user_profile"]
+        FE_PROPS["properties"]
+    end
+
     START([START]) --> process_input
+    FE_PROFILE -.->|"dashboard: skip DB query"| process_input
     process_input -->|error| handle_error
     process_input -->|ok| retrieve_candidates
+
+    FE_PROPS -.->|"dashboard: skip DB query"| retrieve_candidates
     retrieve_candidates --> rank_and_select
     rank_and_select -->|error| handle_error
-    rank_and_select -->|ok| enrich_context
-    enrich_context --> generate_email
-    generate_email --> END_NODE([END])
+    rank_and_select -->|"dashboard: pass-through"| enrich_context
+
+    enrich_context -->|"Lakebase query: browsing_activity"| generate_email
+    generate_email -->|"Claude LLM call"| END_NODE([END])
     handle_error --> END_NODE
+
+    style Frontend fill:#e8f4e8,stroke:#4a9,stroke-width:2px
+    style process_input fill:#f0f0f0,stroke:#999
+    style retrieve_candidates fill:#f0f0f0,stroke:#999
+    style rank_and_select fill:#f0f0f0,stroke:#999
+    style enrich_context fill:#dbeafe,stroke:#3b82f6,stroke-width:2px
+    style generate_email fill:#fef3c7,stroke:#f59e0b,stroke-width:2px
 ```
 
 **Dashboard path through the graph:**
