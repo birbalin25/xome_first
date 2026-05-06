@@ -6,7 +6,6 @@ import re
 
 from langchain_core.messages import HumanMessage, SystemMessage
 
-from agent_server.config import CATALOG, SCHEMA
 from agent_server.email_generator import generate_campaign_email, parse_email_response
 from agent_server.graph_state import CampaignState
 from agent_server.prompts import EXTRACTION_PROMPT
@@ -84,7 +83,7 @@ async def process_input(state: CampaignState) -> dict:
                    preferred_city, preferred_state, budget_min, budget_max,
                    preferred_property_type, preferred_beds_min,
                    signup_date, is_active, user_segment
-            FROM {CATALOG}.{SCHEMA}.users
+            FROM users
             WHERE user_id = '{user_id}'
             LIMIT 1
         """)
@@ -135,8 +134,8 @@ async def retrieve_candidates(state: CampaignState) -> dict:
            p.listing_status, p.days_on_market,
            p.auction_date, p.auction_start_price,
            p.hoa_fee, p.description, p.image_url
-    FROM {CATALOG}.{SCHEMA}.recommendations r
-    JOIN {CATALOG}.{SCHEMA}.properties p ON r.property_id = p.property_id
+    FROM recommendations r
+    JOIN properties p ON r.property_id = p.property_id
     WHERE {where_str}
     ORDER BY r.recommendation_score DESC
     LIMIT 5
@@ -192,8 +191,8 @@ async def enrich_context(state: CampaignState) -> dict:
                b.search_query, b.device_type, b.referral_source,
                p.address, p.city, p.state, p.price, p.property_type,
                p.beds, p.neighborhood
-        FROM {CATALOG}.{SCHEMA}.browsing_activity b
-        JOIN {CATALOG}.{SCHEMA}.properties p ON b.property_id = p.property_id
+        FROM browsing_activity b
+        JOIN properties p ON b.property_id = p.property_id
         WHERE b.user_id = '{user_id}'
         ORDER BY b.activity_timestamp DESC
         LIMIT 20

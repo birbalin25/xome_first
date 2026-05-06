@@ -9,7 +9,7 @@ from databricks.sdk import WorkspaceClient
 from fastapi import APIRouter, HTTPException
 from pydantic import BaseModel
 
-from agent_server.config import CATALOG, SCHEMA, VOLUME_NAME
+from agent_server.config import CATALOG, SCHEMA, VOLUME_NAME  # CATALOG/SCHEMA still used for UC Volume path
 from agent_server.tools import _execute_sql
 
 logger = logging.getLogger(__name__)
@@ -57,16 +57,16 @@ class SaveEmailRequest(BaseModel):
 async def get_filters():
     """Return distinct filter values from the database."""
     try:
-        cities = _execute_sql(f"SELECT DISTINCT city FROM {CATALOG}.{SCHEMA}.properties ORDER BY city")
-        states = _execute_sql(f"SELECT DISTINCT state FROM {CATALOG}.{SCHEMA}.properties ORDER BY state")
+        cities = _execute_sql("SELECT DISTINCT city FROM properties ORDER BY city")
+        states = _execute_sql("SELECT DISTINCT state FROM properties ORDER BY state")
         property_types = _execute_sql(
-            f"SELECT DISTINCT property_type FROM {CATALOG}.{SCHEMA}.properties ORDER BY property_type"
+            "SELECT DISTINCT property_type FROM properties ORDER BY property_type"
         )
         segments = _execute_sql(
-            f"SELECT DISTINCT user_segment FROM {CATALOG}.{SCHEMA}.users ORDER BY user_segment"
+            "SELECT DISTINCT user_segment FROM users ORDER BY user_segment"
         )
         prices = _execute_sql(
-            f"SELECT MIN(price) as min_price, MAX(price) as max_price FROM {CATALOG}.{SCHEMA}.properties"
+            "SELECT MIN(price) as min_price, MAX(price) as max_price FROM properties"
         )
 
         return {
@@ -109,8 +109,8 @@ async def search_users(req: UserFilterRequest):
            u.preferred_city, u.preferred_state, u.user_segment,
            u.budget_min, u.budget_max, u.preferred_property_type,
            COUNT(r.recommendation_id) AS rec_count
-    FROM {CATALOG}.{SCHEMA}.users u
-    LEFT JOIN {CATALOG}.{SCHEMA}.recommendations r
+    FROM users u
+    LEFT JOIN recommendations r
         ON u.user_id = r.user_id AND r.is_active = true
     WHERE {where_str}
     GROUP BY u.user_id, u.first_name, u.last_name, u.email,
@@ -135,7 +135,7 @@ async def get_user_profile(user_id: str):
            preferred_city, preferred_state, budget_min, budget_max,
            preferred_property_type, preferred_beds_min,
            signup_date, is_active, user_segment
-    FROM {CATALOG}.{SCHEMA}.users
+    FROM users
     WHERE user_id = '{user_id}'
     LIMIT 1
     """
@@ -171,11 +171,11 @@ async def get_user_listings(user_id: str, req: ListingsRequest):
            p.auction_date, p.auction_start_price,
            p.hoa_fee, p.description, p.image_url,
            ct.campaign_sent_date
-    FROM {CATALOG}.{SCHEMA}.recommendations r
-    JOIN {CATALOG}.{SCHEMA}.properties p ON r.property_id = p.property_id
+    FROM recommendations r
+    JOIN properties p ON r.property_id = p.property_id
     LEFT JOIN (
         SELECT user_id, property_id, MAX(campaign_date) AS campaign_sent_date
-        FROM {CATALOG}.{SCHEMA}.campaign_tracking
+        FROM campaign_tracking
         WHERE campaign_status = true
         GROUP BY user_id, property_id
     ) ct
@@ -242,10 +242,10 @@ async def save_email(req: SaveEmailRequest):
                 pid = prop.get("property_id", "")
                 rid = prop.get("recommendation_id", "")
                 value_rows.append(
-                    f"('{req.user_id}', '{pid}', '{rid}', current_date(), true)"
+                    f"('{req.user_id}', '{pid}', '{rid}', CURRENT_DATE, true)"
                 )
             insert_sql = (
-                f"INSERT INTO {CATALOG}.{SCHEMA}.campaign_tracking "
+                f"INSERT INTO campaign_tracking "
                 f"(user_id, property_id, recommendation_id, campaign_date, campaign_status) "
                 f"VALUES {', '.join(value_rows)}"
             )

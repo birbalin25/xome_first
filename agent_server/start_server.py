@@ -14,7 +14,6 @@ load_dotenv(dotenv_path=Path(__file__).parent.parent / ".env", override=True)
 
 from agent_server.campaign_api import router as campaign_router  # noqa: E402
 from agent_server.chat_api import router as chat_router  # noqa: E402
-from agent_server.config import CATALOG, SCHEMA  # noqa: E402
 from agent_server.tools import _execute_sql  # noqa: E402
 
 logger = logging.getLogger(__name__)
@@ -24,11 +23,11 @@ logger = logging.getLogger(__name__)
 async def lifespan(app: FastAPI):
     """Create campaign_tracking table on startup if it doesn't exist."""
     try:
-        _execute_sql(f"""
-            CREATE TABLE IF NOT EXISTS {CATALOG}.{SCHEMA}.campaign_tracking (
-                user_id STRING,
-                property_id STRING,
-                recommendation_id STRING,
+        _execute_sql("""
+            CREATE TABLE IF NOT EXISTS campaign_tracking (
+                user_id TEXT,
+                property_id TEXT,
+                recommendation_id TEXT,
                 campaign_date DATE,
                 campaign_status BOOLEAN
             )

@@ -22,6 +22,7 @@ Xome Campaign Platform — an AI-powered real estate campaign tool that generate
 - Dashboard API client: `frontend/src/api/campaign.ts`
 - Chat API client: `frontend/src/api/chat.ts`
 - Data generation: `notebooks/01_generate_data.py`
+- Lakebase migration: `notebooks/02_migrate_to_lakebase.py`
 - Deployment: `databricks.yml`, `app.yaml`
 
 ## Architecture
@@ -31,8 +32,8 @@ Browser → FastAPI (port 8000) → serves frontend/dist/ (static) + REST API (/
                                      │
                           ┌──────────┼──────────┐
                           ▼          ▼          ▼
-                   LangGraph     Delta Tables  UC Volume
-                   StateGraph
+                   LangGraph     Lakebase     UC Volume
+                   StateGraph   (PostgreSQL)  (file storage)
                       │
                       ▼
                   Claude LLM
@@ -43,11 +44,30 @@ Browser → FastAPI (port 8000) → serves frontend/dist/ (static) + REST API (/
 - Chat: `React UI → chat_api.py → LangGraph (source=chat) → email_generator.py → Claude LLM`
 
 **LangGraph StateGraph:**
+
+```mermaid
+graph TD
+    START([START]) --> process_input
+    process_input -->|error| handle_error
+    process_input -->|ok| retrieve_candidates
+    retrieve_candidates --> rank_and_select
+    rank_and_select -->|error| handle_error
+    rank_and_select -->|ok| enrich_context
+    enrich_context --> generate_email
+    generate_email --> END_NODE([END])
+    handle_error --> END_NODE
 ```
-process_input → retrieve_candidates → rank_and_select → enrich_context → generate_email → END
-     |                                      |
-     +--[error]--> handle_error --> END     +--[error]--> handle_error --> END
-```
+
+**Dashboard path through the graph:**
+| Node | Dashboard behavior | DB call? |
+|------|-------------------|----------|
+| `process_input` | Profile already provided by frontend — skip query | No |
+| `retrieve_candidates` | Properties already provided by frontend — skip query | No |
+| `rank_and_select` | Properties already curated by UI — pass through | No |
+| `enrich_context` | Fetches last 20 browsing activities for personalization | **Yes (Lakebase)** |
+| `generate_email` | Builds prompt → calls Claude → parses email sections | **Yes (LLM)** |
+
+**Chat path:** All nodes are active — `process_input` extracts user_id from natural language, `retrieve_candidates` queries recommendations from Lakebase, `rank_and_select` sorts by score.
 
 **Single-process deployment:** FastAPI on port 8000 serves both the pre-built React frontend (from `frontend/dist/`) and all API endpoints. Databricks Apps only exposes port 8000.
 
@@ -59,13 +79,16 @@ process_input → retrieve_candidates → rank_and_select → enrich_context →
 
 ## Configuration
 
-- Catalog: `serverless_stable_14ey07_catalog`
+- Catalog: `serverless_stable_14ey07_catalog` (used only for UC Volume file storage)
 - Schema: `xome`
 - Workspace: fevm (`https://fevm-serverless-stable-14ey07.cloud.databricks.com`)
-- SQL Warehouse: `1f01d0f9de5b5108`
+- SQL Warehouse: `1f01d0f9de5b5108` (retained for UC Volume access)
+- Lakebase Instance: `xome-campaign` (Provisioned, CU_2)
+- Lakebase DNS: `ep-blue-shape-d2evoduc.database.us-east-1.cloud.databricks.com`
+- Lakebase DB: `xome-campaign`, Schema: `xome`
 - LLM: `databricks-claude-sonnet-4-6`
 - UC Volume: `campaign_emails`
-- App URL: `https://agent-xome-langgraph-campaign-7474645414452466.aws.databricksapps.com`
+- App URL: `https://agent-xome-lakebase-campaign-7474645414452466.aws.databricksapps.com`
 
 ## REST API Endpoints
 
@@ -91,14 +114,17 @@ cd frontend && npm run build && cd ..
 
 # Deploy
 databricks bundle deploy --target prod
-databricks apps deploy agent-xome-langgraph-campaign --profile fevm --source-code-path /Workspace/Users/birbal.das@databricks.com/.bundle/xome_langgraph_campaign/prod/files
+databricks apps deploy agent-xome-lakebase-campaign --profile fevm --source-code-path /Workspace/Users/birbal.das@databricks.com/.bundle/xome_lakebase_campaign/prod/files
 
-# Run data pipeline
+# Run data pipeline (generate Delta tables)
 databricks bundle run xome_setup_pipeline --target prod
 
+# Run Lakebase migration (copy Delta → Lakebase)
+databricks bundle run xome_migrate_to_lakebase --target prod
+
 # Check app status / logs
-databricks apps get agent-xome-langgraph-campaign --profile fevm
-databricks apps logs agent-xome-langgraph-campaign --profile fevm
+databricks apps get agent-xome-lakebase-campaign --profile fevm
+databricks apps logs agent-xome-lakebase-campaign --profile fevm
 ```
 
 ## Data Tables
@@ -109,10 +135,11 @@ databricks apps logs agent-xome-langgraph-campaign --profile fevm
 | `properties` | 1,000 | `property_id` | — |
 | `browsing_activity` | 10,000 | `activity_id` | `user_id` → users, `property_id` → properties |
 | `recommendations` | 5,000 | `recommendation_id` | `user_id` → users, `property_id` → properties |
+| `campaign_tracking` | varies | — | `user_id` → users, `property_id` → properties |
 
 ## Dependencies
 
-**Backend:** `fastapi`, `uvicorn`, `databricks-langchain`, `databricks-sdk`, `python-dotenv`, `langgraph`. Data gen uses `faker`.
+**Backend:** `fastapi`, `uvicorn`, `databricks-langchain`, `databricks-sdk`, `python-dotenv`, `langgraph`, `psycopg2-binary`. Data gen uses `faker`.
 
 **Frontend:** `react`, `vite`, `tailwindcss`, `lucide-react`, `typescript`.
 

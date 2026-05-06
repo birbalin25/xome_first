@@ -4,6 +4,12 @@ SQL_WAREHOUSE_ID = "1f01d0f9de5b5108"
 LLM_ENDPOINT = "databricks-claude-sonnet-4-6"
 VOLUME_NAME = "campaign_emails"
 
+# Lakebase (managed PostgreSQL) connection settings
+LAKEBASE_INSTANCE = "xome-campaign"
+LAKEBASE_DNS = "ep-blue-shape-d2evoduc.database.us-east-1.cloud.databricks.com"
+LAKEBASE_DB = "xome-campaign"
+LAKEBASE_SCHEMA = "xome"
+
 METROS = {
     "Austin": {"state": "TX", "base_price": 450000},
     "Boston": {"state": "MA", "base_price": 650000},
