@@ -5,7 +5,16 @@ flowchart TD
     classDef er fill:#fca5a5,stroke:#ef4444,stroke-width:2px,color:#000
     classDef llm fill:#c084fc,stroke:#9333ea,stroke-width:2px,color:#000
     classDef db fill:#7dd3fc,stroke:#0ea5e9,stroke-width:2px,color:#000
+    classDef lb fill:#86efac,stroke:#22c55e,stroke-width:2px,color:#000
     classDef pt fill:#e9d5ff,stroke:#a855f7,stroke-width:3px,color:#000
+    classDef legend fill:#fff,stroke:#94a3b8,stroke-width:1px,color:#000
+
+    %% ── Legend ──
+    subgraph LEG["Legend"]
+        direction LR
+        L1["A"]:::legend -->|"Solid line = graph flow / always executes"| L2["B"]:::legend
+        L3["C"]:::legend -.->|"Dashed line = conditional / data read"| L4["D"]:::legend
+    end
 
     %% ── Frontend ──
     subgraph FE["Frontend — React + TailwindCSS"]
@@ -38,10 +47,10 @@ flowchart TD
         subgraph LG["StateGraph — 6 Nodes"]
             direction TB
             S(["START"]):::pt
-            P1["1. process_input<br/>Dashboard: use profile from UI<br/>Chat: fetch from users table"]:::gn
-            P2["2. retrieve_candidates<br/>Dashboard: use properties from UI<br/>Chat: query recommendations"]:::gn
-            P3["3. rank_and_select<br/>Dashboard: pass-through<br/>Chat: sort + pick top N"]:::gn
-            P4["4. enrich_context<br/>Fetch browsing history<br/>reads: browsing_activity"]:::gn
+            P1["1. process_input<br/>Dashboard: reuses profile from frontend<br/>Chat: fetches from users table"]:::gn
+            P2["2. retrieve_candidates<br/>Dashboard: reuses properties from frontend<br/>Chat: queries recommendations table"]:::gn
+            P3["3. rank_and_select<br/>Dashboard: pass-through, no processing<br/>Chat: sort by score, pick top N"]:::gn
+            P4["4. enrich_context<br/>Always runs: fetches browsing history<br/>from Lakebase"]:::gn
             P5["5. generate_email<br/>Prompt → Claude → parse"]:::gn
             ERR["6. handle_error<br/>Format error response"]:::er
             EN(["END"]):::pt
@@ -59,15 +68,16 @@ flowchart TD
 
         LLM["Claude Sonnet 4.6<br/>Foundation Model API"]:::llm
 
-        subgraph UC["Unity Catalog"]
+        subgraph LB_DB["Lakebase — Managed PostgreSQL"]
             direction TB
-            T1["users · 500"]:::db
-            T2["properties · 1K"]:::db
-            T3["recommendations · 5K"]:::db
-            T4["browsing · 10K"]:::db
-            T5["campaign_tracking"]:::db
-            VOL["Volume: campaign_emails"]:::db
+            T1["users · 500"]:::lb
+            T2["properties · 1K"]:::lb
+            T3["recommendations · 5K"]:::lb
+            T4["browsing · 10K"]:::lb
+            T5["campaign_tracking"]:::lb
         end
+
+        VOL["UC Volume:<br/>campaign_emails"]:::db
     end
 
     %% ── Output ──
@@ -83,14 +93,14 @@ flowchart TD
     C -->|"raw_message"| G2
     G1 & G2 & G3 --> S
     P5 --> LLM
-    SQL_EP --> UC
+    SQL_EP --> LB_DB
     EN -->|dashboard| O1
     EN -->|chat| O2
-    O1 -->|save| VOL
+    O1 -->|save file| VOL
     O1 -->|"track sent"| T5
 
-    %% ── Data reads (chat path only for P1, P2) ──
-    P1 -.->|"chat only"| T1
-    P2 -.->|"chat only"| T3
-    P4 -.-> T4
+    %% ── Data reads ──
+    P1 -.->|"chat path only"| T1
+    P2 -.->|"chat path only"| T3
+    P4 -.->|"always: browsing context"| T4
     A4 -.->|"LEFT JOIN"| T5
