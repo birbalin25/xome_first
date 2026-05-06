@@ -24,6 +24,7 @@ const INITIAL_FILTERS: FilterState = {
   segment: "",
   price_min: 0,
   price_max: 5_000_000,
+  listing_count: 10,
 };
 
 export default function AppShell() {
@@ -98,6 +99,7 @@ export default function AppShell() {
           api.fetchListings(userId, {
             city: filters.city || undefined,
             state: filters.state || undefined,
+            listing_count: filters.listing_count,
           }),
         ]);
         setUserProfile(profile);
@@ -108,7 +110,7 @@ export default function AppShell() {
         setPropsLoading(false);
       }
     },
-    [filters.city, filters.state]
+    [filters.city, filters.state, filters.listing_count]
   );
 
   // ── Generate email ──────────────────────────

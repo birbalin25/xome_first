@@ -33,6 +33,7 @@ class UserFilterRequest(BaseModel):
 class ListingsRequest(BaseModel):
     city: Optional[str] = None
     state: Optional[str] = None
+    listing_count: int = 10
 
 
 class GenerateEmailRequest(BaseModel):
@@ -181,7 +182,7 @@ async def get_user_listings(user_id: str, req: ListingsRequest):
         AND ct.property_id = p.property_id
     WHERE {where_str}
     ORDER BY r.recommendation_score DESC
-    LIMIT 10
+    LIMIT {min(max(req.listing_count, 1), 30)}
     """
     try:
         rows = _execute_sql(query)

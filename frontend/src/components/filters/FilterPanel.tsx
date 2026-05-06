@@ -121,6 +121,29 @@ export default function FilterPanel({
         </div>
       </div>
 
+      {/* Top Listings */}
+      <div>
+        <span className="mb-1 block text-xs font-medium text-gray-600">
+          Top Listings
+        </span>
+        <input
+          type="range"
+          min={1}
+          max={30}
+          step={1}
+          value={filters.listing_count}
+          onChange={(e) =>
+            onChange({ listing_count: Number(e.target.value) })
+          }
+          className="w-full accent-xome-600"
+        />
+        <div className="flex justify-between text-xs text-gray-500">
+          <span>1</span>
+          <span className="font-semibold text-xome-700">{filters.listing_count}</span>
+          <span>30</span>
+        </div>
+      </div>
+
       {/* Property Type */}
       <label className="block">
         <span className="mb-1 block text-xs font-medium text-gray-600">

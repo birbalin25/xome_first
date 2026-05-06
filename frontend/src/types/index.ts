@@ -62,6 +62,7 @@ export interface FilterState {
   segment: string;
   price_min: number;
   price_max: number;
+  listing_count: number;
 }
 
 export interface GeneratedEmail {
