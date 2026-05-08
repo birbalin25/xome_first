@@ -9,6 +9,7 @@ flowchart TD
     classDef lb fill:#86efac,stroke:#22c55e,stroke-width:2px,color:#000
     classDef pt fill:#e9d5ff,stroke:#a855f7,stroke-width:3px,color:#000
     classDef ext fill:#fde68a,stroke:#f59e0b,stroke-width:2px,color:#000
+    classDef trace fill:#fef3c7,stroke:#f59e0b,stroke-width:2px,stroke-dasharray:5 5,color:#000
     classDef legend fill:#fff,stroke:#94a3b8,stroke-width:1px,color:#000
 
     %% ── Legend ──
@@ -51,13 +52,13 @@ flowchart TD
 
             subgraph GENIE_BRANCH["Genie Branch — source='genie'"]
                 direction TB
-                QG["1a. query_genie<br/>Calls Genie Spaces API<br/>Returns raw columns + rows"]:::genie
+                QG["1a. query_genie<br/>Calls Genie Spaces API<br/>Returns raw columns + rows<br/>📊 @mlflow.trace · tool"]:::genie
             end
 
             subgraph EMAIL_BRANCH["Email Branch — source='dashboard'"]
                 direction TB
-                EC["1b. enrich_context<br/>Fetches browsing history<br/>from Lakebase"]:::gn
-                GE["2b. generate_email<br/>Validates inputs<br/>Prompt → Claude → parse"]:::gn
+                EC["1b. enrich_context<br/>Fetches browsing history<br/>from Lakebase<br/>📊 @mlflow.trace · tool"]:::gn
+                GE["2b. generate_email<br/>Validates inputs<br/>Prompt → Claude → parse<br/>📊 @mlflow.trace · chain"]:::gn
             end
 
             ERR["handle_error<br/>Format error response"]:::er
@@ -86,6 +87,13 @@ flowchart TD
         end
     end
 
+    %% ── MLflow Tracing ──
+    subgraph MLFLOW["MLflow Tracing — /Shared/xome-lakebase-campaign-tracing"]
+        direction LR
+        ML1["autolog<br/>Graph invocation + LLM calls"]:::trace
+        ML2["@mlflow.trace<br/>enrich_context · generate_email · query_genie<br/>Per-node input/output spans"]:::trace
+    end
+
     %% ── Output ──
     subgraph OUT["Output"]
         direction LR
@@ -111,3 +119,6 @@ flowchart TD
     A2 -.->|"single row"| T2
     A4 -.->|"LEFT JOIN"| T5
     O0 -.->|"click property_id"| A2
+
+    %% ── Tracing links ──
+    LG -.->|"traces"| MLFLOW
