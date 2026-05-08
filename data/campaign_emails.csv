@@ -1,0 +1,3260 @@
+id,user_id,filename,subject,html_body,plain_text,saved_at
+1,c26a847d-1321-4e6f-9658-47d7c92ad556,campaign_c26a847d-1321-4e6f-9658-47d7c92ad556_20260508_023436.txt,"Alyssa, Your Next SF Home Is Waiting 🏡","<!DOCTYPE html>
+<html lang=""en"">
+<head>
+  <meta charset=""UTF-8"" />
+  <meta name=""viewport"" content=""width=device-width, initial-scale=1.0""/>
+  <title>Your Next Chapter in San Francisco | Xome</title>
+  <style>
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+    body {
+      font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif;
+      background-color: #f4f6f9;
+      color: #2d2d2d;
+      line-height: 1.6;
+    }
+    .email-wrapper {
+      max-width: 640px;
+      margin: 32px auto;
+      background-color: #ffffff;
+      border-radius: 12px;
+      overflow: hidden;
+      box-shadow: 0 4px 20px rgba(0,0,0,0.08);
+    }
+    /* Header */
+    .header {
+      background: linear-gradient(135deg, #1a3c6e 0%, #2a6dd9 100%);
+      padding: 36px 40px;
+      text-align: center;
+    }
+    .header img {
+      height: 36px;
+      margin-bottom: 16px;
+    }
+    .header-logo-text {
+      font-size: 28px;
+      font-weight: 800;
+      color: #ffffff;
+      letter-spacing: 1px;
+    }
+    .header h1 {
+      font-size: 22px;
+      font-weight: 600;
+      color: #d4e6ff;
+      margin-top: 8px;
+    }
+    /* Body */
+    .body-content {
+      padding: 36px 40px;
+    }
+    .greeting {
+      font-size: 18px;
+      font-weight: 700;
+      color: #1a3c6e;
+      margin-bottom: 12px;
+    }
+    .intro-text {
+      font-size: 15px;
+      color: #4a4a4a;
+      margin-bottom: 28px;
+    }
+    /* Section Title */
+    .section-title {
+      font-size: 13px;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 1.2px;
+      color: #2a6dd9;
+      border-bottom: 2px solid #e8eef7;
+      padding-bottom: 8px;
+      margin-bottom: 24px;
+    }
+    /* Property Card */
+    .property-card {
+      border: 1px solid #e0e8f5;
+      border-radius: 10px;
+      overflow: hidden;
+      margin-bottom: 24px;
+      transition: box-shadow 0.2s;
+    }
+    .property-card-header {
+      background: linear-gradient(135deg, #f0f5ff 0%, #e8eef7 100%);
+      padding: 18px 22px 14px;
+      display: flex;
+      justify-content: space-between;
+      align-items: flex-start;
+    }
+    .property-address {
+      font-size: 16px;
+      font-weight: 700;
+      color: #1a3c6e;
+    }
+    .property-neighborhood {
+      font-size: 13px;
+      color: #6b7a99;
+      margin-top: 2px;
+    }
+    .status-badge {
+      display: inline-block;
+      padding: 4px 12px;
+      border-radius: 20px;
+      font-size: 11px;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 0.8px;
+      white-space: nowrap;
+      margin-left: 12px;
+      flex-shrink: 0;
+    }
+    .status-active {
+      background-color: #e6f9f0;
+      color: #1a7a4a;
+      border: 1px solid #a3e6c5;
+    }
+    .status-pending {
+      background-color: #fff8e6;
+      color: #a06800;
+      border: 1px solid #ffd97a;
+    }
+    .status-auction {
+      background-color: #ffeaea;
+      color: #c0392b;
+      border: 1px solid #f5a9a9;
+    }
+    .property-card-body {
+      padding: 18px 22px;
+    }
+    .property-price {
+      font-size: 22px;
+      font-weight: 800;
+      color: #2a6dd9;
+      margin-bottom: 10px;
+    }
+    .property-details {
+      display: flex;
+      gap: 18px;
+      flex-wrap: wrap;
+      margin-bottom: 12px;
+    }
+    .detail-item {
+      font-size: 13px;
+      color: #4a4a4a;
+      display: flex;
+      align-items: center;
+      gap: 5px;
+    }
+    .detail-icon {
+      font-size: 14px;
+    }
+    .detail-divider {
+      color: #c8d4e8;
+    }
+    .property-meta {
+      display: flex;
+      gap: 16px;
+      flex-wrap: wrap;
+      margin-bottom: 14px;
+      padding: 10px 14px;
+      background-color: #f8faff;
+      border-radius: 6px;
+    }
+    .meta-item {
+      font-size: 12px;
+      color: #6b7a99;
+    }
+    .meta-item strong {
+      color: #2d2d2d;
+    }
+    .match-reason {
+      font-size: 13px;
+      color: #3a5a8a;
+      background-color: #eef4ff;
+      border-left: 3px solid #2a6dd9;
+      padding: 10px 14px;
+      border-radius: 0 6px 6px 0;
+      margin-bottom: 14px;
+    }
+    .property-description {
+      font-size: 13px;
+      color: #5a6a80;
+      font-style: italic;
+      margin-bottom: 14px;
+    }
+    .property-cta {
+      display: inline-block;
+      background-color: #2a6dd9;
+      color: #ffffff !important;
+      text-decoration: none;
+      padding: 10px 22px;
+      border-radius: 6px;
+      font-size: 13px;
+      font-weight: 700;
+      letter-spacing: 0.3px;
+    }
+    /* Browsing Section */
+    .browsing-section {
+      background: linear-gradient(135deg, #f8faff 0%, #eef4ff 100%);
+      border-radius: 10px;
+      padding: 22px 24px;
+      margin-bottom: 28px;
+      border: 1px solid #dce8fa;
+    }
+    .browsing-section p {
+      font-size: 14px;
+      color: #4a4a4a;
+    }
+    .browsing-section p + p {
+      margin-top: 8px;
+    }
+    /* Market Insight */
+    .market-insight {
+      background-color: #1a3c6e;
+      border-radius: 10px;
+      padding: 22px 24px;
+      margin-bottom: 28px;
+    }
+    .market-insight h3 {
+      font-size: 13px;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 1px;
+      color: #7ab3ff;
+      margin-bottom: 8px;
+    }
+    .market-insight p {
+      font-size: 14px;
+      color: #c8d8f0;
+      line-height: 1.7;
+    }
+    /* Main CTA */
+    .main-cta-section {
+      text-align: center;
+      margin-bottom: 28px;
+    }
+    .main-cta-section p {
+      font-size: 15px;
+      color: #4a4a4a;
+      margin-bottom: 16px;
+    }
+    .main-cta-btn {
+      display: inline-block;
+      background: linear-gradient(135deg, #1a3c6e 0%, #2a6dd9 100%);
+      color: #ffffff !important;
+      text-decoration: none;
+      padding: 15px 36px;
+      border-radius: 8px;
+      font-size: 15px;
+      font-weight: 700;
+      letter-spacing: 0.4px;
+    }
+    /* Footer */
+    .footer {
+      background-color: #f0f4fa;
+      padding: 24px 40px;
+      text-align: center;
+      border-top: 1px solid #dce8fa;
+    }
+    .footer p {
+      font-size: 12px;
+      color: #8a9ab5;
+      line-height: 1.8;
+    }
+    .footer a {
+      color: #2a6dd9;
+      text-decoration: none;
+    }
+    @media (max-width: 480px) {
+      .body-content { padding: 24px 20px; }
+      .header { padding: 28px 20px; }
+      .property-card-header { flex-direction: column; gap: 8px; }
+      .property-details { gap: 10px; }
+    }
+  </style>
+</head>
+<body>
+  <div class=""email-wrapper"">
+
+    <!-- Header -->
+    <div class=""header"">
+      <div class=""header-logo-text"">xome</div>
+      <h1>Your Next Chapter in San Francisco Starts Here</h1>
+    </div>
+
+    <!-- Body -->
+    <div class=""body-content"">
+
+      <!-- Greeting -->
+      <p class=""greeting"">Hi Alyssa,</p>
+      <p class=""intro-text"">
+        You've been putting in the work — exploring neighborhoods, saving listings, and envisioning what's next. As someone ready to upgrade, you deserve a home that truly reflects where you're headed. We've handpicked <strong>3 standout properties</strong> in San Francisco that match your vision, your budget, and your lifestyle. Your next chapter is closer than you think.
+      </p>
+
+      <!-- Properties Section -->
+      <div class=""section-title"">🏠 Your Matched Properties</div>
+
+      <!-- Property 1 -->
+      <div class=""property-card"">
+        <div class=""property-card-header"">
+          <div>
+            <div class=""property-address"">6954 Smith Estate</div>
+            <div class=""property-neighborhood"">📍 Marina, San Francisco, CA 94115</div>
+          </div>
+          <span class=""status-badge status-active"">● Active</span>
+        </div>
+        <div class=""property-card-body"">
+          <div class=""property-price"">$1,001,701</div>
+          <div class=""property-details"">
+            <span class=""detail-item""><span class=""detail-icon"">🛏</span> 3 Beds</span>
+            <span class=""detail-divider"">|</span>
+            <span class=""detail-item""><span class=""detail-icon"">🛁</span> 4 Baths</span>
+            <span class=""detail-divider"">|</span>
+            <span class=""detail-item""><span class=""detail-icon"">📐</span> 2,155 sqft</span>
+            <span class=""detail-divider"">|</span>
+            <span class=""detail-item""><span class=""detail-icon"">🏡</span> Single Family</span>
+          </div>
+          <div class=""property-meta"">
+            <span class=""meta-item"">Built: <strong>1987</strong></span>
+            <span class=""meta-item"">On Market: <strong>76 days</strong></span>
+            <span class=""meta-item"">HOA: <strong>None</strong></span>
+            <span class=""meta-item"">Schools: <strong>3.9/10</strong></span>
+          </div>
+          <div class=""match-reason"">
+            ✅ <strong>Why it's a match:</strong> Located in your preferred city of San Francisco, priced within your budget, and offers generous space with 3 bedrooms — ideal for your upgrade.
+          </div>
+          <p class=""property-description"">
+            ""Stunning 3-bedroom home in the vibrant Marina neighborhood. Open floor plan with natural light, a private backyard and patio, and easy access to the city's best restaurants and shops.""
+          </p>
+          <a href=""#"" class=""property-cta"">View Listing →</a>
+        </div>
+      </div>
+
+      <!-- Property 2 -->
+      <div class=""property-card"">
+        <div class=""property-card-header"">
+          <div>
+            <div class=""property-address"">5263 Fuller Fields</div>
+            <div class=""property-neighborhood"">📍 Noe Valley, San Francisco, CA 94139</div>
+          </div>
+          <span class=""status-badge status-active"">● Active</span>
+        </div>
+        <div class=""property-card-body"">
+          <div class=""property-price"">$1,109,399</div>
+          <div class=""property-details"">
+            <span class=""detail-item""><span class=""detail-icon"">🛏</span> 1 Bed</span>
+            <span class=""detail-divider"">|</span>
+            <span class=""detail-item""><span class=""detail-icon"">🛁</span> 1 Bath</span>
+            <span class=""detail-divider"">|</span>
+            <span class=""detail-item""><span class=""detail-icon"">📐</span> 978 sqft</span>
+            <span class=""detail-divider"">|</span>
+            <span class=""detail-item""><span class=""detail-icon"">🏢</span> Multi-Family</span>
+          </div>
+          <div class=""property-meta"">
+            <span class=""meta-item"">Built: <strong>2007</strong></span>
+            <span class=""meta-item"">On Market: <strong>88 days</strong></span>
+            <span class=""meta-item"">HOA: <strong>$50/mo</strong></span>
+            <span class=""meta-item"">Schools: <strong>⭐ 7.3/10</strong></span>
+          </div>
+          <div class=""match-reason"">
+            ✅ <strong>Why it's a match:</strong> Situated in the charming Noe Valley neighborhood within your budget, with an excellent school rating of 7.3/10 — a smart upgrade in one of SF's most sought-after areas.
+          </div>
+          <p class=""property-description"">
+            ""A stunning 2007-built property in beloved Noe Valley. Features an open floor plan with natural light, private backyard and patio, and 978 sqft of thoughtfully designed living space.""
+          </p>
+          <a href=""#"" class=""property-cta"">View Listing →</a>
+        </div>
+      </div>
+
+      <!-- Property 3 -->
+      <div class=""property-card"">
+        <div class=""property-card-header"">
+          <div>
+            <div class=""property-address"">5781 Eric Streets</div>
+            <div class=""property-neighborhood"">📍 Marina, San Francisco, CA 94192</div>
+          </div>
+          <span class=""status-badge status-active"">● Active</span>
+        </div>
+        <div class=""property-card-body"">
+          <div class=""property-price"">$1,266,300</div>
+          <div class=""property-details"">
+            <span class=""detail-item""><span class=""detail-icon"">🛏</span> 1 Bed</span>
+            <span class=""detail-divider"">|</span>
+            <span class=""detail-item""><span class=""detail-icon"">🛁</span> 1 Bath</span>
+            <span class=""detail-divider"">|</span>
+            <span class=""detail-item""><span class=""detail-icon"">📐</span> 1,111 sqft</span>
+            <span class=""detail-divider"">|</span>
+            <span class=""detail-item""><span class=""detail-icon"">🏢</span> Multi-Family</span>
+          </div>
+          <div class=""property-meta"">
+            <span class=""meta-item"">Built: <strong>1960</strong></span>
+            <span class=""meta-item"">On Market: <strong>35 days</strong></span>
+            <span class=""meta-item"">HOA: <strong>None</strong></span>
+            <span class=""meta-item"">Schools: <strong>⭐ 9.0/10</strong></span>
+          </div>
+          <div class=""match-reason"">
+            ✅ <strong>Why it's a match:</strong> A recently updated gem in the Marina with a top-tier school rating of 9.0/10, no HOA fees, and 1,111 sqft of upgraded living space — all within your budget.
+          </div>
+          <p class=""property-description"">
+            ""A classic Marina property with modern upgrades — recently updated kitchen and bathrooms, private backyard and patio, and a prime location close to restaurants and shops.""
+          </p>
+          <a href=""#"" class=""property-cta"">View Listing →</a>
+        </div>
+      </div>
+
+      <!-- Browsing / Personalization Section -->
+      <div class=""section-title"">👀 Picking Up Where You Left Off</div>
+      <div class=""browsing-section"">
+        <p>
+          We noticed you've been actively exploring San Francisco's market — from condos in the city to multi-family properties and single family homes. Your recent saves and searches show a clear eye for quality spaces with strong neighborhood character.
+        </p>
+        <p>
+          The Marina and Noe Valley properties above align closely with the types of homes you've been gravitating toward. And since you previously searched 5781 Eric Streets, it's already on your radar — now's a great time to take a closer look before it moves.
+        </p>
+      </div>
+
+      <!-- Market Insight -->
+      <div class=""market-insight"">
+        <h3>📊 San Francisco Market Insight</h3>
+        <p>
+          San Francisco's condo and multi-family market remains competitive, with well-located properties in neighborhoods like Marina and Noe Valley continuing to attract strong buyer interest. Acting decisively on listings with fewer days on market can give upgraders like you a meaningful edge in securing your ideal home.
+        </p>
+      </div>
+
+      <!-- Main CTA -->
+      <div class=""main-cta-section"">
+        <p>
+          Ready to take the next step toward your upgrade? Schedule a personalized tour or connect with a Xome advisor to explore these properties in detail.
+        </p>
+        <a href=""#"" class=""main-cta-btn"">Explore All Matched Listings</a>
+      </div>
+
+    </div><!-- end body-content -->
+
+    <!-- Footer -->
+    <div class=""footer"">
+      <p>
+        You're receiving this email because you have an active Xome account associated with <strong>sgarcia@example.org</strong>.<br/>
+        <a href=""#"">Unsubscribe</a> &nbsp;|&nbsp; <a href=""#"">Manage Preferences</a> &nbsp;|&nbsp; <a href=""#"">Privacy Policy</a>
+      </p>
+      <p style=""margin-top: 10px;"">© 2026 Xome. All rights reserved. | 1 Xome Way, Dallas, TX</p>
+    </div>
+
+  </div>
+</body>
+</html>","========================================
+XOME — YOUR NEXT CHAPTER IN SAN FRANCISCO
+========================================
+
+Hi Alyssa,
+
+You've been putting in the work — exploring neighborhoods, saving listings, and envisioning what's next. As someone ready to upgrade, you deserve a home that truly reflects where you're headed. We've handpicked 3 standout properties in San Francisco that match your vision, your budget, and your lifestyle. Your next chapter is closer than you think.
+
+
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+YOUR MATCHED PROPERTIES
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+
+------------------------------------------
+PROPERTY 1: 6954 Smith Estate
+------------------------------------------
+Location:   Marina, San Francisco, CA 94115
+Status:     [ACTIVE]
+Price:      $1,001,701
+Details:    3 Beds | 4 Baths | 2,155 sqft
+Type:       Single Family | Built: 1987
+Days on Market: 76 | HOA: None | Schools: 3.9/10
+
+WHY IT'S A MATCH:
+Located in your preferred city of San Francisco, priced within your budget, and offers generous space with 3 bedrooms — ideal for your upgrade.
+
+ABOUT THIS HOME:
+Stunning 3-bedroom home in the vibrant Marina neighborhood. Open floor plan with natural light, a private backyard and patio, and easy access to the city's best restaurants and shops.
+
+View Listing: [xome.com/listing/6954-smith-estate]
+
+
+------------------------------------------
+PROPERTY 2: 5263 Fuller Fields
+------------------------------------------
+Location:   Noe Valley, San Francisco, CA 94139
+Status:     [ACTIVE]
+Price:      $1,109,399
+Details:    1 Bed | 1 Bath | 978 sqft
+Type:       Multi-Family | Built: 2007
+Days on Market: 88 | HOA: $50/mo | Schools: ⭐ 7.3/10
+
+WHY IT'S A MATCH:
+Situated in the charming Noe Valley neighborhood within your budget, with an excellent school rating of 7.3/10 — a smart upgrade in one of SF's most sought-after areas.
+
+ABOUT THIS HOME:
+A stunning 2007-built property in beloved Noe Valley. Features an open floor plan with natural light, private backyard and patio, and 978 sqft of thoughtfully designed living space.
+
+View Listing: [xome.com/listing/5263-fuller-fields]
+
+
+------------------------------------------
+PROPERTY 3: 5781 Eric Streets
+------------------------------------------
+Location:   Marina, San Francisco, CA 94192
+Status:     [ACTIVE]
+Price:      $1,266,300
+Details:    1 Bed | 1 Bath | 1,111 sqft
+Type:       Multi-Family | Built: 1960
+Days on Market: 35 | HOA: None | Schools: ⭐ 9.0/10
+
+WHY IT'S A MATCH:
+A recently updated gem in the Marina with a top-tier school rating of 9.0/10, no HOA fees, and 1,111 sqft of upgraded living space — all within your budget.
+
+ABOUT THIS HOME:
+A classic Marina property with modern upgrades — recently updated kitchen and bathrooms, private backyard and patio, and a prime location close to restaurants and shops.
+
+View Listing: [xome.com/listing/5781-eric-streets]
+
+
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+PICKING UP WHERE YOU LEFT OFF
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+
+We noticed you've been actively exploring San Francisco's market — from condos in the city to multi-family properties and single family homes. Your recent saves and searches show a clear eye for quality spaces with strong neighborhood character.
+
+The Marina and Noe Valley properties above align closely with the types of homes you've been gravitating toward. And since you previously searched 5781 Eric Streets, it's already on your radar — now's a great time to take a closer look before it moves.
+
+
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+SAN FRANCISCO MARKET INSIGHT
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+
+San Francisco's condo and multi-family market remains competitive, with well-located properties in neighborhoods like Marina and Noe Valley continuing to attract strong buyer interest. Acting decisively on listings with fewer days on market can give upgraders like you a meaningful edge in securing your ideal home.
+
+
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+READY TO TAKE THE NEXT STEP?
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+
+Schedule a personalized tour or connect with a Xome advisor to explore these properties in detail.
+
+Explore All Matched Listings: xome.com/recommendations/alyssa-chavez
+
+
+----------------------------------------
+You're receiving this email because you have an active Xome account associated with sgarcia@example.org.
+
+Unsubscribe | Manage Preferences | Privacy Policy
+
+© 2026 Xome. All rights reserved. | 1 Xome Way, Dallas, TX
+----------------------------------------
+```",2026-05-08 02:34:36.621728
+2,6c492b3e-93b9-4e5b-88a1-8ebd58be9d24,campaign_6c492b3e-93b9-4e5b-88a1-8ebd58be9d24_20260508_044212.txt,"Smart Moves in Miami — Picks Matched for You, Shaun","<!DOCTYPE html>
+<html lang=""en"">
+<head>
+  <meta charset=""UTF-8"" />
+  <meta name=""viewport"" content=""width=device-width, initial-scale=1.0""/>
+  <title>Your Personalized Xome Property Picks</title>
+  <style>
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+    body {
+      font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif;
+      background-color: #f4f6f9;
+      color: #333333;
+      line-height: 1.6;
+    }
+    .email-wrapper {
+      max-width: 640px;
+      margin: 32px auto;
+      background-color: #ffffff;
+      border-radius: 10px;
+      overflow: hidden;
+      box-shadow: 0 4px 20px rgba(0,0,0,0.08);
+    }
+    /* Header */
+    .header {
+      background: linear-gradient(135deg, #003087 0%, #0057d8 100%);
+      padding: 36px 40px;
+      text-align: center;
+    }
+    .header .logo {
+      font-size: 28px;
+      font-weight: 800;
+      color: #ffffff;
+      letter-spacing: 2px;
+      text-transform: uppercase;
+    }
+    .header .logo span {
+      color: #5bc4f5;
+    }
+    .header .tagline {
+      color: #b8d4f8;
+      font-size: 13px;
+      margin-top: 6px;
+      letter-spacing: 0.5px;
+    }
+    /* Body */
+    .body-content {
+      padding: 36px 40px;
+    }
+    .greeting {
+      font-size: 22px;
+      font-weight: 700;
+      color: #003087;
+      margin-bottom: 12px;
+    }
+    .intro-text {
+      font-size: 15px;
+      color: #555555;
+      margin-bottom: 28px;
+      border-left: 4px solid #5bc4f5;
+      padding-left: 14px;
+      background-color: #f0f7ff;
+      padding: 14px 16px;
+      border-radius: 0 6px 6px 0;
+    }
+    /* Section Headers */
+    .section-title {
+      font-size: 13px;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 1.2px;
+      color: #0057d8;
+      margin-bottom: 16px;
+      padding-bottom: 8px;
+      border-bottom: 2px solid #e8eef8;
+    }
+    /* Property Card */
+    .property-card {
+      background-color: #f9fbff;
+      border: 1px solid #dce8f8;
+      border-radius: 10px;
+      padding: 24px;
+      margin-bottom: 24px;
+    }
+    .property-card-header {
+      display: flex;
+      justify-content: space-between;
+      align-items: flex-start;
+      flex-wrap: wrap;
+      gap: 10px;
+      margin-bottom: 14px;
+    }
+    .property-address {
+      font-size: 17px;
+      font-weight: 700;
+      color: #003087;
+    }
+    .property-neighborhood {
+      font-size: 13px;
+      color: #777777;
+      margin-top: 2px;
+    }
+    /* Status Badges */
+    .badge {
+      display: inline-block;
+      padding: 5px 12px;
+      border-radius: 20px;
+      font-size: 11px;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 0.8px;
+      white-space: nowrap;
+    }
+    .badge-pending {
+      background-color: #fff3cd;
+      color: #856404;
+      border: 1px solid #ffc107;
+    }
+    .badge-auction {
+      background-color: #ffe0e0;
+      color: #c0392b;
+      border: 1px solid #e74c3c;
+    }
+    .badge-active {
+      background-color: #d4edda;
+      color: #155724;
+      border: 1px solid #28a745;
+    }
+    .property-price {
+      font-size: 24px;
+      font-weight: 800;
+      color: #0057d8;
+      margin-bottom: 12px;
+    }
+    .property-details {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 10px;
+      margin-bottom: 14px;
+    }
+    .detail-pill {
+      background-color: #e8eef8;
+      color: #003087;
+      font-size: 12px;
+      font-weight: 600;
+      padding: 5px 12px;
+      border-radius: 20px;
+    }
+    /* Auction Box */
+    .auction-box {
+      background: linear-gradient(135deg, #fff0f0 0%, #ffe8e8 100%);
+      border: 1.5px solid #e74c3c;
+      border-radius: 8px;
+      padding: 14px 18px;
+      margin-bottom: 14px;
+    }
+    .auction-box .auction-title {
+      font-size: 12px;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 1px;
+      color: #c0392b;
+      margin-bottom: 8px;
+    }
+    .auction-box .auction-row {
+      display: flex;
+      gap: 24px;
+      flex-wrap: wrap;
+    }
+    .auction-box .auction-item label {
+      font-size: 11px;
+      color: #999999;
+      text-transform: uppercase;
+      letter-spacing: 0.5px;
+      display: block;
+    }
+    .auction-box .auction-item span {
+      font-size: 15px;
+      font-weight: 700;
+      color: #c0392b;
+    }
+    .property-why {
+      background-color: #eef5ff;
+      border-left: 3px solid #0057d8;
+      padding: 10px 14px;
+      border-radius: 0 6px 6px 0;
+      font-size: 13px;
+      color: #444444;
+      margin-bottom: 14px;
+    }
+    .property-why strong {
+      color: #003087;
+    }
+    .property-description {
+      font-size: 13px;
+      color: #666666;
+      margin-bottom: 16px;
+    }
+    .property-meta {
+      font-size: 12px;
+      color: #999999;
+      margin-bottom: 16px;
+    }
+    .property-meta span {
+      margin-right: 16px;
+    }
+    .btn-view {
+      display: inline-block;
+      background: linear-gradient(135deg, #0057d8 0%, #003087 100%);
+      color: #ffffff !important;
+      text-decoration: none;
+      padding: 12px 28px;
+      border-radius: 6px;
+      font-size: 14px;
+      font-weight: 700;
+      letter-spacing: 0.3px;
+    }
+    .btn-view:hover {
+      opacity: 0.92;
+    }
+    /* Browsing Section */
+    .browsing-section {
+      background-color: #f0f7ff;
+      border-radius: 10px;
+      padding: 22px 24px;
+      margin-bottom: 28px;
+    }
+    .browsing-section p {
+      font-size: 14px;
+      color: #555555;
+    }
+    .browsing-section p + p {
+      margin-top: 10px;
+    }
+    /* Market Insight */
+    .market-insight {
+      background: linear-gradient(135deg, #003087 0%, #0057d8 100%);
+      border-radius: 10px;
+      padding: 22px 24px;
+      margin-bottom: 28px;
+    }
+    .market-insight .insight-title {
+      font-size: 12px;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 1.2px;
+      color: #5bc4f5;
+      margin-bottom: 8px;
+    }
+    .market-insight p {
+      font-size: 14px;
+      color: #dce8f8;
+      line-height: 1.6;
+    }
+    /* CTA Section */
+    .cta-section {
+      text-align: center;
+      padding: 28px 24px;
+      background-color: #f9fbff;
+      border-radius: 10px;
+      margin-bottom: 28px;
+      border: 1px solid #dce8f8;
+    }
+    .cta-section h3 {
+      font-size: 18px;
+      font-weight: 700;
+      color: #003087;
+      margin-bottom: 10px;
+    }
+    .cta-section p {
+      font-size: 14px;
+      color: #666666;
+      margin-bottom: 20px;
+    }
+    .btn-cta {
+      display: inline-block;
+      background: linear-gradient(135deg, #5bc4f5 0%, #0057d8 100%);
+      color: #ffffff !important;
+      text-decoration: none;
+      padding: 14px 36px;
+      border-radius: 6px;
+      font-size: 15px;
+      font-weight: 700;
+      letter-spacing: 0.3px;
+    }
+    /* Divider */
+    .divider {
+      border: none;
+      border-top: 1px solid #e8eef8;
+      margin: 28px 0;
+    }
+    /* Footer */
+    .footer {
+      background-color: #f4f6f9;
+      padding: 24px 40px;
+      text-align: center;
+    }
+    .footer p {
+      font-size: 12px;
+      color: #aaaaaa;
+      margin-bottom: 6px;
+    }
+    .footer a {
+      color: #0057d8;
+      text-decoration: none;
+    }
+    @media (max-width: 480px) {
+      .body-content { padding: 24px 20px; }
+      .header { padding: 28px 20px; }
+      .footer { padding: 20px; }
+      .property-card-header { flex-direction: column; }
+      .auction-box .auction-row { flex-direction: column; gap: 10px; }
+    }
+  </style>
+</head>
+<body>
+  <div class=""email-wrapper"">
+
+    <!-- Header -->
+    <div class=""header"">
+      <div class=""logo"">X<span>ome</span></div>
+      <div class=""tagline"">Your Smart Real Estate Marketplace</div>
+    </div>
+
+    <!-- Body -->
+    <div class=""body-content"">
+
+      <!-- Greeting -->
+      <div class=""greeting"">Hi Shaun, your next smart move is waiting. 👋</div>
+      <div class=""intro-text"">
+        Downsizing doesn't mean settling — it means making every square foot count. We've handpicked properties that fit your budget, your preferred Miami market, and your practical priorities. Less to maintain, more to enjoy.
+      </div>
+
+      <!-- Properties Section -->
+      <div class=""section-title"">🏠 Your Top Matched Properties</div>
+
+      <!-- Property 1 -->
+      <div class=""property-card"">
+        <div class=""property-card-header"">
+          <div>
+            <div class=""property-address"">9990 Jasmine Island</div>
+            <div class=""property-neighborhood"">Wynwood, Miami, FL 33149</div>
+          </div>
+          <span class=""badge badge-pending"">⏳ Pending</span>
+        </div>
+
+        <div class=""property-price"">$543,373</div>
+
+        <div class=""property-details"">
+          <span class=""detail-pill"">🛏 5 Beds</span>
+          <span class=""detail-pill"">🛁 4.5 Baths</span>
+          <span class=""detail-pill"">📐 3,261 sqft</span>
+          <span class=""detail-pill"">🏗 Built 1999</span>
+          <span class=""detail-pill"">🏘 Townhouse</span>
+          <span class=""detail-pill"">🏫 School Rating: 6.5/10</span>
+          <span class=""detail-pill"">🏦 HOA: $400/mo</span>
+        </div>
+
+        <div class=""property-why"">
+          <strong>Why it's a match:</strong> Right in your preferred Miami market and comfortably within your budget at $543,373. With 5 bedrooms, there's plenty of flexibility — think guest rooms, a home office, or hobby space. You get the room to breathe without the sprawl.
+        </div>
+
+        <div class=""property-description"">
+          Beautiful townhouse in the heart of Wynwood, Miami. Open floor plan with natural light and 3,261 sqft of well-designed living space. Situated in a top-rated school district — a strong value indicator for resale.
+        </div>
+
+        <div class=""property-meta"">
+          <span>📅 48 days on market</span>
+          <span>⭐ Match Score: 79.5%</span>
+        </div>
+
+        <a href=""https://www.xome.com/listing/9990-jasmine-island"" class=""btn-view"">View Property →</a>
+      </div>
+
+      <!-- Property 2 -->
+      <div class=""property-card"">
+        <div class=""property-card-header"">
+          <div>
+            <div class=""property-address"">2188 Douglas Mountains</div>
+            <div class=""property-neighborhood"">Pacific Heights, San Francisco, CA 94178</div>
+          </div>
+          <span class=""badge badge-auction"">🔨 Auction</span>
+        </div>
+
+        <div class=""property-price"">$2,029,701 <span style=""font-size:13px; color:#999; font-weight:400;"">(list price)</span></div>
+
+        <div class=""property-details"">
+          <span class=""detail-pill"">🛏 5 Beds</span>
+          <span class=""detail-pill"">🛁 5 Baths</span>
+          <span class=""detail-pill"">📐 3,022 sqft</span>
+          <span class=""detail-pill"">🏗 Built 2004</span>
+          <span class=""detail-pill"">🏘 Multi-Family</span>
+          <span class=""detail-pill"">🏫 School Rating: 2.5/10</span>
+          <span class=""detail-pill"">🏦 HOA: $75/mo</span>
+        </div>
+
+        <!-- Auction Box -->
+        <div class=""auction-box"">
+          <div class=""auction-title"">🔨 Auction Details — Act Fast</div>
+          <div class=""auction-row"">
+            <div class=""auction-item"">
+              <label>Auction Date</label>
+              <span>May 30, 2026</span>
+            </div>
+            <div class=""auction-item"">
+              <label>Starting Bid</label>
+              <span>$1,565,946</span>
+            </div>
+          </div>
+        </div>
+
+        <div class=""property-why"">
+          <strong>Why it's a match:</strong> This is the exact Multi-Family property type you've been searching for — and you've already shown interest in it. The auction starting price of $1,565,946 represents a potential $463,755 below list price, making it an intriguing opportunity worth watching closely.
+        </div>
+
+        <div class=""property-description"">
+          Charming multi-family residence in the prestigious Pacific Heights neighborhood of San Francisco. Recently updated kitchen and bathrooms, private backyard and patio. Built in 2004 with modern finishes throughout.
+        </div>
+
+        <div class=""property-meta"">
+          <span>📅 18 days on market</span>
+          <span>⭐ Match Score: 36.3%</span>
+        </div>
+
+        <a href=""https://www.xome.com/listing/2188-douglas-mountains"" class=""btn-view"">View Auction Details →</a>
+      </div>
+
+      <hr class=""divider"" />
+
+      <!-- Browsing Personalization -->
+      <div class=""section-title"">🔍 Based on Your Recent Activity</div>
+      <div class=""browsing-section"">
+        <p>
+          We've noticed you've been actively exploring Miami's condo and townhouse landscape — from Wynwood to neighborhoods across the city — with a clear eye for value in the $240K–$560K range. Your recent saves and searches tell us you know what you're looking for.
+        </p>
+        <p>
+          You've also shown interest in multi-family properties, including the 2188 Douglas Mountains listing above. Whether you're looking to simplify your lifestyle or keep a unit for rental income, multi-family can be a smart downsizing play. We'll keep surfacing the best matches as they hit the market.
+        </p>
+      </div>
+
+      <hr class=""divider"" />
+
+      <!-- Market Insight -->
+      <div class=""market-insight"">
+        <div class=""insight-title"">📊 Miami Market Insight</div>
+        <p>
+          Miami's real estate market continues to attract strong demand, with inventory in desirable neighborhoods like Wynwood moving quickly — properties are averaging under 60 days on market. For downsizers, acting decisively on well-priced listings remains key to securing the right fit before competition heats up.
+        </p>
+      </div>
+
+      <!-- CTA Section -->
+      <div class=""cta-section"">
+        <h3>Ready to make your smart move, Shaun?</h3>
+        <p>
+          Your ideal right-sized home is out there. Connect with a Xome advisor today — we'll help you evaluate your options, understand the numbers, and move forward with confidence.
+        </p>
+        <a href=""https://www.xome.com/dashboard?user=shaun-jensen"" class=""btn-cta"">View All My Matches →</a>
+      </div>
+
+    </div><!-- /body-content -->
+
+    <!-- Footer -->
+    <div class=""footer"">
+      <p>You're receiving this email because you have an active Xome account registered to <strong>juliahoffman@example.org</strong>.</p>
+      <p>
+        <a href=""https://www.xome.com/preferences"">Manage Preferences</a> &nbsp;|&nbsp;
+        <a href=""https://www.xome.com/unsubscribe"">Unsubscribe</a> &nbsp;|&nbsp;
+        <a href=""https://www.xome.com/privacy"">Privacy Policy</a>
+      </p>
+      <p style=""margin-top:10px;"">© 2026 Xome Inc. All rights reserved. | 1 Xome Way, Dallas, TX 75201</p>
+    </div>
+
+  </div>
+</body>
+</html>","========================================
+XOME — Your Smart Real Estate Marketplace
+========================================
+
+Hi Shaun,
+
+Your next smart move is waiting.
+
+Downsizing doesn't mean settling — it means making every square foot count. We've handpicked properties that fit your budget, your preferred Miami market, and your practical priorities. Less to maintain, more to enjoy.
+
+----------------------------------------
+YOUR TOP MATCHED PROPERTIES
+----------------------------------------
+
+PROPERTY 1: 9990 Jasmine Island
+Location: Wynwood, Miami, FL 33149
+Status: *** PENDING ***
+Price: $543,373
+Details: 5 Beds | 4.5 Baths | 3,261 sqft
+Type: Townhouse | Year Built: 1999
+HOA Fee: $400/mo | School Rating: 6.5/10
+Days on Market: 48 | Match Score: 79.5%
+
+Why it's a match:
+Right in your preferred Miami market and comfortably within your budget. With 5 bedrooms, there's plenty of flexibility — think guest rooms, a home office, or hobby space. You get the room to breathe without the sprawl.
+
+About this property:
+Beautiful townhouse in the heart of Wynwood, Miami. Open floor plan with natural light and 3,261 sqft of well-designed living space. Situated in a top-rated school district — a strong value indicator for resale.
+
+View this property: https://www.xome.com/listing/9990-jasmine-island
+
+----------------------------------------
+
+PROPERTY 2: 2188 Douglas Mountains
+Location: Pacific Heights, San Francisco, CA 94178
+Status: *** AUCTION ***
+List Price: $2,029,701
+Details: 5 Beds | 5 Baths | 3,022 sqft
+Type: Multi-Family | Year Built: 2004
+HOA Fee: $75/mo | School Rating: 2.5/10
+Days on Market: 18 | Match Score: 36.3%
+
+🔨 AUCTION DETAILS — ACT FAST:
+  Auction Date:    May 30, 2026
+  Starting Bid:    $1,565,946
+  (Potential savings of $463,755 below list price)
+
+Why it's a match:
+This is the exact Multi-Family property type you've been searching for — and you've already shown interest in it. The auction starting price represents a significant opportunity below the list price, making it worth a close look.
+
+About this property:
+Charming multi-family residence in the prestigious Pacific Heights neighborhood of San Francisco. Recently updated kitchen and bathrooms, private backyard and patio. Built in 2004 with modern finishes throughout.
+
+View auction details: https://www.xome.com/listing/2188-douglas-mountains
+
+----------------------------------------
+BASED ON YOUR RECENT ACTIVITY
+----------------------------------------
+
+We've noticed you've been actively exploring Miami's condo and townhouse landscape — from Wynwood to neighborhoods across the city — with a clear eye for value in the $240K–$560K range. Your recent saves and searches tell us you know what you're looking for.
+
+You've also shown interest in multi-family properties, including the 2188 Douglas Mountains listing above. Whether you're looking to simplify your lifestyle or keep a unit for rental income, multi-family can be a smart downsizing play. We'll keep surfacing the best matches as they hit the market.
+
+----------------------------------------
+MIAMI MARKET INSIGHT
+----------------------------------------
+
+Miami's real estate market continues to attract strong demand, with inventory in desirable neighborhoods like Wynwood moving quickly — properties are averaging under 60 days on market. For downsizers, acting decisively on well-priced listings remains key to securing the right fit before competition heats up.
+
+----------------------------------------
+READY TO MAKE YOUR SMART MOVE, SHAUN?
+----------------------------------------
+
+Your ideal right-sized home is out there. Connect with a Xome advisor today — we'll help you evaluate your options, understand the numbers, and move forward with confidence.
+
+View all your matches: https://www.xome.com/dashboard?user=shaun-jensen
+
+========================================
+You're receiving this email because you have an active Xome account registered to juliahoffman@example.org.
+
+Manage Preferences: https://www.xome.com/preferences
+Unsubscribe: https://www.xome.com/unsubscribe
+Privacy Policy: https://www.xome.com/privacy
+
+© 2026 Xome Inc. All rights reserved.
+1 Xome Way, Dallas, TX 75201
+========================================
+```",2026-05-08 04:42:12.626006
+3,c26a847d-1321-4e6f-9658-47d7c92ad556,campaign_c26a847d-1321-4e6f-9658-47d7c92ad556_20260508_065631.txt,"Alyssa, Your Next Chapter Awaits in San Francisco","<!DOCTYPE html>
+<html lang=""en"">
+<head>
+  <meta charset=""UTF-8"" />
+  <meta name=""viewport"" content=""width=device-width, initial-scale=1.0""/>
+  <title>Your Next Home Awaits – Xome</title>
+  <style>
+    body {
+      margin: 0;
+      padding: 0;
+      background-color: #f4f6f9;
+      font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif;
+      color: #2d2d2d;
+    }
+    .wrapper {
+      max-width: 620px;
+      margin: 32px auto;
+      background-color: #ffffff;
+      border-radius: 10px;
+      overflow: hidden;
+      box-shadow: 0 4px 20px rgba(0,0,0,0.08);
+    }
+    .header {
+      background: linear-gradient(135deg, #1a3c6e 0%, #2d6be4 100%);
+      padding: 36px 40px 28px;
+      text-align: center;
+    }
+    .header img {
+      height: 36px;
+      margin-bottom: 16px;
+    }
+    .header h1 {
+      color: #ffffff;
+      font-size: 26px;
+      font-weight: 700;
+      margin: 0 0 8px;
+      line-height: 1.3;
+    }
+    .header p {
+      color: #c8d9f7;
+      font-size: 15px;
+      margin: 0;
+    }
+    .body-content {
+      padding: 36px 40px;
+    }
+    .greeting {
+      font-size: 17px;
+      line-height: 1.7;
+      color: #3a3a3a;
+      margin-bottom: 28px;
+    }
+    .greeting strong {
+      color: #1a3c6e;
+    }
+    .section-title {
+      font-size: 13px;
+      font-weight: 700;
+      letter-spacing: 1.2px;
+      text-transform: uppercase;
+      color: #2d6be4;
+      margin-bottom: 18px;
+      border-bottom: 2px solid #e8eef8;
+      padding-bottom: 8px;
+    }
+    /* Property Card */
+    .property-card {
+      border: 1px solid #e2e8f0;
+      border-radius: 10px;
+      overflow: hidden;
+      margin-bottom: 28px;
+    }
+    .property-card-header {
+      background-color: #f0f5ff;
+      padding: 16px 20px;
+      display: flex;
+      justify-content: space-between;
+      align-items: flex-start;
+    }
+    .property-address {
+      font-size: 16px;
+      font-weight: 700;
+      color: #1a3c6e;
+      margin: 0 0 4px;
+    }
+    .property-neighborhood {
+      font-size: 13px;
+      color: #6b7a99;
+      margin: 0;
+    }
+    .badge {
+      display: inline-block;
+      padding: 4px 12px;
+      border-radius: 20px;
+      font-size: 12px;
+      font-weight: 700;
+      letter-spacing: 0.5px;
+      text-transform: uppercase;
+      white-space: nowrap;
+      margin-left: 12px;
+      flex-shrink: 0;
+    }
+    .badge-auction {
+      background-color: #fff3e0;
+      color: #e65100;
+      border: 1px solid #ffb74d;
+    }
+    .badge-active {
+      background-color: #e8f5e9;
+      color: #2e7d32;
+      border: 1px solid #81c784;
+    }
+    .property-card-body {
+      padding: 18px 20px;
+    }
+    .price-row {
+      display: flex;
+      align-items: baseline;
+      gap: 10px;
+      margin-bottom: 14px;
+      flex-wrap: wrap;
+    }
+    .price {
+      font-size: 22px;
+      font-weight: 800;
+      color: #1a3c6e;
+    }
+    .price-sub {
+      font-size: 13px;
+      color: #6b7a99;
+    }
+    .details-row {
+      display: flex;
+      gap: 18px;
+      flex-wrap: wrap;
+      margin-bottom: 14px;
+    }
+    .detail-item {
+      font-size: 14px;
+      color: #4a5568;
+    }
+    .detail-item span {
+      font-weight: 700;
+      color: #2d2d2d;
+    }
+    .auction-box {
+      background: linear-gradient(135deg, #fff8f0 0%, #fff3e0 100%);
+      border: 1px dashed #ffb74d;
+      border-radius: 8px;
+      padding: 14px 16px;
+      margin-bottom: 14px;
+    }
+    .auction-box p {
+      margin: 0 0 6px;
+      font-size: 13px;
+      color: #7c4a00;
+    }
+    .auction-box p:last-child {
+      margin-bottom: 0;
+    }
+    .auction-box strong {
+      color: #e65100;
+    }
+    .why-recommended {
+      background-color: #f7f9ff;
+      border-left: 3px solid #2d6be4;
+      padding: 10px 14px;
+      border-radius: 0 6px 6px 0;
+      font-size: 13px;
+      color: #4a5568;
+      line-height: 1.6;
+      margin-bottom: 14px;
+    }
+    .property-cta {
+      display: inline-block;
+      background-color: #2d6be4;
+      color: #ffffff !important;
+      text-decoration: none;
+      padding: 11px 24px;
+      border-radius: 6px;
+      font-size: 14px;
+      font-weight: 700;
+      letter-spacing: 0.3px;
+    }
+    .property-cta:hover {
+      background-color: #1a3c6e;
+    }
+    /* Browsing section */
+    .browsing-section {
+      background-color: #f7f9ff;
+      border-radius: 10px;
+      padding: 22px 24px;
+      margin-bottom: 28px;
+    }
+    .browsing-section p {
+      font-size: 15px;
+      line-height: 1.7;
+      color: #4a5568;
+      margin: 0;
+    }
+    /* Market insight */
+    .insight-section {
+      background: linear-gradient(135deg, #1a3c6e 0%, #2d6be4 100%);
+      border-radius: 10px;
+      padding: 22px 24px;
+      margin-bottom: 28px;
+    }
+    .insight-section h3 {
+      color: #c8d9f7;
+      font-size: 12px;
+      font-weight: 700;
+      letter-spacing: 1.2px;
+      text-transform: uppercase;
+      margin: 0 0 10px;
+    }
+    .insight-section p {
+      color: #ffffff;
+      font-size: 15px;
+      line-height: 1.7;
+      margin: 0;
+    }
+    /* Main CTA */
+    .main-cta-section {
+      text-align: center;
+      margin-bottom: 28px;
+    }
+    .main-cta-section p {
+      font-size: 16px;
+      color: #4a5568;
+      line-height: 1.7;
+      margin-bottom: 18px;
+    }
+    .main-cta-btn {
+      display: inline-block;
+      background: linear-gradient(135deg, #1a3c6e 0%, #2d6be4 100%);
+      color: #ffffff !important;
+      text-decoration: none;
+      padding: 15px 36px;
+      border-radius: 8px;
+      font-size: 16px;
+      font-weight: 700;
+      letter-spacing: 0.4px;
+    }
+    .footer {
+      background-color: #f0f4f8;
+      padding: 24px 40px;
+      text-align: center;
+      border-top: 1px solid #e2e8f0;
+    }
+    .footer p {
+      font-size: 12px;
+      color: #9aa5b4;
+      margin: 0 0 6px;
+      line-height: 1.6;
+    }
+    .footer a {
+      color: #2d6be4;
+      text-decoration: none;
+    }
+    @media (max-width: 480px) {
+      .body-content { padding: 24px 20px; }
+      .header { padding: 28px 20px 22px; }
+      .header h1 { font-size: 22px; }
+      .property-card-header { flex-direction: column; gap: 10px; }
+      .badge { margin-left: 0; }
+      .details-row { gap: 12px; }
+      .footer { padding: 20px; }
+    }
+  </style>
+</head>
+<body>
+  <div class=""wrapper"">
+
+    <!-- HEADER -->
+    <div class=""header"">
+      <h1>Ready for Your Next Chapter, Alyssa?</h1>
+      <p>We've handpicked properties to match your upgrade journey in San Francisco.</p>
+    </div>
+
+    <!-- BODY -->
+    <div class=""body-content"">
+
+      <!-- GREETING -->
+      <div class=""greeting"">
+        <p>Hi <strong>Alyssa</strong>,</p>
+        <p>
+          Upgrading your home is one of the most exciting moves you can make — and San Francisco's market is full of opportunities for buyers ready to take that next step. Based on your search activity and preferences, we've curated two standout listings that deserve your attention. Whether you're drawn to the prestige of Pacific Heights or open to exploring a high-value opportunity in a thriving market, we've got something worth a closer look.
+        </p>
+      </div>
+
+      <!-- PROPERTY LISTINGS -->
+      <div class=""section-title"">Your Curated Picks</div>
+
+      <!-- PROPERTY 1 -->
+      <div class=""property-card"">
+        <div class=""property-card-header"">
+          <div>
+            <p class=""property-address"">2188 Douglas Mountains</p>
+            <p class=""property-neighborhood"">Pacific Heights, San Francisco, CA 94178</p>
+          </div>
+          <span class=""badge badge-auction"">🔨 Auction</span>
+        </div>
+        <div class=""property-card-body"">
+          <div class=""price-row"">
+            <span class=""price"">$2,029,701</span>
+            <span class=""price-sub"">List Price &nbsp;|&nbsp; Multi-Family &nbsp;|&nbsp; Built 2004</span>
+          </div>
+          <div class=""details-row"">
+            <div class=""detail-item""><span>5</span> Beds</div>
+            <div class=""detail-item""><span>5</span> Baths</div>
+            <div class=""detail-item""><span>3,022</span> sqft</div>
+            <div class=""detail-item"">HOA: <span>$75/mo</span></div>
+          </div>
+
+          <!-- AUCTION HIGHLIGHT -->
+          <div class=""auction-box"">
+            <p>⏰ <strong>Auction Date:</strong> May 30, 2026</p>
+            <p>💰 <strong>Starting Bid:</strong> $1,565,946 — potentially <strong>$463,755 below list price</strong></p>
+            <p>Act fast — this auction opportunity won't last long.</p>
+          </div>
+
+          <div class=""why-recommended"">
+            📍 Located in your preferred city of San Francisco, right in the sought-after Pacific Heights neighborhood. With 5 bedrooms, it far exceeds your minimum requirement — perfect if you're looking for space to grow. The auction starting price of <strong>$1,565,946</strong> falls within your budget, making this a rare chance to secure a premium property at a potential below-market price.
+          </div>
+          <p style=""font-size:13px;color:#6b7a99;margin:0 0 14px;"">
+            Charming multi-family home featuring an updated kitchen and bathrooms, a private backyard and patio — all in one of San Francisco's most desirable neighborhoods.
+          </p>
+          <a href=""https://www.xome.com/property/2188-douglas-mountains"" class=""property-cta"">View Property &amp; Auction Details →</a>
+        </div>
+      </div>
+
+      <!-- PROPERTY 2 -->
+      <div class=""property-card"">
+        <div class=""property-card-header"">
+          <div>
+            <p class=""property-address"">1376 Victor Motorway</p>
+            <p class=""property-neighborhood"">Mueller, Austin, TX 78748</p>
+          </div>
+          <span class=""badge badge-active"">✅ Active</span>
+        </div>
+        <div class=""property-card-body"">
+          <div class=""price-row"">
+            <span class=""price"">$358,195</span>
+            <span class=""price-sub"">List Price &nbsp;|&nbsp; Condo &nbsp;|&nbsp; Built 1991</span>
+          </div>
+          <div class=""details-row"">
+            <div class=""detail-item""><span>1</span> Bed</div>
+            <div class=""detail-item""><span>1</span> Bath</div>
+            <div class=""detail-item""><span>815</span> sqft</div>
+            <div class=""detail-item"">HOA: <span>$350/mo</span></div>
+            <div class=""detail-item"">On Market: <span>102 days</span></div>
+          </div>
+
+          <div class=""why-recommended"">
+            🏢 This condo matches your preferred property type exactly. Situated in Mueller, Austin — a neighborhood known for its walkability and community feel — it boasts an impressive school rating of <strong>7.4/10</strong>. At $358,195, it sits well within your budget and offers strong value potential, especially given its 102 days on market.
+          </div>
+          <p style=""font-size:13px;color:#6b7a99;margin:0 0 14px;"">
+            A beautiful condo in the heart of Mueller featuring hardwood floors throughout, 815 sqft of thoughtfully designed living space, and a private backyard and patio — all within a top-rated school district.
+          </p>
+          <a href=""https://www.xome.com/property/1376-victor-motorway"" class=""property-cta"">View Listing Details →</a>
+        </div>
+      </div>
+
+      <!-- BROWSING BEHAVIOR PERSONALIZATION -->
+      <div class=""browsing-section"">
+        <div class=""section-title"" style=""margin-bottom:12px;"">Based on Your Recent Searches</div>
+        <p>
+          We noticed you've been exploring condos and multi-family properties across San Francisco — from Pacific Heights to neighborhoods like the ones near Wright Corner and Lozano Roads. Your interest in properties ranging from the $700Ks to over $1.3M tells us you have a clear vision for your upgrade. The listings above were selected with that range and lifestyle in mind, and the Pacific Heights auction in particular aligns closely with the multi-family and larger-home searches you've been conducting.
+        </p>
+      </div>
+
+      <!-- MARKET INSIGHT -->
+      <div class=""insight-section"">
+        <h3>📊 San Francisco Market Insight</h3>
+        <p>
+          San Francisco's condo and multi-family market remains highly competitive, with well-priced properties in neighborhoods like Pacific Heights often receiving multiple offers within days of listing. Auction opportunities in premium neighborhoods are increasingly rare — and can represent one of the best ways for upgraders to access above-average inventory at a strategic price point.
+        </p>
+      </div>
+
+      <!-- MAIN CTA -->
+      <div class=""main-cta-section"">
+        <p>
+          Your next chapter is closer than you think. Explore your full personalized property recommendations and schedule tours directly through Xome.
+        </p>
+        <a href=""https://www.xome.com/recommendations?user=alyssa-chavez"" class=""main-cta-btn"">See All My Recommendations →</a>
+      </div>
+
+    </div><!-- end body-content -->
+
+    <!-- FOOTER -->
+    <div class=""footer"">
+      <p>You're receiving this email because you have an active Xome account associated with <strong>sgarcia@example.org</strong>.</p>
+      <p>
+        <a href=""#"">Unsubscribe</a> &nbsp;|&nbsp;
+        <a href=""#"">Update Preferences</a> &nbsp;|&nbsp;
+        <a href=""#"">Privacy Policy</a>
+      </p>
+      <p style=""margin-top:10px;"">© 2026 Xome, Inc. All rights reserved.<br/>1 Xome Way, Lewisville, TX 75067</p>
+    </div>
+
+  </div>
+</body>
+</html>","=============================================================
+XOME | YOUR PERSONALIZED PROPERTY PICKS
+=============================================================
+
+Subject: Alyssa, Your Next Chapter Awaits in San Francisco
+
+Hi Alyssa,
+
+Upgrading your home is one of the most exciting moves you can make — and San Francisco's market is full of opportunities for buyers ready to take that next step. Based on your search activity and preferences, we've curated two standout listings that deserve your attention.
+
+-------------------------------------------------------------
+YOUR CURATED PICKS
+-------------------------------------------------------------
+
+PROPERTY 1: 2188 Douglas Mountains
+Location: Pacific Heights, San Francisco, CA 94178
+Status: [AUCTION]
+List Price: $2,029,701
+Details: 5 Beds | 5 Baths | 3,022 sqft
+Type: Multi-Family | Year Built: 2004 | HOA: $75/mo
+
+*** AUCTION DETAILS ***
+  Auction Date:    May 30, 2026
+  Starting Bid:    $1,565,946
+  (Potentially $463,755 below list price!)
+
+Why It's a Match:
+Located in your preferred city of San Francisco, right in the sought-after Pacific Heights neighborhood. With 5 bedrooms, it far exceeds your minimum requirement — perfect if you're looking for space to grow. The auction starting price of $1,565,946 falls within your budget, making this a rare chance to secure a premium property at a potential below-market price.
+
+Description:
+Charming multi-family home featuring an updated kitchen and bathrooms, a private backyard and patio — all in one of San Francisco's most desirable neighborhoods.
+
+View Property & Auction Details:
+https://www.xome.com/property/2188-douglas-mountains
+
+-------------------------------------------------------------
+
+PROPERTY 2: 1376 Victor Motorway
+Location: Mueller, Austin, TX 78748
+Status: [ACTIVE]
+List Price: $358,195
+Details: 1 Bed | 1 Bath | 815 sqft
+Type: Condo | Year Built: 1991 | HOA: $350/mo
+Days on Market: 102 | School Rating: 7.4/10
+
+Why It's a Match:
+This condo matches your preferred property type exactly. Situated in Mueller, Austin — a neighborhood known for its walkability and community feel — it boasts an impressive school rating of 7.4/10. At $358,195, it sits well within your budget and offers strong value potential, especially given its 102 days on market.
+
+Description:
+A beautiful condo in the heart of Mueller featuring hardwood floors throughout, 815 sqft of thoughtfully designed living space, and a private backyard and patio — all within a top-rated school district.
+
+View Listing Details:
+https://www.xome.com/property/1376-victor-motorway
+
+-------------------------------------------------------------
+BASED ON YOUR RECENT SEARCHES
+-------------------------------------------------------------
+
+We noticed you've been exploring condos and multi-family properties across San Francisco — from neighborhoods near Wright Corner and Lozano Roads to multi-family listings in the $1.2M–$1.4M range. Your search patterns show a clear vision for your upgrade, and the listings above were selected with that range and lifestyle in mind. The Pacific Heights auction in particular aligns closely with the larger-home and multi-family searches you've been conducting recently.
+
+-------------------------------------------------------------
+SAN FRANCISCO MARKET INSIGHT
+-------------------------------------------------------------
+
+San Francisco's condo and multi-family market remains highly competitive, with well-priced properties in neighborhoods like Pacific Heights often receiving multiple offers within days of listing. Auction opportunities in premium neighborhoods are increasingly rare — and can represent one of the best ways for upgraders to access above-average inventory at a strategic price point.
+
+-------------------------------------------------------------
+READY TO TAKE THE NEXT STEP?
+-------------------------------------------------------------
+
+Your next chapter is closer than you think. Explore your full personalized property recommendations and schedule tours directly through Xome:
+
+https://www.xome.com/recommendations?user=alyssa-chavez
+
+-------------------------------------------------------------
+
+You're receiving this email because you have an active Xome account associated with sgarcia@example.org.
+
+Unsubscribe: https://www.xome.com/unsubscribe
+Update Preferences: https://www.xome.com/preferences
+Privacy Policy: https://www.xome.com/privacy
+
+© 2026 Xome, Inc. All rights reserved.
+1 Xome Way, Lewisville, TX 75067
+
+=============================================================
+```",2026-05-08 06:56:31.572122
+4,6c492b3e-93b9-4e5b-88a1-8ebd58be9d24,campaign_6c492b3e-93b9-4e5b-88a1-8ebd58be9d24_20260508_092203.txt,Smart Miami Moves: 2 Multi-Family Picks for You,"<!DOCTYPE html>
+<html lang=""en"">
+<head>
+  <meta charset=""UTF-8"" />
+  <meta name=""viewport"" content=""width=device-width, initial-scale=1.0""/>
+  <title>Your Personalized Miami Property Picks – Xome</title>
+  <style>
+    /* Reset */
+    body, table, td, a { -webkit-text-size-adjust: 100%; -ms-text-size-adjust: 100%; }
+    table, td { mso-table-lspace: 0pt; mso-table-rspace: 0pt; }
+    img { -ms-interpolation-mode: bicubic; border: 0; outline: none; text-decoration: none; }
+
+    body {
+      margin: 0;
+      padding: 0;
+      background-color: #f4f6f8;
+      font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif;
+      color: #333333;
+    }
+
+    .email-wrapper {
+      width: 100%;
+      background-color: #f4f6f8;
+      padding: 30px 0;
+    }
+
+    .email-container {
+      max-width: 620px;
+      margin: 0 auto;
+      background-color: #ffffff;
+      border-radius: 10px;
+      overflow: hidden;
+      box-shadow: 0 2px 12px rgba(0,0,0,0.08);
+    }
+
+    /* Header */
+    .header {
+      background: linear-gradient(135deg, #004f9f 0%, #0077cc 100%);
+      padding: 36px 40px 30px;
+      text-align: center;
+    }
+    .header .logo {
+      font-size: 28px;
+      font-weight: 800;
+      color: #ffffff;
+      letter-spacing: 2px;
+      text-decoration: none;
+    }
+    .header .logo span {
+      color: #5bc8f5;
+    }
+    .header .tagline {
+      color: #cce6ff;
+      font-size: 13px;
+      margin-top: 6px;
+      letter-spacing: 0.5px;
+    }
+
+    /* Body */
+    .body-content {
+      padding: 36px 40px;
+    }
+
+    .greeting {
+      font-size: 22px;
+      font-weight: 700;
+      color: #004f9f;
+      margin-bottom: 10px;
+    }
+
+    .intro-text {
+      font-size: 15px;
+      line-height: 1.7;
+      color: #555555;
+      margin-bottom: 28px;
+    }
+
+    .section-label {
+      font-size: 11px;
+      font-weight: 700;
+      letter-spacing: 1.5px;
+      text-transform: uppercase;
+      color: #0077cc;
+      margin-bottom: 16px;
+      border-left: 3px solid #0077cc;
+      padding-left: 10px;
+    }
+
+    /* Property Card */
+    .property-card {
+      background-color: #f9fbfd;
+      border: 1px solid #dde6f0;
+      border-radius: 8px;
+      overflow: hidden;
+      margin-bottom: 24px;
+    }
+
+    .property-card-header {
+      background-color: #004f9f;
+      padding: 14px 20px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+    }
+
+    .property-rank {
+      font-size: 11px;
+      font-weight: 700;
+      color: #cce6ff;
+      letter-spacing: 1px;
+      text-transform: uppercase;
+    }
+
+    .status-badge {
+      display: inline-block;
+      padding: 4px 10px;
+      border-radius: 20px;
+      font-size: 11px;
+      font-weight: 700;
+      letter-spacing: 0.5px;
+      text-transform: uppercase;
+    }
+    .status-active {
+      background-color: #d4edda;
+      color: #1a6b31;
+    }
+    .status-pending {
+      background-color: #fff3cd;
+      color: #856404;
+    }
+    .status-auction {
+      background-color: #f8d7da;
+      color: #842029;
+    }
+
+    .property-card-body {
+      padding: 20px;
+    }
+
+    .property-address {
+      font-size: 18px;
+      font-weight: 700;
+      color: #1a1a2e;
+      margin-bottom: 4px;
+    }
+
+    .property-neighborhood {
+      font-size: 13px;
+      color: #777777;
+      margin-bottom: 14px;
+    }
+
+    .property-price {
+      font-size: 26px;
+      font-weight: 800;
+      color: #004f9f;
+      margin-bottom: 14px;
+    }
+
+    .property-details {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 8px;
+      margin-bottom: 16px;
+    }
+
+    .detail-chip {
+      background-color: #e8f0fb;
+      color: #004f9f;
+      font-size: 12px;
+      font-weight: 600;
+      padding: 5px 12px;
+      border-radius: 20px;
+    }
+
+    .property-meta {
+      font-size: 12px;
+      color: #888888;
+      margin-bottom: 14px;
+      line-height: 1.6;
+    }
+
+    .property-meta span {
+      margin-right: 14px;
+    }
+
+    .match-reason {
+      background-color: #eaf4ff;
+      border-left: 3px solid #0077cc;
+      border-radius: 0 6px 6px 0;
+      padding: 12px 14px;
+      font-size: 13px;
+      color: #004f9f;
+      line-height: 1.6;
+      margin-bottom: 16px;
+    }
+
+    .match-reason strong {
+      display: block;
+      font-size: 11px;
+      text-transform: uppercase;
+      letter-spacing: 1px;
+      color: #0077cc;
+      margin-bottom: 4px;
+    }
+
+    .property-description {
+      font-size: 13px;
+      color: #666666;
+      line-height: 1.65;
+      margin-bottom: 18px;
+    }
+
+    .btn-view {
+      display: inline-block;
+      background: linear-gradient(135deg, #004f9f, #0077cc);
+      color: #ffffff !important;
+      text-decoration: none;
+      font-size: 14px;
+      font-weight: 700;
+      padding: 12px 28px;
+      border-radius: 6px;
+      letter-spacing: 0.3px;
+    }
+
+    /* Browsing Section */
+    .browsing-section {
+      background-color: #f0f7ff;
+      border-radius: 8px;
+      padding: 22px 24px;
+      margin-bottom: 28px;
+    }
+
+    .browsing-section p {
+      font-size: 14px;
+      line-height: 1.7;
+      color: #555555;
+      margin: 0;
+    }
+
+    /* Market Insight */
+    .market-insight {
+      background: linear-gradient(135deg, #004f9f 0%, #0077cc 100%);
+      border-radius: 8px;
+      padding: 22px 24px;
+      margin-bottom: 28px;
+    }
+
+    .market-insight .insight-label {
+      font-size: 11px;
+      font-weight: 700;
+      letter-spacing: 1.5px;
+      text-transform: uppercase;
+      color: #5bc8f5;
+      margin-bottom: 8px;
+    }
+
+    .market-insight p {
+      font-size: 14px;
+      line-height: 1.7;
+      color: #e0f0ff;
+      margin: 0;
+    }
+
+    /* CTA Section */
+    .cta-section {
+      text-align: center;
+      padding: 10px 0 20px;
+    }
+
+    .cta-section p {
+      font-size: 15px;
+      color: #555555;
+      line-height: 1.7;
+      margin-bottom: 20px;
+    }
+
+    .btn-cta-primary {
+      display: inline-block;
+      background: linear-gradient(135deg, #004f9f, #0077cc);
+      color: #ffffff !important;
+      text-decoration: none;
+      font-size: 15px;
+      font-weight: 700;
+      padding: 15px 38px;
+      border-radius: 6px;
+      letter-spacing: 0.3px;
+      margin-bottom: 12px;
+    }
+
+    .btn-cta-secondary {
+      display: block;
+      font-size: 13px;
+      color: #0077cc !important;
+      text-decoration: none;
+      margin-top: 10px;
+    }
+
+    /* Divider */
+    .divider {
+      border: none;
+      border-top: 1px solid #e5ecf4;
+      margin: 28px 0;
+    }
+
+    /* Footer */
+    .footer {
+      background-color: #f0f4f8;
+      padding: 24px 40px;
+      text-align: center;
+      border-top: 1px solid #dde6f0;
+    }
+
+    .footer p {
+      font-size: 11px;
+      color: #999999;
+      line-height: 1.7;
+      margin: 4px 0;
+    }
+
+    .footer a {
+      color: #0077cc;
+      text-decoration: none;
+    }
+
+    @media only screen and (max-width: 640px) {
+      .body-content { padding: 24px 20px; }
+      .header { padding: 28px 20px 22px; }
+      .footer { padding: 20px; }
+      .property-price { font-size: 22px; }
+      .greeting { font-size: 19px; }
+    }
+  </style>
+</head>
+<body>
+  <div class=""email-wrapper"">
+    <div class=""email-container"">
+
+      <!-- Header -->
+      <div class=""header"">
+        <div class=""logo"">X<span>ome</span></div>
+        <div class=""tagline"">Real Estate, Simplified.</div>
+      </div>
+
+      <!-- Body -->
+      <div class=""body-content"">
+
+        <!-- Greeting -->
+        <div class=""greeting"">Hi Shaun, your next smart move is waiting. 👋</div>
+        <p class=""intro-text"">
+          Downsizing doesn't mean compromising — it means making every square foot count. We've handpicked
+          <strong>2 properties in Miami</strong> that align with your budget, your lifestyle, and your preference
+          for multi-family homes. Less upkeep, more value, and the right-sized space for this exciting next chapter.
+        </p>
+
+        <!-- Properties Section -->
+        <div class=""section-label"">Your Top Matched Properties</div>
+
+        <!-- Property 1 -->
+        <div class=""property-card"">
+          <table width=""100%"" cellpadding=""0"" cellspacing=""0"" style=""background-color:#004f9f;"">
+            <tr>
+              <td style=""padding:14px 20px;"">
+                <table width=""100%"" cellpadding=""0"" cellspacing=""0"">
+                  <tr>
+                    <td style=""font-size:11px;font-weight:700;color:#cce6ff;letter-spacing:1px;text-transform:uppercase;"">
+                      ⭐ #1 Top Pick
+                    </td>
+                    <td align=""right"">
+                      <span class=""status-badge status-active"">● Active</span>
+                    </td>
+                  </tr>
+                </table>
+              </td>
+            </tr>
+          </table>
+          <div class=""property-card-body"">
+            <div class=""property-address"">8798 Kevin Heights</div>
+            <div class=""property-neighborhood"">📍 Coconut Grove, Miami, FL 33194</div>
+            <div class=""property-price"">$540,382</div>
+
+            <table cellpadding=""0"" cellspacing=""0"" style=""margin-bottom:16px;"">
+              <tr>
+                <td style=""padding-right:8px;padding-bottom:8px;"">
+                  <span class=""detail-chip"">🛏 3 Beds</span>
+                </td>
+                <td style=""padding-right:8px;padding-bottom:8px;"">
+                  <span class=""detail-chip"">🚿 4.5 Baths</span>
+                </td>
+                <td style=""padding-right:8px;padding-bottom:8px;"">
+                  <span class=""detail-chip"">📐 2,337 sqft</span>
+                </td>
+                <td style=""padding-bottom:8px;"">
+                  <span class=""detail-chip"">🏘 Multi-Family</span>
+                </td>
+              </tr>
+            </table>
+
+            <div class=""property-meta"">
+              <span>🏗 Built: 1938</span>
+              <span>📅 96 days on market</span>
+              <span>🏫 School Rating: 2/10</span>
+              <span>🏦 HOA: $150/mo</span>
+            </div>
+
+            <div class=""match-reason"">
+              <strong>✅ Why This Matches You</strong>
+              Located in your preferred city of Miami. Priced at $540,382 — well within your budget. A true multi-family home matching your preferred property type, with 3 bedrooms exceeding your minimum requirement.
+            </div>
+
+            <p class=""property-description"">
+              Stunning 3-bedroom multi-family nestled in the lush, vibrant neighborhood of Coconut Grove. Enjoy an open floor plan flooded with natural light, 2,337 sqft of thoughtfully designed living space, and walkable access to Miami's best restaurants and shops.
+            </p>
+
+            <a href=""https://www.xome.com/listing/8798-kevin-heights"" class=""btn-view"">View Property →</a>
+          </div>
+        </div>
+
+        <!-- Property 2 -->
+        <div class=""property-card"">
+          <table width=""100%"" cellpadding=""0"" cellspacing=""0"" style=""background-color:#2c6e9e;"">
+            <tr>
+              <td style=""padding:14px 20px;"">
+                <table width=""100%"" cellpadding=""0"" cellspacing=""0"">
+                  <tr>
+                    <td style=""font-size:11px;font-weight:700;color:#cce6ff;letter-spacing:1px;text-transform:uppercase;"">
+                      🏠 #2 Strong Match
+                    </td>
+                    <td align=""right"">
+                      <span class=""status-badge status-active"">● Active</span>
+                    </td>
+                  </tr>
+                </table>
+              </td>
+            </tr>
+          </table>
+          <div class=""property-card-body"">
+            <div class=""property-address"">8025 Meagan Plains</div>
+            <div class=""property-neighborhood"">📍 Coconut Grove, Miami, FL 33126</div>
+            <div class=""property-price"">$437,572</div>
+
+            <table cellpadding=""0"" cellspacing=""0"" style=""margin-bottom:16px;"">
+              <tr>
+                <td style=""padding-right:8px;padding-bottom:8px;"">
+                  <span class=""detail-chip"">🛏 3 Beds</span>
+                </td>
+                <td style=""padding-right:8px;padding-bottom:8px;"">
+                  <span class=""detail-chip"">🚿 3.5 Baths</span>
+                </td>
+                <td style=""padding-right:8px;padding-bottom:8px;"">
+                  <span class=""detail-chip"">📐 2,250 sqft</span>
+                </td>
+                <td style=""padding-bottom:8px;"">
+                  <span class=""detail-chip"">🏡 Single Family</span>
+                </td>
+              </tr>
+            </table>
+
+            <div class=""property-meta"">
+              <span>🏗 Built: 1951</span>
+              <span>📅 23 days on market</span>
+              <span>🏫 School Rating: 5.2/10</span>
+              <span>🏦 HOA: None</span>
+            </div>
+
+            <div class=""match-reason"">
+              <strong>✅ Why This Matches You</strong>
+              Located in your preferred city of Miami and priced at $437,572 — giving you solid room within your budget. With 3 bedrooms and no HOA fees, this is a practical, low-overhead option worth a close look.
+            </div>
+
+            <p class=""property-description"">
+              A charming 3-bedroom home in Coconut Grove featuring a recently updated kitchen and bathrooms, a private backyard and patio perfect for relaxed outdoor living, and 2,250 sqft of well-appointed space. No HOA means fewer monthly obligations — a real plus for a streamlined lifestyle.
+            </p>
+
+            <a href=""https://www.xome.com/listing/8025-meagan-plains"" class=""btn-view"">View Property →</a>
+          </div>
+        </div>
+
+        <hr class=""divider""/>
+
+        <!-- Browsing Personalization -->
+        <div class=""section-label"">Based on Your Recent Activity</div>
+        <div class=""browsing-section"">
+          <p>
+            We've noticed you've been exploring a mix of condos and multi-family homes across Miami — from
+            Coconut Grove to neighborhoods throughout the city. Your recent saves and searches suggest you're
+            weighing the trade-offs between lower-maintenance condo living and the flexibility that a
+            multi-family property can offer. The two picks above lean into that multi-family preference
+            while keeping you firmly within a practical, right-sized footprint. If you'd like us to surface
+            more condo options in your range, just update your preferences and we'll refresh your matches.
+          </p>
+        </div>
+
+        <hr class=""divider""/>
+
+        <!-- Market Insight -->
+        <div class=""market-insight"">
+          <div class=""insight-label"">📊 Miami Market Insight</div>
+          <p>
+            Miami's real estate market remains competitive, but well-priced multi-family and single-family
+            homes in established neighborhoods like Coconut Grove are drawing strong buyer interest —
+            making now a strategic time to act before inventory tightens further heading into summer.
+            Properties with longer days on market, like 8798 Kevin Heights at 96 days, can present
+            meaningful negotiation opportunities for well-prepared buyers.
+          </p>
+        </div>
+
+        <hr class=""divider""/>
+
+        <!-- CTA -->
+        <div class=""cta-section"">
+          <p>
+            Ready to take the next step, Shaun? Schedule a tour, ask a question, or explore your full
+            list of personalized matches — all in one place on Xome.
+          </p>
+          <a href=""https://www.xome.com/dashboard"" class=""btn-cta-primary"">View All My Matches on Xome</a>
+          <a href=""https://www.xome.com/schedule-tour"" class=""btn-cta-secondary"">📅 Schedule a Tour</a>
+          <a href=""https://www.xome.com/preferences"" class=""btn-cta-secondary"">⚙️ Update My Preferences</a>
+        </div>
+
+      </div><!-- /body-content -->
+
+      <!-- Footer -->
+      <div class=""footer"">
+        <p><strong>Xome Real Estate</strong> · Personalized matches for every move.</p>
+        <p>This email was sent to <a href=""mailto:juliahoffman@example.org"">juliahoffman@example.org</a> because you have an active Xome account.</p>
+        <p style=""margin-top:8px;"">
+          <a href=""https://www.xome.com/unsubscribe"">Unsubscribe</a> &nbsp;|&nbsp;
+          <a href=""https://www.xome.com/privacy"">Privacy Policy</a> &nbsp;|&nbsp;
+          <a href=""https://www.xome.com/contact"">Contact Us</a>
+        </p>
+        <p style=""margin-top:8px; font-size:10px; color:#bbbbbb;"">
+          © 2026 Xome, Inc. All rights reserved. 1234 Real Estate Blvd, Suite 100, Dallas, TX 75201.<br/>
+          All property information is deemed reliable but not guaranteed. Prices subject to change.
+        </p>
+      </div>
+
+    </div><!-- /email-container -->
+  </div><!-- /email-wrapper -->
+</body>
+</html>","========================================
+XOME REAL ESTATE — Personalized Property Picks
+========================================
+
+Hi Shaun,
+
+Your next smart move is waiting.
+
+Downsizing doesn't mean compromising — it means making every square foot count. We've handpicked 2 properties in Miami that align with your budget, your lifestyle, and your preference for multi-family homes. Less upkeep, more value, and the right-sized space for this exciting next chapter.
+
+
+----------------------------------------
+YOUR TOP MATCHED PROPERTIES
+----------------------------------------
+
+⭐ #1 TOP PICK
+--------------------
+8798 Kevin Heights
+Coconut Grove, Miami, FL 33194
+
+Price: $540,382
+Status: ACTIVE
+
+Beds: 3 | Baths: 4.5 | Size: 2,337 sqft
+Type: Multi-Family | Year Built: 1938
+Days on Market: 96 | HOA Fee: $150/mo
+School Rating: 2/10
+
+WHY THIS MATCHES YOU:
+Located in your preferred city of Miami. Priced at $540,382 — well within your budget. A true multi-family home matching your preferred property type, with 3 bedrooms exceeding your minimum requirement.
+
+ABOUT THIS PROPERTY:
+Stunning 3-bedroom multi-family nestled in the lush, vibrant neighborhood of Coconut Grove. Enjoy an open floor plan flooded with natural light, 2,337 sqft of thoughtfully designed living space, and walkable access to Miami's best restaurants and shops.
+
+View this property: https://www.xome.com/listing/8798-kevin-heights
+
+
+#2 STRONG MATCH
+--------------------
+8025 Meagan Plains
+Coconut Grove, Miami, FL 33126
+
+Price: $437,572
+Status: ACTIVE
+
+Beds: 3 | Baths: 3.5 | Size: 2,250 sqft
+Type: Single Family | Year Built: 1951
+Days on Market: 23 | HOA Fee: None
+School Rating: 5.2/10
+
+WHY THIS MATCHES YOU:
+Located in your preferred city of Miami and priced at $437,572 — giving you solid room within your budget. With 3 bedrooms and no HOA fees, this is a practical, low-overhead option worth a close look.
+
+ABOUT THIS PROPERTY:
+A charming 3-bedroom home in Coconut Grove featuring a recently updated kitchen and bathrooms, a private backyard and patio perfect for relaxed outdoor living, and 2,250 sqft of well-appointed space. No HOA means fewer monthly obligations — a real plus for a streamlined lifestyle.
+
+View this property: https://www.xome.com/listing/8025-meagan-plains
+
+
+----------------------------------------
+BASED ON YOUR RECENT ACTIVITY
+----------------------------------------
+
+We've noticed you've been exploring a mix of condos and multi-family homes across Miami. Your recent saves and searches suggest you're weighing the trade-offs between lower-maintenance condo living and the flexibility that a multi-family property can offer. The two picks above lean into that multi-family preference while keeping you within a practical, right-sized footprint. If you'd like us to surface more condo options in your range, update your preferences at https://www.xome.com/preferences.
+
+
+----------------------------------------
+MIAMI MARKET INSIGHT
+----------------------------------------
+
+Miami's real estate market remains competitive, but well-priced multi-family and single-family homes in established neighborhoods like Coconut Grove are drawing strong buyer interest — making now a strategic time to act before inventory tightens further heading into summer. Properties with longer days on market, like 8798 Kevin Heights at 96 days, can present meaningful negotiation opportunities for well-prepared buyers.
+
+
+----------------------------------------
+READY TO TAKE THE NEXT STEP?
+----------------------------------------
+
+Schedule a tour, ask a question, or explore your full list of personalized matches — all in one place on Xome.
+
+► View All My Matches: https://www.xome.com/dashboard
+► Schedule a Tour: https://www.xome.com/schedule-tour
+► Update My Preferences: https://www.xome.com/preferences
+
+
+----------------------------------------
+Xome Real Estate · Personalized matches for every move.
+
+This email was sent to juliahoffman@example.org because you have an active Xome account.
+
+Unsubscribe: https://www.xome.com/unsubscribe
+Privacy Policy: https://www.xome.com/privacy
+Contact Us: https://www.xome.com/contact
+
+© 2026 Xome, Inc. All rights reserved.
+1234 Real Estate Blvd, Suite 100, Dallas, TX 75201.
+All property information is deemed reliable but not guaranteed. Prices subject to change.
+========================================
+```",2026-05-08 09:22:03.318896
+5,6c492b3e-93b9-4e5b-88a1-8ebd58be9d24,campaign_6c492b3e-93b9-4e5b-88a1-8ebd58be9d24_20260508_151015.txt,"Smart Miami Finds Within Your Budget, Shaun","<!DOCTYPE html>
+<html lang=""en"">
+<head>
+  <meta charset=""UTF-8"" />
+  <meta name=""viewport"" content=""width=device-width, initial-scale=1.0""/>
+  <title>Your Personalized Miami Property Picks – Xome</title>
+  <style>
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+    body {
+      font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif;
+      background-color: #f4f6f9;
+      color: #333333;
+      line-height: 1.6;
+    }
+    .wrapper {
+      max-width: 640px;
+      margin: 32px auto;
+      background-color: #ffffff;
+      border-radius: 10px;
+      overflow: hidden;
+      box-shadow: 0 4px 20px rgba(0,0,0,0.08);
+    }
+    /* Header */
+    .header {
+      background: linear-gradient(135deg, #004f9f 0%, #0077cc 100%);
+      padding: 36px 40px;
+      text-align: center;
+    }
+    .header img {
+      height: 32px;
+      margin-bottom: 16px;
+    }
+    .header h1 {
+      color: #ffffff;
+      font-size: 26px;
+      font-weight: 700;
+      letter-spacing: -0.3px;
+    }
+    .header p {
+      color: #cce4f7;
+      font-size: 14px;
+      margin-top: 6px;
+    }
+    /* Body */
+    .body-content {
+      padding: 36px 40px;
+    }
+    .greeting {
+      font-size: 16px;
+      color: #333;
+      margin-bottom: 20px;
+    }
+    .greeting strong {
+      color: #004f9f;
+    }
+    .intro-text {
+      font-size: 15px;
+      color: #555;
+      margin-bottom: 32px;
+      border-left: 4px solid #0077cc;
+      padding-left: 14px;
+      background-color: #f0f7ff;
+      padding: 14px 16px;
+      border-radius: 0 6px 6px 0;
+    }
+    /* Property Card */
+    .property-card {
+      border: 1px solid #e2e8f0;
+      border-radius: 10px;
+      overflow: hidden;
+      margin-bottom: 28px;
+    }
+    .card-header {
+      background-color: #f7faff;
+      padding: 16px 20px;
+      border-bottom: 1px solid #e2e8f0;
+      display: flex;
+      justify-content: space-between;
+      align-items: flex-start;
+    }
+    .card-address {
+      font-size: 16px;
+      font-weight: 700;
+      color: #1a202c;
+    }
+    .card-neighborhood {
+      font-size: 13px;
+      color: #718096;
+      margin-top: 2px;
+    }
+    .badge {
+      display: inline-block;
+      padding: 4px 10px;
+      border-radius: 20px;
+      font-size: 11px;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 0.5px;
+      white-space: nowrap;
+    }
+    .badge-active {
+      background-color: #d4edda;
+      color: #155724;
+    }
+    .badge-auction {
+      background-color: #fff3cd;
+      color: #856404;
+    }
+    .badge-pending {
+      background-color: #d1ecf1;
+      color: #0c5460;
+    }
+    .card-body {
+      padding: 20px;
+    }
+    .price-row {
+      display: flex;
+      align-items: baseline;
+      gap: 10px;
+      margin-bottom: 14px;
+    }
+    .price {
+      font-size: 24px;
+      font-weight: 800;
+      color: #004f9f;
+    }
+    .price-sub {
+      font-size: 13px;
+      color: #718096;
+    }
+    .details-grid {
+      display: flex;
+      gap: 20px;
+      flex-wrap: wrap;
+      margin-bottom: 16px;
+    }
+    .detail-item {
+      font-size: 13px;
+      color: #4a5568;
+    }
+    .detail-item span {
+      font-weight: 700;
+      color: #1a202c;
+    }
+    .auction-box {
+      background: linear-gradient(135deg, #fffbea, #fff3cd);
+      border: 1px solid #f6c94e;
+      border-radius: 8px;
+      padding: 14px 16px;
+      margin-bottom: 16px;
+    }
+    .auction-box .auction-title {
+      font-size: 13px;
+      font-weight: 700;
+      color: #856404;
+      text-transform: uppercase;
+      letter-spacing: 0.5px;
+      margin-bottom: 8px;
+    }
+    .auction-box .auction-detail {
+      font-size: 14px;
+      color: #533f03;
+      margin-bottom: 4px;
+    }
+    .auction-box .auction-detail strong {
+      color: #856404;
+    }
+    .why-match {
+      background-color: #f0f7ff;
+      border-radius: 6px;
+      padding: 12px 14px;
+      font-size: 13px;
+      color: #2d4a7a;
+      margin-bottom: 16px;
+    }
+    .why-match::before {
+      content: ""✓ Why it matches: "";
+      font-weight: 700;
+    }
+    .property-desc {
+      font-size: 13px;
+      color: #666;
+      margin-bottom: 16px;
+      line-height: 1.7;
+    }
+    .hoa-note {
+      font-size: 12px;
+      color: #a0aec0;
+      margin-bottom: 16px;
+    }
+    .cta-btn {
+      display: inline-block;
+      background: linear-gradient(135deg, #004f9f, #0077cc);
+      color: #ffffff !important;
+      text-decoration: none;
+      padding: 12px 28px;
+      border-radius: 6px;
+      font-size: 14px;
+      font-weight: 700;
+      letter-spacing: 0.3px;
+    }
+    .cta-btn-auction {
+      background: linear-gradient(135deg, #b7791f, #d69e2e);
+    }
+    /* Browsing Section */
+    .browsing-section {
+      background-color: #f7faff;
+      border-radius: 10px;
+      padding: 22px 24px;
+      margin-bottom: 28px;
+      border: 1px solid #e2e8f0;
+    }
+    .browsing-section h3 {
+      font-size: 15px;
+      font-weight: 700;
+      color: #1a202c;
+      margin-bottom: 10px;
+    }
+    .browsing-section p {
+      font-size: 14px;
+      color: #555;
+      line-height: 1.7;
+    }
+    /* Market Insight */
+    .market-insight {
+      background: linear-gradient(135deg, #004f9f 0%, #0077cc 100%);
+      border-radius: 10px;
+      padding: 22px 24px;
+      margin-bottom: 28px;
+    }
+    .market-insight h3 {
+      font-size: 14px;
+      font-weight: 700;
+      color: #cce4f7;
+      text-transform: uppercase;
+      letter-spacing: 0.6px;
+      margin-bottom: 8px;
+    }
+    .market-insight p {
+      font-size: 14px;
+      color: #ffffff;
+      line-height: 1.7;
+    }
+    /* Main CTA */
+    .main-cta {
+      text-align: center;
+      margin-bottom: 32px;
+    }
+    .main-cta p {
+      font-size: 15px;
+      color: #555;
+      margin-bottom: 16px;
+    }
+    .main-cta a {
+      display: inline-block;
+      background: linear-gradient(135deg, #004f9f, #0077cc);
+      color: #ffffff !important;
+      text-decoration: none;
+      padding: 14px 36px;
+      border-radius: 6px;
+      font-size: 15px;
+      font-weight: 700;
+    }
+    /* Footer */
+    .footer {
+      background-color: #f4f6f9;
+      padding: 24px 40px;
+      text-align: center;
+      border-top: 1px solid #e2e8f0;
+    }
+    .footer p {
+      font-size: 12px;
+      color: #a0aec0;
+      line-height: 1.8;
+    }
+    .footer a {
+      color: #0077cc;
+      text-decoration: none;
+    }
+    .divider {
+      border: none;
+      border-top: 1px solid #e2e8f0;
+      margin: 28px 0;
+    }
+    @media (max-width: 480px) {
+      .body-content { padding: 24px 20px; }
+      .header { padding: 28px 20px; }
+      .card-header { flex-direction: column; gap: 8px; }
+      .details-grid { gap: 12px; }
+    }
+  </style>
+</head>
+<body>
+  <div class=""wrapper"">
+
+    <!-- Header -->
+    <div class=""header"">
+      <h1>Your Miami Picks Are Ready</h1>
+      <p>Curated properties matched to your next move, Shaun</p>
+    </div>
+
+    <!-- Body -->
+    <div class=""body-content"">
+
+      <!-- Greeting -->
+      <p class=""greeting"">Hi <strong>Shaun</strong>,</p>
+
+      <!-- Intro -->
+      <div class=""intro-text"">
+        Downsizing is one of the smartest financial moves you can make — and Miami's condo market is full of opportunities to right-size without compromising on lifestyle. We've handpicked two properties that fit your budget, your preferred city, and your goals. Take a look.
+      </div>
+
+      <!-- ===== PROPERTY 1 ===== -->
+      <div class=""property-card"">
+        <div class=""card-header"">
+          <div>
+            <div class=""card-address"">6946 Barr Trafficway</div>
+            <div class=""card-neighborhood"">Coral Gables, Miami, FL 33144</div>
+          </div>
+          <span class=""badge badge-auction"">🔨 Auction</span>
+        </div>
+        <div class=""card-body"">
+          <div class=""price-row"">
+            <div class=""price"">$371,315</div>
+            <div class=""price-sub"">Listed Price</div>
+          </div>
+          <div class=""details-grid"">
+            <div class=""detail-item""><span>1</span> Bed</div>
+            <div class=""detail-item""><span>1</span> Bath</div>
+            <div class=""detail-item""><span>851</span> sqft</div>
+            <div class=""detail-item"">Condo · Built <span>2003</span></div>
+            <div class=""detail-item"">School Rating: <span>8.1/10 ⭐</span></div>
+            <div class=""detail-item"">On Market: <span>32 days</span></div>
+          </div>
+
+          <!-- Auction Box -->
+          <div class=""auction-box"">
+            <div class=""auction-title"">⚡ Auction Opportunity</div>
+            <div class=""auction-detail"">📅 <strong>Auction Date:</strong> June 2, 2026</div>
+            <div class=""auction-detail"">💰 <strong>Starting Bid:</strong> $309,742 — that's over $61,000 below list price</div>
+          </div>
+
+          <div class=""why-match"">
+            Located in your preferred city of Miami, within your budget, and in a top-rated school district (8.1/10). The auction starting price of $309,742 puts this well within your range — a rare chance to secure a Coral Gables condo at a potential below-market price.
+          </div>
+
+          <p class=""property-desc"">
+            A beautifully maintained condo in the heart of Coral Gables featuring hardwood floors throughout, a private backyard and patio, and easy access to Miami's best restaurants and shops. The top-rated school district adds long-term value whether you plan to stay or eventually sell.
+          </p>
+
+          <p class=""hoa-note"">HOA Fee: $300/mo</p>
+
+          <a href=""#"" class=""cta-btn cta-btn-auction"">Register for Auction →</a>
+        </div>
+      </div>
+
+      <hr class=""divider""/>
+
+      <!-- ===== PROPERTY 2 ===== -->
+      <div class=""property-card"">
+        <div class=""card-header"">
+          <div>
+            <div class=""card-address"">6510 Kim Valleys</div>
+            <div class=""card-neighborhood"">Coconut Grove, Miami, FL 33141</div>
+          </div>
+          <span class=""badge badge-active"">● Active</span>
+        </div>
+        <div class=""card-body"">
+          <div class=""price-row"">
+            <div class=""price"">$467,493</div>
+            <div class=""price-sub"">Listed Price</div>
+          </div>
+          <div class=""details-grid"">
+            <div class=""detail-item""><span>3</span> Beds</div>
+            <div class=""detail-item""><span>3.5</span> Baths</div>
+            <div class=""detail-item""><span>1,532</span> sqft</div>
+            <div class=""detail-item"">Condo · Built <span>2016</span></div>
+            <div class=""detail-item"">School Rating: <span>5.3/10</span></div>
+            <div class=""detail-item"">On Market: <span>19 days</span></div>
+          </div>
+
+          <div class=""why-match"">
+            Located in Miami's vibrant Coconut Grove neighborhood, priced within your budget, and offering 3 bedrooms — giving you the flexibility of extra space for guests, a home office, or a hobby room while still making a smart downsize from a larger home.
+          </div>
+
+          <p class=""property-desc"">
+            A modern 2016-built condo with an open floor plan, abundant natural light, hardwood floors, and a private backyard and patio. Coconut Grove puts you steps from waterfront dining, boutique shops, and Miami's beloved outdoor lifestyle — all in a move-in-ready space.
+          </p>
+
+          <p class=""hoa-note"">HOA Fee: $250/mo</p>
+
+          <a href=""#"" class=""cta-btn"">View Listing Details →</a>
+        </div>
+      </div>
+
+      <hr class=""divider""/>
+
+      <!-- Browsing / Personalization Section -->
+      <div class=""browsing-section"">
+        <h3>🔍 Based on Your Recent Searches</h3>
+        <p>
+          We've noticed you've been exploring condos across Miami neighborhoods — from Coral Gables to Coconut Grove — and keeping a close eye on properties in the $260K–$475K range. Both picks above align closely with what you've been saving and searching. If you're weighing the flexibility of extra bedrooms versus a more streamlined footprint, these two listings represent both ends of that spectrum beautifully.
+        </p>
+      </div>
+
+      <!-- Market Insight -->
+      <div class=""market-insight"">
+        <h3>📊 Miami Market Insight</h3>
+        <p>
+          Miami's condo inventory in established neighborhoods like Coral Gables and Coconut Grove remains competitive, with well-priced units moving within 30 days on average. Acting quickly — especially on auction listings — can mean the difference between securing a great deal and watching it go to another buyer.
+        </p>
+      </div>
+
+      <!-- Main CTA -->
+      <div class=""main-cta"">
+        <p>Ready to take the next step toward your smarter, simpler Miami lifestyle?</p>
+        <a href=""#"">Explore All Miami Listings on Xome →</a>
+      </div>
+
+    </div><!-- /body-content -->
+
+    <!-- Footer -->
+    <div class=""footer"">
+      <p>
+        You're receiving this email because you have a saved search for properties in Miami, FL.<br/>
+        <a href=""#"">Manage Preferences</a> · <a href=""#"">Unsubscribe</a> · <a href=""#"">Privacy Policy</a>
+      </p>
+      <p style=""margin-top:10px;"">
+        © 2026 Xome, Inc. · 1 Xome Way, Lewisville, TX 75067<br/>
+        This is a marketing communication. Property details subject to change.
+      </p>
+    </div>
+
+  </div>
+</body>
+</html>","=============================================================
+XOME | YOUR PERSONALIZED MIAMI PROPERTY PICKS
+=============================================================
+
+Hi Shaun,
+
+Downsizing is one of the smartest financial moves you can make — and Miami's condo market is full of opportunities to right-size without compromising on lifestyle. We've handpicked two properties that fit your budget, your preferred city, and your goals.
+
+-------------------------------------------------------------
+PROPERTY 1 OF 2
+-------------------------------------------------------------
+6946 Barr Trafficway
+Coral Gables, Miami, FL 33144
+STATUS: [AUCTION]
+
+Listed Price:    $371,315
+Auction Date:    June 2, 2026
+Starting Bid:    $309,742 (over $61,000 below list price!)
+
+Details:
+  • 1 Bed / 1 Bath / 851 sqft
+  • Condo | Year Built: 2003
+  • School Rating: 8.1/10
+  • Days on Market: 32
+  • HOA Fee: $300/mo
+
+Why It Matches You:
+Located in your preferred city of Miami, within your budget, and in a top-rated school district (8.1/10). The auction starting price of $309,742 puts this well within your range — a rare chance to secure a Coral Gables condo at a potential below-market price.
+
+About This Property:
+A beautifully maintained condo in the heart of Coral Gables featuring hardwood floors throughout, a private backyard and patio, and easy access to Miami's best restaurants and shops.
+
+→ Register for the Auction: https://www.xome.com
+
+-------------------------------------------------------------
+PROPERTY 2 OF 2
+-------------------------------------------------------------
+6510 Kim Valleys
+Coconut Grove, Miami, FL 33141
+STATUS: [ACTIVE]
+
+Listed Price:    $467,493
+
+Details:
+  • 3 Beds / 3.5 Baths / 1,532 sqft
+  • Condo | Year Built: 2016
+  • School Rating: 5.3/10
+  • Days on Market: 19
+  • HOA Fee: $250/mo
+
+Why It Matches You:
+Located in Miami's vibrant Coconut Grove neighborhood, priced within your budget, and offering 3 bedrooms — giving you the flexibility of extra space for guests, a home office, or a hobby room while still making a smart downsize.
+
+About This Property:
+A modern 2016-built condo with an open floor plan, abundant natural light, hardwood floors, and a private backyard and patio. Coconut Grove puts you steps from waterfront dining, boutique shops, and Miami's beloved outdoor lifestyle.
+
+→ View Listing Details: https://www.xome.com
+
+-------------------------------------------------------------
+BASED ON YOUR RECENT SEARCHES
+-------------------------------------------------------------
+We've noticed you've been exploring condos across Miami neighborhoods and keeping a close eye on properties in the $260K–$475K range. Both picks above align closely with what you've been saving and searching. Whether you're leaning toward a streamlined 1-bedroom or want the flexibility of 3 bedrooms, these two listings cover both ends of that spectrum.
+
+-------------------------------------------------------------
+MIAMI MARKET INSIGHT
+-------------------------------------------------------------
+Miami's condo inventory in established neighborhoods like Coral Gables and Coconut Grove remains competitive, with well-priced units moving within 30 days on average. Acting quickly — especially on auction listings — can mean the difference between securing a great deal and watching it go to another buyer.
+
+-------------------------------------------------------------
+READY TO TAKE THE NEXT STEP?
+-------------------------------------------------------------
+Explore all Miami listings matched to your criteria at:
+https://www.xome.com
+
+=============================================================
+You're receiving this email because you have a saved search
+for properties in Miami, FL.
+
+Manage Preferences | Unsubscribe | Privacy Policy
+
+© 2026 Xome, Inc. · 1 Xome Way, Lewisville, TX 75067
+This is a marketing communication. Property details subject to change.
+=============================================================
+```",2026-05-08 15:10:15.564416
+6,cbc87cf5-55c4-4491-ba49-06dc4beaddcf,campaign_cbc87cf5-55c4-4491-ba49-06dc4beaddcf_20260508_165423.txt,"Susan, Your First Home in Portland Awaits 🏡","<!DOCTYPE html>
+<html lang=""en"">
+<head>
+  <meta charset=""UTF-8"" />
+  <meta name=""viewport"" content=""width=device-width, initial-scale=1.0""/>
+  <title>Your Portland Home Picks from Xome</title>
+  <style>
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+    body {
+      font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif;
+      background-color: #f4f6f9;
+      color: #333333;
+      line-height: 1.6;
+    }
+    .email-wrapper {
+      max-width: 620px;
+      margin: 30px auto;
+      background-color: #ffffff;
+      border-radius: 10px;
+      overflow: hidden;
+      box-shadow: 0 4px 20px rgba(0,0,0,0.08);
+    }
+    /* Header */
+    .header {
+      background: linear-gradient(135deg, #1a3c5e 0%, #2e6da4 100%);
+      padding: 36px 40px;
+      text-align: center;
+    }
+    .header .logo {
+      font-size: 28px;
+      font-weight: 800;
+      color: #ffffff;
+      letter-spacing: 2px;
+      text-transform: uppercase;
+    }
+    .header .logo span {
+      color: #f0a500;
+    }
+    .header .tagline {
+      color: #c8ddf0;
+      font-size: 13px;
+      margin-top: 6px;
+      letter-spacing: 0.5px;
+    }
+    /* Hero */
+    .hero {
+      background-color: #eaf2fb;
+      padding: 32px 40px;
+      border-bottom: 3px solid #2e6da4;
+    }
+    .hero h1 {
+      font-size: 24px;
+      font-weight: 700;
+      color: #1a3c5e;
+      margin-bottom: 10px;
+    }
+    .hero p {
+      font-size: 15px;
+      color: #555;
+    }
+    .hero p strong {
+      color: #2e6da4;
+    }
+    /* Body content */
+    .content {
+      padding: 32px 40px;
+    }
+    .section-title {
+      font-size: 13px;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 1.2px;
+      color: #2e6da4;
+      margin-bottom: 20px;
+      border-left: 4px solid #f0a500;
+      padding-left: 10px;
+    }
+    /* Property Card */
+    .property-card {
+      background-color: #f9fbfd;
+      border: 1px solid #dce8f5;
+      border-radius: 8px;
+      margin-bottom: 28px;
+      overflow: hidden;
+    }
+    .property-card-header {
+      background: linear-gradient(90deg, #1a3c5e, #2e6da4);
+      padding: 14px 20px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+    .property-card-header .address {
+      color: #ffffff;
+      font-size: 15px;
+      font-weight: 700;
+    }
+    .property-card-header .neighborhood {
+      color: #c8ddf0;
+      font-size: 12px;
+      margin-top: 2px;
+    }
+    .status-badge {
+      display: inline-block;
+      padding: 4px 12px;
+      border-radius: 20px;
+      font-size: 11px;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 0.8px;
+      white-space: nowrap;
+    }
+    .status-active {
+      background-color: #28a745;
+      color: #ffffff;
+    }
+    .status-pending {
+      background-color: #f0a500;
+      color: #ffffff;
+    }
+    .status-auction {
+      background-color: #dc3545;
+      color: #ffffff;
+    }
+    .property-card-body {
+      padding: 18px 20px;
+    }
+    .property-price {
+      font-size: 26px;
+      font-weight: 800;
+      color: #1a3c5e;
+      margin-bottom: 10px;
+    }
+    .property-details {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 8px;
+      margin-bottom: 14px;
+    }
+    .detail-pill {
+      background-color: #e3edf7;
+      color: #1a3c5e;
+      font-size: 12px;
+      font-weight: 600;
+      padding: 4px 12px;
+      border-radius: 20px;
+    }
+    .property-meta {
+      font-size: 12px;
+      color: #777;
+      margin-bottom: 14px;
+    }
+    .property-meta span {
+      margin-right: 14px;
+    }
+    .property-description {
+      font-size: 13.5px;
+      color: #555;
+      margin-bottom: 14px;
+      line-height: 1.65;
+    }
+    .match-reason {
+      background-color: #fff8e6;
+      border-left: 4px solid #f0a500;
+      padding: 10px 14px;
+      border-radius: 0 6px 6px 0;
+      font-size: 13px;
+      color: #7a5800;
+      margin-bottom: 16px;
+    }
+    .match-reason strong {
+      display: block;
+      margin-bottom: 2px;
+      font-size: 11px;
+      text-transform: uppercase;
+      letter-spacing: 0.8px;
+      color: #b07d00;
+    }
+    .hoa-note {
+      font-size: 12px;
+      color: #888;
+      margin-bottom: 16px;
+    }
+    .btn-view {
+      display: inline-block;
+      background: linear-gradient(135deg, #f0a500, #e09000);
+      color: #ffffff;
+      font-size: 14px;
+      font-weight: 700;
+      padding: 12px 28px;
+      border-radius: 6px;
+      text-decoration: none;
+      letter-spacing: 0.4px;
+    }
+    .btn-view:hover {
+      background: linear-gradient(135deg, #e09000, #c97e00);
+    }
+    /* Browsing section */
+    .browsing-section {
+      background-color: #f0f5fb;
+      border-radius: 8px;
+      padding: 22px 24px;
+      margin-bottom: 28px;
+    }
+    .browsing-section p {
+      font-size: 14px;
+      color: #555;
+      line-height: 1.7;
+    }
+    /* Market insight */
+    .market-insight {
+      background: linear-gradient(135deg, #1a3c5e, #2e6da4);
+      border-radius: 8px;
+      padding: 22px 24px;
+      margin-bottom: 28px;
+    }
+    .market-insight .insight-title {
+      font-size: 12px;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 1px;
+      color: #f0a500;
+      margin-bottom: 8px;
+    }
+    .market-insight p {
+      font-size: 14px;
+      color: #d6e8f7;
+      line-height: 1.65;
+    }
+    /* CTA section */
+    .cta-section {
+      text-align: center;
+      padding: 28px 20px;
+      border-top: 1px solid #e0eaf5;
+      border-bottom: 1px solid #e0eaf5;
+      margin-bottom: 28px;
+    }
+    .cta-section h2 {
+      font-size: 20px;
+      font-weight: 700;
+      color: #1a3c5e;
+      margin-bottom: 10px;
+    }
+    .cta-section p {
+      font-size: 14px;
+      color: #666;
+      margin-bottom: 20px;
+    }
+    .btn-cta {
+      display: inline-block;
+      background: linear-gradient(135deg, #1a3c5e, #2e6da4);
+      color: #ffffff;
+      font-size: 15px;
+      font-weight: 700;
+      padding: 14px 36px;
+      border-radius: 6px;
+      text-decoration: none;
+      letter-spacing: 0.4px;
+    }
+    /* Footer */
+    .footer {
+      padding: 24px 40px;
+      text-align: center;
+    }
+    .footer p {
+      font-size: 12px;
+      color: #aaa;
+      line-height: 1.8;
+    }
+    .footer a {
+      color: #2e6da4;
+      text-decoration: none;
+    }
+    .divider {
+      border: none;
+      border-top: 1px solid #e8eef5;
+      margin: 24px 0;
+    }
+    @media only screen and (max-width: 480px) {
+      .content, .hero, .header, .footer { padding: 24px 20px; }
+      .property-price { font-size: 22px; }
+      .hero h1 { font-size: 20px; }
+      .property-card-header { flex-direction: column; align-items: flex-start; gap: 8px; }
+    }
+  </style>
+</head>
+<body>
+  <div class=""email-wrapper"">
+
+    <!-- Header -->
+    <div class=""header"">
+      <div class=""logo"">X<span>ome</span></div>
+      <div class=""tagline"">Find Your Place. Own Your Future.</div>
+    </div>
+
+    <!-- Hero -->
+    <div class=""hero"">
+      <h1>Hi Susan, your Portland journey starts here! 🏡</h1>
+      <p>
+        Buying your first home is one of life's most exciting milestones — and we're here to make every step feel a little easier. Based on your search for homes in <strong>Portland, OR</strong>, we've handpicked <strong>2 properties</strong> that match what you're looking for. Take a look and see what speaks to you!
+      </p>
+    </div>
+
+    <!-- Main Content -->
+    <div class=""content"">
+
+      <p class=""section-title"">Your Personalized Home Picks</p>
+
+      <!-- Property 1 -->
+      <div class=""property-card"">
+        <div class=""property-card-header"">
+          <div>
+            <div class=""address"">4009 Brian Inlet</div>
+            <div class=""neighborhood"">Pearl District · Portland, OR 97298</div>
+          </div>
+          <span class=""status-badge status-active"">● Active</span>
+        </div>
+        <div class=""property-card-body"">
+          <div class=""property-price"">$271,967</div>
+          <div class=""property-details"">
+            <span class=""detail-pill"">🛏 1 Bed</span>
+            <span class=""detail-pill"">🛁 1 Bath</span>
+            <span class=""detail-pill"">📐 894 sqft</span>
+            <span class=""detail-pill"">🏢 Condo</span>
+            <span class=""detail-pill"">📅 Built 2013</span>
+          </div>
+          <div class=""property-meta"">
+            <span>🏫 School Rating: 5.5/10</span>
+            <span>📆 24 days on market</span>
+          </div>
+          <p class=""property-description"">
+            Beautiful condo in the heart of Pearl District — one of Portland's most vibrant and walkable neighborhoods. Built in 2013, this home features a recently updated kitchen and bathrooms, making it truly move-in ready. Close to top restaurants, boutiques, and parks.
+          </p>
+          <div class=""match-reason"">
+            <strong>✅ Why it matches you</strong>
+            Located in your preferred city of Portland and meets your minimum bedroom requirement. At $271,967, it comes in under your budget ceiling, giving you room to personalize your new space.
+          </div>
+          <p class=""hoa-note"">⚠️ Note: HOA Fee of $500/mo applies — factor this into your monthly budget planning.</p>
+          <a href=""#"" class=""btn-view"">View Property →</a>
+        </div>
+      </div>
+
+      <!-- Property 2 -->
+      <div class=""property-card"">
+        <div class=""property-card-header"">
+          <div>
+            <div class=""address"">1003 Scott Hollow</div>
+            <div class=""neighborhood"">Division · Portland, OR 97246</div>
+          </div>
+          <span class=""status-badge status-active"">● Active</span>
+        </div>
+        <div class=""property-card-body"">
+          <div class=""property-price"">$303,669</div>
+          <div class=""property-details"">
+            <span class=""detail-pill"">🛏 3 Beds</span>
+            <span class=""detail-pill"">🛁 3.5 Baths</span>
+            <span class=""detail-pill"">📐 2,259 sqft</span>
+            <span class=""detail-pill"">🏢 Condo</span>
+            <span class=""detail-pill"">📅 Built 1930</span>
+          </div>
+          <div class=""property-meta"">
+            <span>🏫 School Rating: 1.9/10</span>
+            <span>📆 63 days on market</span>
+          </div>
+          <p class=""property-description"">
+            Charming and spacious condo in the beloved Division neighborhood — known for its eclectic dining scene and community feel. With 2,259 sqft of living space, hardwood floors throughout, and 3.5 updated bathrooms, this is a rare amount of room at this price point in Portland.
+          </p>
+          <div class=""match-reason"">
+            <strong>✅ Why it matches you</strong>
+            Located in your preferred city of Portland with 3 bedrooms — well above your minimum — giving you space to grow into your first home. With 63 days on market, there may be room to negotiate a great deal.
+          </div>
+          <p class=""hoa-note"">⚠️ Note: HOA Fee of $500/mo applies — factor this into your monthly budget planning. School ratings in this area are lower (1.9/10), which may be worth researching further.</p>
+          <a href=""#"" class=""btn-view"">View Property →</a>
+        </div>
+      </div>
+
+      <hr class=""divider""/>
+
+      <!-- Browsing Personalization -->
+      <p class=""section-title"">We've Been Paying Attention 👀</p>
+      <div class=""browsing-section"">
+        <p>
+          We noticed you've been exploring a wide range of Portland properties lately — from townhouses and condos to single-family homes — with saved listings ranging up to the mid-$600s. It's clear you're doing your homework, and that's exactly what smart first-time buyers do! While the two homes above are within a more accessible price range, your browsing tells us you value space, neighborhood character, and long-term potential. Keep that wish list in mind as you tour these picks — you might be surprised how much value Portland has to offer at every price point.
+        </p>
+      </div>
+
+      <!-- Market Insight -->
+      <div class=""market-insight"">
+        <div class=""insight-title"">📊 Portland Market Insight</div>
+        <p>
+          Portland's condo market has seen steady activity in early 2026, with well-priced listings in neighborhoods like Pearl District and Division attracting consistent buyer interest. For first-time buyers, acting on competitively priced active listings sooner rather than later can be a smart move before spring competition heats up.
+        </p>
+      </div>
+
+      <!-- CTA -->
+      <div class=""cta-section"">
+        <h2>Ready to take the next step, Susan?</h2>
+        <p>
+          Schedule a free consultation with a Xome home advisor who specializes in helping first-time buyers navigate Portland's market — from financing tips to making your first offer with confidence.
+        </p>
+        <a href=""#"" class=""btn-cta"">Talk to a Home Advisor</a>
+      </div>
+
+    </div>
+
+    <!-- Footer -->
+    <div class=""footer"">
+      <p>
+        You're receiving this email because you have an active home search set up on <strong>Xome.com</strong>.<br/>
+        <a href=""#"">Manage Preferences</a> · <a href=""#"">Unsubscribe</a> · <a href=""#"">Privacy Policy</a>
+      </p>
+      <p style=""margin-top: 10px;"">
+        © 2026 Xome, Inc. · 1000 Xome Blvd, Lewisville, TX 75067<br/>
+        This is not a solicitation if you are already represented by a real estate agent.
+      </p>
+    </div>
+
+  </div>
+</body>
+</html>","=============================================================
+XOME | Find Your Place. Own Your Future.
+=============================================================
+
+Hi Susan,
+
+Buying your first home is one of life's most exciting milestones — and we're here to make every step feel a little easier. Based on your search for homes in Portland, OR, we've handpicked 2 properties that match what you're looking for. Take a look and see what speaks to you!
+
+
+-------------------------------------------------------------
+YOUR PERSONALIZED HOME PICKS
+-------------------------------------------------------------
+
+PROPERTY 1: 4009 Brian Inlet
+Pearl District · Portland, OR 97298
+Status: ACTIVE
+
+Price: $271,967
+Beds: 1 | Baths: 1 | Size: 894 sqft
+Type: Condo | Year Built: 2013
+School Rating: 5.5/10 | Days on Market: 24
+HOA Fee: $500/mo
+
+Description:
+Beautiful condo in the heart of Pearl District — one of Portland's most vibrant and walkable neighborhoods. Built in 2013, this home features a recently updated kitchen and bathrooms, making it truly move-in ready. Close to top restaurants, boutiques, and parks.
+
+Why it matches you:
+Located in your preferred city of Portland and meets your minimum bedroom requirement. At $271,967, it comes in under your budget ceiling, giving you room to personalize your new space.
+
+Note: HOA Fee of $500/mo applies — factor this into your monthly budget planning.
+
+View this property: [https://www.xome.com]
+
+
+-------------------------------------------------------------
+
+PROPERTY 2: 1003 Scott Hollow
+Division · Portland, OR 97246
+Status: ACTIVE
+
+Price: $303,669
+Beds: 3 | Baths: 3.5 | Size: 2,259 sqft
+Type: Condo | Year Built: 1930
+School Rating: 1.9/10 | Days on Market: 63
+HOA Fee: $500/mo
+
+Description:
+Charming and spacious condo in the beloved Division neighborhood — known for its eclectic dining scene and community feel. With 2,259 sqft of living space, hardwood floors throughout, and 3.5 updated bathrooms, this is a rare amount of room at this price point in Portland.
+
+Why it matches you:
+Located in your preferred city of Portland with 3 bedrooms — well above your minimum — giving you space to grow into your first home. With 63 days on market, there may be room to negotiate a great deal.
+
+Note: HOA Fee of $500/mo applies — factor this into your monthly budget planning. School ratings in this area are lower (1.9/10), which may be worth researching further.
+
+View this property: [https://www.xome.com]
+
+
+-------------------------------------------------------------
+WE'VE BEEN PAYING ATTENTION
+-------------------------------------------------------------
+
+We noticed you've been exploring a wide range of Portland properties lately — from townhouses and condos to single-family homes — with saved listings ranging up to the mid-$600s. It's clear you're doing your homework, and that's exactly what smart first-time buyers do! While the two homes above are within a more accessible price range, your browsing tells us you value space, neighborhood character, and long-term potential. Keep that wish list in mind as you tour these picks — you might be surprised how much value Portland has to offer at every price point.
+
+
+-------------------------------------------------------------
+PORTLAND MARKET INSIGHT
+-------------------------------------------------------------
+
+Portland's condo market has seen steady activity in early 2026, with well-priced listings in neighborhoods like Pearl District and Division attracting consistent buyer interest. For first-time buyers, acting on competitively priced active listings sooner rather than later can be a smart move before spring competition heats up.
+
+
+-------------------------------------------------------------
+READY TO TAKE THE NEXT STEP, SUSAN?
+-------------------------------------------------------------
+
+Schedule a free consultation with a Xome home advisor who specializes in helping first-time buyers navigate Portland's market — from financing tips to making your first offer with confidence.
+
+>> Talk to a Home Advisor: [https://www.xome.com]
+
+
+=============================================================
+You're receiving this email because you have an active home search set up on Xome.com.
+
+Manage Preferences | Unsubscribe | Privacy Policy
+
+© 2026 Xome, Inc. · 1000 Xome Blvd, Lewisville, TX 75067
+This is not a solicitation if you are already represented by a real estate agent.
+=============================================================
+```",2026-05-08 16:54:23.398012

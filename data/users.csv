@@ -1,0 +1,501 @@
+user_id,first_name,last_name,email,phone,preferred_city,preferred_state,budget_min,budget_max,preferred_property_type,preferred_beds_min,signup_date,is_active,user_segment
+1726694b-af94-4f6d-883d-93bab7313c50,Angel,Hill,donaldgarcia@example.net,+1-219-560-0133,Boston,MA,394877,804384,Condo,2,2025-08-14,True,first_time_buyer
+134f1c09-c859-43c0-8954-1b2eb3ba6d53,Jacqueline,Barnes,zlawrence@example.org,001-626-254-2351x16155,Seattle,WA,508603,780429,Condo,2,2025-10-09,True,first_time_buyer
+1b04cdfd-38f6-48fa-98e6-23f06f9a9933,Amanda,Dudley,smiller@example.net,+1-659-931-0341x316,San Francisco,CA,725616,1567436,Multi-Family,2,2025-10-19,True,upgrader
+2b174b28-6bb1-4ad1-ba79-577a401882f8,Michael,Wood,elizabethmiles@example.net,+1-219-528-3276x4835,Austin,TX,372438,530923,Multi-Family,3,2025-08-11,True,investor
+8ede6669-06a7-4cd0-9a3a-49a5bcf09fe0,Linda,Morales,clarksherri@example.net,837-767-2423x88496,Nashville,TN,252265,515985,Townhouse,3,2025-12-25,True,first_time_buyer
+aa78042c-bc19-4692-8eef-b57537bd7364,Whitney,Hicks,camposmichelle@example.org,+1-326-691-6697x8480,Portland,OR,380434,793278,Multi-Family,1,2024-10-11,True,upgrader
+b3eeed50-d6d1-4bd2-86fc-966325c8977b,Matthew,Carter,shawnmckay@example.net,282-781-4893x252,Seattle,WA,460380,794344,Condo,3,2025-11-16,False,investor
+adeec36e-4cb5-457d-9c43-dc8922bd752a,Daniel,Cox,john39@example.org,671-882-2782,Boston,MA,464124,862358,Townhouse,2,2025-04-26,True,investor
+89182361-b996-4c7b-b0a7-39e9c5eff03a,Sarah,Campos,jenniferross@example.net,+1-557-587-1331x5098,Miami,FL,405273,720886,Single Family,2,2026-04-08,True,investor
+14258640-91ec-4107-b43d-3cbb56ccd3fc,Jean,Brown,whiteheadmichele@example.org,334.373.8299x73763,Chicago,IL,258537,432240,Condo,3,2024-05-09,True,first_time_buyer
+668ea9ca-83c3-48f7-bb05-2cb58c66e34b,Michael,Jenkins,nuneztracey@example.org,4658133387,Denver,CO,465597,826387,Multi-Family,3,2025-08-28,True,upgrader
+d2dc730d-3905-4ea5-9bcd-8bbf7996fb4c,Steven,Baxter,ramosmichelle@example.net,908-501-3267,Denver,CO,438147,713798,Multi-Family,2,2024-09-15,True,investor
+2bcab35c-c055-493a-a3ff-c1bc86845fbe,Rachel,Martin,gallowayjoseph@example.com,268-272-3430x9805,San Francisco,CA,837862,1620857,Multi-Family,4,2026-01-26,True,investor
+f6a3b1bb-b3a4-447e-9dae-af960591c6c4,Wesley,Farrell,brianromero@example.org,291-336-1939,San Francisco,CA,822860,1625680,Single Family,2,2025-07-05,True,downsizer
+09e4e0eb-8e03-4db4-8961-62898422e167,Brandy,Mills,james53@example.com,(524)675-1079x9118,Seattle,WA,433340,903566,Multi-Family,3,2025-03-06,False,first_time_buyer
+2abe658f-4f5c-4722-82ff-8f39c099802f,Michael,Jones,mikemoore@example.net,001-449-680-8412x411,Boston,MA,522933,889515,Townhouse,3,2024-08-08,True,downsizer
+e7da5755-78eb-4fe1-a891-0ea0faaef385,Jason,Cooper,william40@example.org,+1-264-300-5242x7868,Chicago,IL,257640,551917,Townhouse,2,2024-11-25,True,first_time_buyer
+d50c3a2d-7ce8-4914-9152-a4c47571c058,Nicole,Mckee,davenportbrandi@example.org,(420)545-0533x15869,Miami,FL,426250,676915,Condo,2,2024-06-28,True,investor
+810ad76a-118c-4b31-a478-2d46554e5ca6,Theresa,Cochran,vjohnson@example.com,(534)221-6073x37543,San Francisco,CA,974654,1717338,Single Family,3,2026-01-26,True,first_time_buyer
+585affe0-9364-44f4-9c28-5efc2f8bacac,Raymond,Ramirez,rasmussenjoshua@example.net,768.750.1429x40196,Nashville,TN,345446,606333,Townhouse,2,2025-08-29,True,first_time_buyer
+1e0e845e-ecc4-45de-9447-7e5b2a1665f6,Tracey,Wilson,jonathanfletcher@example.org,783.856.1595x14846,Boston,MA,532721,980207,Condo,2,2025-03-19,True,investor
+80d944a0-68ad-47b9-b3a5-bd215d09d648,Angela,Lee,lbyrd@example.net,001-746-980-4436,Miami,FL,379151,701648,Condo,2,2025-09-25,True,downsizer
+29422e6e-84c9-49a7-b5ea-259a0902f229,Emma,Dixon,donnacampbell@example.net,+1-395-913-4332x0037,Nashville,TN,292572,543515,Single Family,2,2025-03-22,True,upgrader
+27eafef4-7f96-47c0-81c4-a725f2f15127,Crystal,Lee,psnyder@example.org,+1-401-963-2870x8317,Austin,TX,349421,546775,Condo,1,2025-03-02,True,first_time_buyer
+058bde43-e430-4579-b91e-afafac7d0c9f,Vanessa,Larson,usalazar@example.net,(387)627-7434x87347,Denver,CO,341121,613638,Townhouse,1,2025-09-03,True,upgrader
+121f287d-5e73-429b-be5c-3d6f442ebfc1,Matthew,Orozco,taylorjesse@example.net,(231)566-5876,Portland,OR,332135,583077,Multi-Family,2,2024-10-22,True,downsizer
+f4a34f32-03c2-4190-abcf-7fde55aa5859,Perry,Carrillo,gateskathy@example.com,805.946.6889x3734,Denver,CO,345563,786220,Townhouse,4,2026-01-02,True,first_time_buyer
+4592949c-b4f7-4534-9e48-3a7fb602a78d,Matthew,Shelton,dramsey@example.org,+1-280-669-9016x272,Boston,MA,401819,951669,Single Family,2,2024-05-25,True,downsizer
+94325989-8433-4349-93c4-7bb63ff7203e,Jason,Murphy,aramirez@example.com,270-580-5310,Chicago,IL,254297,433745,Condo,1,2025-02-05,True,first_time_buyer
+711bff43-149f-4313-8d4a-d070b96285f4,Andrew,Hernandez,thomaswilson@example.org,645.829.9124x190,Austin,TX,358039,616632,Single Family,1,2024-09-26,False,investor
+c2316020-fb67-4008-bb28-4aa3dc3fc75d,Jennifer,Jones,curtisbarton@example.net,+1-819-905-8651x850,Chicago,IL,252673,469237,Multi-Family,1,2025-02-17,True,first_time_buyer
+980a074e-94d4-4c2d-9a45-66c9a44b7aad,Susan,Reid,bzimmerman@example.org,001-684-998-7769x4531,New York,NY,577626,1268230,Multi-Family,3,2024-07-20,True,downsizer
+eac1d25e-3ef2-451c-b1ce-0e383b88856f,Steven,Bishop,frogers@example.com,(273)554-5494,Chicago,IL,229939,423097,Single Family,1,2024-10-29,True,first_time_buyer
+573bd3dd-446e-4767-a8c2-80fdebe3c001,Jennifer,Freeman,hannahbrewer@example.com,701.843.6349x578,Austin,TX,348863,608141,Condo,1,2024-07-05,False,first_time_buyer
+186c9f91-3ebf-4322-a164-5238e4c34d6b,Andrea,Bell,qnelson@example.org,635-618-2337,Chicago,IL,217194,396893,Condo,4,2026-05-02,True,investor
+9f5270ef-f016-458e-8cd6-f665e697b11a,Marissa,Phillips,harry08@example.org,900-984-2710x947,Seattle,WA,544849,986783,Multi-Family,3,2026-04-20,False,investor
+c175ffbe-0111-420d-b90a-3d496d98ae88,Tammy,King,ewilson@example.com,519.802.2941x3186,Nashville,TN,268642,519157,Townhouse,4,2025-01-08,True,first_time_buyer
+80f2a42a-d1b0-44a6-8ff1-013f2d421ba9,Scott,Dalton,ntorres@example.org,+1-213-834-1232x812,Austin,TX,331868,719652,Single Family,1,2025-03-29,True,upgrader
+0f10d44f-b0c1-491b-9df6-6e1db185d0a9,Brittney,Carter,keithcampbell@example.com,434-693-6183,Chicago,IL,307992,539151,Condo,3,2025-03-29,True,downsizer
+7611080c-369e-4a13-9f26-eaf78f156b21,Charles,Martin,brooke94@example.com,374-264-8877,San Francisco,CA,892168,1546422,Single Family,3,2025-12-29,False,first_time_buyer
+b5cfb8c3-f838-4402-a903-ebd067353b2b,Jessica,Munoz,davissuzanne@example.net,001-604-490-2787,Chicago,IL,237768,540699,Condo,3,2026-02-13,True,investor
+e814bb39-6fa8-490a-a9a5-8fce3314e59f,Ryan,Olsen,harrisonricky@example.com,+1-712-356-7468x07154,Nashville,TN,264431,566847,Townhouse,4,2026-05-02,True,first_time_buyer
+f0278f96-0132-4a20-b5da-35341997c79a,Richard,Robertson,sandovalamy@example.com,6384597703,Boston,MA,513685,984538,Single Family,1,2026-04-13,True,investor
+523121d2-11b9-4f00-814a-6ce585f7adc9,Samuel,Wolfe,johnsoncrystal@example.org,001-424-980-8613x171,Miami,FL,324237,660458,Multi-Family,1,2026-03-13,True,investor
+1a79fdf4-1e19-45bf-b8cd-e289662e6e77,Kelly,Thornton,edavenport@example.org,682.263.9821x465,San Francisco,CA,671889,1413068,Condo,4,2026-03-16,True,upgrader
+a9985739-845c-4937-a543-0793d574ca60,Kenneth,Matthews,cgrimes@example.net,855.288.6753x3963,Nashville,TN,347877,599224,Single Family,3,2024-11-26,True,investor
+ce234df9-2d16-4ee7-8c4c-400f2d25c286,Thomas,Mcintyre,qhughes@example.net,(370)928-9517,Boston,MA,458967,896962,Multi-Family,2,2024-12-22,False,investor
+d8dcfd09-8455-45ba-9c05-e652f496e9ec,Douglas,Pitts,charlesharrington@example.com,696-515-8657x80913,Chicago,IL,312501,526885,Multi-Family,1,2024-05-15,True,upgrader
+aa702f19-554c-4c87-8112-80da24449340,Ryan,Garcia,wallaceheather@example.org,8504455623,New York,NY,714569,1302227,Condo,3,2025-10-31,True,first_time_buyer
+0ab115c7-5a06-446e-99d7-5f4b08206e4a,Christian,Pitts,tyleraguilar@example.org,647.840.7482x175,New York,NY,732402,1299902,Condo,2,2024-09-05,True,downsizer
+acaf743e-40d6-4f76-adeb-b776d4e9cdc3,Stephen,Turner,gcastaneda@example.org,(995)694-4064x0909,Nashville,TN,276622,599069,Condo,2,2025-09-20,True,investor
+b8f108f2-3037-4654-b9ae-bfccdd662f0b,Jerry,Pham,danaoliver@example.net,001-421-504-7095x21456,New York,NY,593706,1302350,Townhouse,3,2025-11-22,True,downsizer
+a6228cb9-43a4-49c1-929b-d12922069c49,Amber,Mata,maria47@example.com,001-651-371-2368x5160,San Francisco,CA,769279,1225180,Townhouse,2,2024-08-08,True,upgrader
+2b8e8b12-7514-443f-b018-5cc7efa919af,Emily,Chambers,xcarson@example.org,+1-437-209-8593x17461,Austin,TX,284634,592776,Townhouse,4,2025-04-01,True,first_time_buyer
+0b5e138f-a6d9-4684-8be3-499fe99a4b74,Kevin,Vasquez,youngamanda@example.com,258.769.2617x964,New York,NY,739373,1015783,Single Family,4,2026-03-26,True,investor
+402daf7f-a025-4829-92d2-29ff0e4a9e81,Sean,Young,cory58@example.net,(706)543-1713x900,Nashville,TN,291755,629774,Townhouse,3,2024-10-09,True,first_time_buyer
+9a944c5b-ce19-4f20-829a-c3483ba99ebf,Kristin,Harris,brendali@example.org,729-504-2284x21020,Miami,FL,376068,716723,Townhouse,4,2026-04-26,True,investor
+0ad9066f-4e1b-4b9d-8bbb-20985c3c8638,Alfred,Baker,judyfox@example.net,577-258-9178,Denver,CO,399373,863600,Condo,3,2025-07-08,True,first_time_buyer
+5ecb8e1c-4cb3-4b6e-8ada-38bd01e4c792,Regina,Hopkins,stephen00@example.com,(761)877-1159x2124,Miami,FL,343037,657472,Townhouse,4,2025-10-17,True,investor
+c26a847d-1321-4e6f-9658-47d7c92ad556,Alyssa,Chavez,sgarcia@example.org,+1-883-767-3657x6615,San Francisco,CA,816151,1705649,Condo,1,2026-05-01,True,upgrader
+7998f22f-a5b8-4567-a54d-e8f56428b0a6,Nicholas,Hernandez,fjones@example.org,(215)628-0988x51656,Boston,MA,549592,959119,Townhouse,2,2025-09-02,True,investor
+41cd75eb-46de-493e-9ea6-a403eb5bb948,Michael,Lane,ericolson@example.org,(285)614-9368x998,Austin,TX,276238,716385,Single Family,4,2025-07-16,True,investor
+ac8bad15-3479-4bfe-a183-6ce8de1eda0d,Joshua,Farmer,michael22@example.net,+1-661-720-1836x67525,New York,NY,636066,1038693,Single Family,1,2024-05-25,True,investor
+252cb6a3-02d2-4a42-ad40-3597e5714068,Ashley,Miller,moorekaren@example.org,+1-814-376-7976x43815,Chicago,IL,294431,506784,Multi-Family,1,2025-11-22,True,first_time_buyer
+6abd8677-61ba-4de4-97a4-8ec87b50ab58,Erika,Tucker,brandon69@example.org,2349324451,Portland,OR,320000,666160,Townhouse,4,2024-11-27,True,downsizer
+c639c2cc-ee6e-4458-838c-10ca0500debf,Gregory,James,vincentwhitaker@example.com,860-860-7159,San Francisco,CA,807151,1297536,Multi-Family,4,2025-11-01,True,investor
+c7ef6477-d07d-479b-b687-ff89f0b78623,Robert,Wilson,burchgeorge@example.net,651.761.3696x816,Miami,FL,414872,680324,Condo,3,2025-10-04,True,upgrader
+1ab19123-6489-4a1c-9481-4fe62e7ac527,Kimberly,Jones,schmidtjames@example.com,(923)912-4329x212,Denver,CO,374832,692920,Single Family,2,2024-10-12,True,downsizer
+6c8440f4-24c9-4c86-b953-e17050211bfc,Kathleen,Cole,michelle52@example.com,377-644-9058,Chicago,IL,284174,396240,Multi-Family,3,2025-11-06,True,downsizer
+ba09a183-5b77-41fc-98d3-3acfa564f9de,Benjamin,Wood,chase19@example.net,267.998.0793x59782,Austin,TX,297922,589532,Single Family,4,2025-04-06,True,upgrader
+fdb4ffa9-ac0b-4e30-83f0-f9d4d75f025c,Rachel,Cooper,wagnergerald@example.org,001-777-288-9255x466,Miami,FL,413021,763361,Multi-Family,2,2024-07-18,True,upgrader
+a2d3de08-31fc-4725-be8f-ca91a42f398f,Deborah,Jones,grantpaul@example.com,001-692-851-9254x6291,New York,NY,633838,1100264,Multi-Family,2,2025-12-01,True,investor
+3c34ea49-ded7-42b1-81a3-768d2ed6a4cc,Mark,Anderson,lucasrodney@example.com,4544235733,Seattle,WA,532165,1087425,Single Family,1,2025-08-17,True,investor
+8c244a3e-5e4b-4de8-8a76-f21008a58712,Megan,Garcia,stanleynancy@example.net,(296)822-2927,Portland,OR,327259,615039,Townhouse,2,2024-06-29,True,upgrader
+19cfef56-cf6f-40c6-9b08-8d9614c07151,Jennifer,Montes,karen73@example.net,847.835.9774,New York,NY,580955,1339261,Multi-Family,3,2025-01-25,True,downsizer
+d947cc75-fd4e-4872-bd09-8123df9bb71c,Lisa,Solis,moniquewilliams@example.com,(881)381-4124x782,Austin,TX,371118,506719,Townhouse,2,2026-04-10,True,first_time_buyer
+fb57e30c-6ae2-4853-a2dd-9f9c6861560a,Jeffrey,Hayes,sarah60@example.com,653.961.5305x15220,Austin,TX,398197,539856,Single Family,2,2026-03-26,True,downsizer
+a83d6612-0286-4017-bb66-b8f2681ca62a,Dominic,Thornton,fgilbert@example.org,232-589-8614x341,Boston,MA,499974,785838,Townhouse,3,2025-09-24,True,first_time_buyer
+4b733f18-28b9-4834-853f-8a3438556100,Laura,Bryant,copelandvincent@example.net,7895324609,Chicago,IL,311295,403917,Single Family,3,2025-03-06,True,downsizer
+0462948b-474f-45bc-b0f8-abb9d23c1e1e,Jacob,Barnett,carlos88@example.net,380.767.0654x05153,New York,NY,750075,1019290,Condo,1,2025-06-25,True,upgrader
+8f9c09d0-986b-4841-a9b5-11931b50506d,Michael,Morgan,mariacohen@example.net,822.917.0430x3054,Seattle,WA,589160,1048679,Single Family,3,2024-08-09,True,upgrader
+6d77cdd7-baaa-4259-8061-19ae0d0eb6e3,Karen,Lee,michelle05@example.com,956-767-6527,Boston,MA,488662,825900,Multi-Family,4,2024-11-05,True,upgrader
+55418904-1d13-4400-996f-d7dbe9900210,April,Owen,mmiller@example.org,+1-845-411-5447,Portland,OR,406096,658871,Townhouse,4,2026-03-10,True,upgrader
+7f4ba9c0-8a63-4b5c-bb82-ee66263c7f73,Michael,Williams,christina64@example.net,9162582029,Nashville,TN,342205,606146,Single Family,3,2025-09-20,True,investor
+d96cadc3-8d5d-4ab8-ac1a-61b462fec64d,Joel,Brewer,patrick90@example.net,(775)857-1928,Portland,OR,385477,717047,Townhouse,1,2024-08-04,True,upgrader
+3953d057-4ad9-4b7b-bbcb-7fab8f09e483,Joshua,Horne,fitzgeraldvictor@example.com,+1-514-347-3947,Chicago,IL,261192,447094,Townhouse,3,2024-12-19,True,upgrader
+2edff385-54c5-46e1-829c-350e8eb05277,Charles,Thompson,zosborn@example.net,451-588-4422x58313,San Francisco,CA,663349,1731434,Single Family,2,2024-08-11,True,downsizer
+63317488-9870-4d4f-b164-e537bab0c251,Anthony,Spencer,tanner82@example.net,314-467-8669,San Francisco,CA,910194,1589835,Multi-Family,4,2025-12-02,True,first_time_buyer
+5dea8dba-c745-4fb5-b784-7e914d145395,Dawn,Cole,david89@example.org,001-626-380-1824x22535,Miami,FL,333239,722946,Townhouse,3,2026-04-14,True,upgrader
+acc6d908-c559-4b2b-94bc-ebea9fe99857,Cynthia,Pierce,colleenmendez@example.org,629.592.2995x90010,New York,NY,764141,1168915,Townhouse,4,2024-11-03,True,upgrader
+79c3a0cd-8806-4ebd-a83c-c7b2db2dd15d,Robert,Fowler,ismall@example.com,+1-947-536-4710x2767,Denver,CO,349908,657960,Single Family,2,2025-11-15,True,downsizer
+aa92e45f-10bc-4a8f-9439-65e41f93352e,Douglas,Hensley,jessica56@example.org,001-258-681-5371x47321,Miami,FL,408687,794151,Townhouse,1,2025-01-07,True,upgrader
+a9420e39-9250-4639-9a77-d3e7cd02cf76,Michelle,Barnes,lisapeck@example.net,532-578-7747x01687,Denver,CO,389545,688123,Condo,3,2026-03-26,True,first_time_buyer
+5acb3ce0-ec07-4d35-ad93-1f917a6db1a4,Brandon,Campbell,amitchell@example.org,(624)356-5060x98358,San Francisco,CA,756405,1729249,Multi-Family,1,2025-07-04,True,upgrader
+a0e0a34e-9d80-4d15-8a25-30b06f88c2c0,Shannon,Pierce,andersoncolin@example.com,985-923-9868x00025,Portland,OR,371807,635176,Single Family,3,2025-02-10,False,downsizer
+b6883136-c1bd-4cc5-80d4-46faccd21be8,Patricia,Taylor,francisco94@example.net,688-287-9470x55169,Boston,MA,550312,845229,Single Family,1,2024-08-20,True,upgrader
+15027293-e2de-43cc-befe-ee6b0a45c3bc,Joseph,Rios,jennifersilva@example.org,896.523.0913x07562,Boston,MA,583814,753496,Multi-Family,2,2025-07-14,True,downsizer
+5fa46968-864b-4e4f-a2e8-e8c4671d2cf4,Kimberly,Knapp,thorntonapril@example.net,578-565-2785x85497,Portland,OR,436275,624338,Multi-Family,3,2025-02-27,True,first_time_buyer
+337ed024-68b9-4f8a-87d7-367f8e412122,Kenneth,David,kellie37@example.com,258.644.1986x6524,Seattle,WA,621622,804731,Condo,2,2024-11-23,True,first_time_buyer
+bab45ffd-364f-443f-8090-e902db06ae92,Christian,Bradshaw,julie33@example.net,584-221-9933x083,Chicago,IL,235185,481598,Condo,1,2026-04-02,True,downsizer
+55f61bcc-4fd7-433b-ae72-a2fa54ac4c15,Mark,Kennedy,adampierce@example.org,(877)434-5401x93802,Miami,FL,304895,622026,Townhouse,4,2024-07-16,True,investor
+f1f9e9df-8d78-4b9e-967c-ccc2f352d601,Benjamin,Huff,vlopez@example.com,9044991547,Miami,FL,418174,706264,Condo,4,2026-03-17,True,investor
+8883cab4-b073-4390-96b5-d374dbad0d30,Taylor,Lee,riverajessica@example.net,720-354-9329x668,Chicago,IL,305383,529660,Single Family,1,2026-01-16,True,upgrader
+fe9014e9-18d3-4e7a-989c-3afecec375cd,Cody,Holden,pmorris@example.org,563-274-5499x045,Seattle,WA,577281,969222,Townhouse,4,2025-02-21,True,upgrader
+4138a481-1b7c-458e-81ad-5e7f41a4eacb,Steven,Moore,hannah45@example.net,932.572.7956,New York,NY,750382,1147700,Multi-Family,4,2025-09-04,True,first_time_buyer
+a2531150-c44b-4fef-a288-1f41f81d8664,Erin,Larson,foxallison@example.com,491-408-8398,New York,NY,697306,1191578,Single Family,1,2025-11-11,True,first_time_buyer
+a856a947-dde9-436d-973c-3d950fc363a7,Abigail,Wilson,jenniferburns@example.net,207.828.6790x874,Miami,FL,386437,740777,Condo,4,2024-12-29,True,downsizer
+47400b63-9dbe-47fe-8f50-51b476cde548,Aaron,Robinson,williamsmelvin@example.org,+1-801-770-4622,Miami,FL,327223,696332,Multi-Family,1,2024-11-06,True,downsizer
+f92667ca-8954-4afa-ab00-9b4fb02d7c47,Patrick,Kane,rbennett@example.net,+1-525-212-8682,Nashville,TN,278526,460919,Condo,3,2026-04-29,True,downsizer
+591bc3d3-005e-4bdc-b443-6eb986687aa5,Tiffany,Ford,opatel@example.org,352.343.1069x033,Miami,FL,399387,650113,Single Family,4,2025-11-07,True,upgrader
+8b56dff4-1539-4aa0-81c5-2856e985554f,Sean,Powers,sanchezbradley@example.com,783.702.8439,Nashville,TN,253910,594509,Single Family,4,2025-07-12,True,investor
+910f181c-efd0-48d3-8f7f-ad5373633743,Nancy,Odom,roberthill@example.net,001-726-887-0568,San Francisco,CA,779387,1626043,Multi-Family,1,2024-10-24,True,investor
+1cff9008-5cce-4c2f-a52e-eed6c2c12b73,Kevin,White,oallen@example.com,001-627-508-6688x263,Miami,FL,365717,724562,Single Family,1,2025-02-26,False,investor
+e41f832c-1696-4a2b-850f-f0a1be124982,Christian,Cole,christopher30@example.com,(299)501-3983x7354,Chicago,IL,242628,387393,Multi-Family,1,2024-12-31,True,first_time_buyer
+acdbd916-a81c-4954-980f-b56613c4c06f,Suzanne,Wilson,srocha@example.net,001-636-738-5467x854,Portland,OR,442059,711927,Condo,4,2026-03-20,False,upgrader
+290c709a-7076-44fe-80da-7e73385597f5,Tyler,Garcia,ugill@example.org,(856)609-3204x899,San Francisco,CA,892785,1438519,Multi-Family,4,2025-05-13,True,investor
+48d8ae5e-e950-499a-ac7b-82d83fca9328,Mark,James,victorpena@example.net,247-377-2522x87280,New York,NY,558605,1189735,Condo,1,2024-08-23,True,downsizer
+1bb82a3c-3cf4-478c-8788-6e4d2b5bb6cf,Elizabeth,Duran,otaylor@example.org,920-938-7509,Nashville,TN,352109,541547,Single Family,3,2026-03-25,True,downsizer
+f835fe82-977d-4b95-bf4c-8944f729ce71,Amanda,Jenkins,morenojoshua@example.com,5866211823,Chicago,IL,256887,469759,Townhouse,4,2024-05-15,True,upgrader
+7bdb434d-2fde-4756-ac92-238064b58401,Joseph,Sanders,susan79@example.org,001-234-410-1666x870,Denver,CO,491827,670671,Multi-Family,2,2025-12-20,True,downsizer
+d44f1d21-2433-4248-a71f-3d0091fccbb4,Megan,Newman,ariel18@example.org,239.474.0148,Austin,TX,312953,601419,Multi-Family,4,2024-07-03,False,investor
+f8674e5b-3317-4146-822b-300744b478aa,Leonard,Ali,karenmarquez@example.com,842-493-9685,Portland,OR,444723,581561,Townhouse,1,2026-03-13,True,downsizer
+72baa681-bcf1-459a-802e-2cbda3ba3d94,Hannah,Miller,brian63@example.org,899-496-5047x73586,Boston,MA,492560,863501,Condo,4,2025-12-02,True,investor
+b6ba28f4-118d-423b-8978-785f06da3bd8,Donna,Miller,lauren11@example.com,(662)965-5110,Boston,MA,481550,1029991,Townhouse,4,2025-09-12,True,upgrader
+1c87cd20-628d-418a-837a-629a7db0a694,Joseph,Anderson,ryanhawkins@example.net,(810)315-8199x56046,San Francisco,CA,785403,1384163,Multi-Family,1,2025-01-22,True,investor
+bf1e56c0-2ef8-4c11-a131-35a03e9ad598,Anita,Haney,ashleyjackson@example.com,(824)644-7212,Miami,FL,449613,736691,Multi-Family,1,2025-10-15,True,first_time_buyer
+2ea7ea1e-bec2-4084-bbca-86c055e7cbe1,Todd,Jones,sheryl79@example.net,871.724.0659,Portland,OR,324954,624866,Single Family,1,2025-03-07,True,first_time_buyer
+b424e6ee-69ec-43b5-a77b-316d8204b0af,Ryan,Colon,kevinmorrison@example.net,575.726.5479,Miami,FL,353769,657671,Condo,4,2025-03-21,True,investor
+8c173dbe-b4a6-4805-8578-2f97580777ac,Lisa,Long,frederickjames@example.net,(980)473-7416,Chicago,IL,228382,491661,Multi-Family,2,2025-02-02,True,investor
+0bb9b50d-285c-4569-a2af-45567d661f38,John,Hopkins,emccormick@example.com,+1-379-368-8680x589,Denver,CO,406089,674843,Townhouse,1,2025-08-09,True,downsizer
+064665ed-d1f6-4e37-8bec-028b58f86061,Diane,Kelly,hartdeanna@example.net,(556)910-1438x8899,Miami,FL,401641,589493,Multi-Family,3,2025-11-17,False,upgrader
+bff80801-21e0-44eb-9687-0d53a528454b,Steven,Frazier,michaeljohnson@example.org,961-312-5457x3875,New York,NY,686029,1129155,Townhouse,2,2025-02-01,False,downsizer
+bc5b9792-908e-431b-81bc-aa57132102af,Heather,Flores,bradley10@example.com,+1-812-438-2825x8673,Boston,MA,436255,900874,Townhouse,3,2025-03-20,True,downsizer
+70effbc5-b23d-44e6-9d4d-7495e42fe2ea,Diane,Foster,shannonjordan@example.org,001-933-341-9182x553,Miami,FL,301214,766266,Single Family,4,2024-09-17,True,upgrader
+666684ea-ef08-4036-8d58-60e9d724a2e8,Michelle,Rose,candice96@example.net,355-479-2499,Denver,CO,430165,701888,Condo,3,2024-11-11,True,investor
+fd2383fc-63db-4a66-9a49-ea2467128278,John,Wilson,heather86@example.com,+1-629-466-2782x827,Boston,MA,566163,925060,Townhouse,4,2024-12-18,True,upgrader
+f1ca74cb-b673-415c-b224-489d580100f4,Megan,Harvey,stephanie72@example.org,(588)676-7677x2190,Chicago,IL,219464,436644,Multi-Family,2,2024-09-17,True,upgrader
+006735a5-2df2-43b3-9d1c-1825f02d66f8,Jeffrey,Roberts,xcunningham@example.com,+1-281-991-4858,San Francisco,CA,825592,1359890,Condo,3,2024-05-27,False,downsizer
+256f1901-5b45-4f90-b309-970fab30ba23,Veronica,Garcia,kennethkidd@example.com,451-571-3395x962,Miami,FL,411983,634678,Single Family,4,2025-06-07,False,investor
+3a09e1eb-ce39-4c15-98eb-6834064ca214,Linda,Hudson,candice25@example.net,449-748-1260x4223,Denver,CO,471923,804159,Multi-Family,3,2025-12-19,True,downsizer
+a345754c-05da-4d8f-8976-59afe1e303fe,Kathleen,Lowe,othomas@example.com,+1-266-371-1684x5775,Austin,TX,305701,522807,Townhouse,3,2025-12-30,True,upgrader
+b1a2c4dc-e5ed-40c1-83ca-50414ab16882,Stephen,Beck,melissa86@example.org,(237)345-4589x29750,Boston,MA,521593,868229,Townhouse,2,2025-10-20,True,downsizer
+5bb6254e-37d1-4b45-aa71-db013e305989,Mary,Smith,scottsmith@example.com,724.424.1541,Miami,FL,397385,579168,Single Family,1,2025-08-04,True,downsizer
+116f9bce-3f19-4b8b-a29b-d19e7b24b051,Connie,Barber,rubendavis@example.org,2372129387,Boston,MA,408952,1003359,Condo,4,2024-06-10,True,downsizer
+1e4a67ef-b6ae-49a3-a98f-2da4a31fea24,Lisa,Mcneil,ebenson@example.org,861.411.5542,Seattle,WA,575876,824083,Multi-Family,1,2025-09-24,True,downsizer
+c947ddb0-85ed-4001-8ac5-dde1d7ceb2ab,Erica,Jones,bishopfrank@example.com,001-732-869-7311x2196,Miami,FL,304907,642632,Multi-Family,4,2025-08-15,False,upgrader
+6e075cc7-ae08-4650-b64a-94777830fcb7,Donald,Hill,wrightcarolyn@example.net,+1-540-943-8983x640,Boston,MA,581280,834383,Townhouse,1,2024-12-19,True,investor
+37687b19-d7d7-456f-9750-891aefd93ae7,John,Little,ricetiffany@example.com,626-596-5827x10910,Boston,MA,575057,982862,Single Family,2,2025-02-10,True,first_time_buyer
+2ef8fe92-1fe2-40a5-a98f-f9fc33492841,Bruce,Mccormick,courtney86@example.com,001-561-488-9241x418,Austin,TX,376217,549803,Condo,2,2024-06-02,True,investor
+e88e56b0-8447-4416-b999-1885e0ff3371,Peter,Walters,collinssamuel@example.org,6314617990,Seattle,WA,465349,1074393,Townhouse,2,2025-05-31,True,first_time_buyer
+c73d8159-d5ce-4264-aa14-7aabcbf6eb3a,Jean,Miles,tylerreed@example.net,001-642-352-4105x6481,Miami,FL,428760,586171,Condo,3,2024-07-30,True,first_time_buyer
+24db2500-d403-4cdc-b20b-d30d01f4bd9c,William,Brown,michaelscott@example.org,001-913-780-0030,Austin,TX,287793,575604,Condo,3,2025-05-01,True,upgrader
+c6f8ff8b-d780-45e4-a034-12e7ce16a1b2,Edward,Velazquez,tranrobin@example.net,+1-263-453-6541x9518,Austin,TX,287112,589716,Single Family,1,2025-02-07,True,upgrader
+382ccc30-7812-4fe2-808d-47f64ea04312,Zachary,Williams,djones@example.com,001-945-718-7053x49493,San Francisco,CA,855909,1458602,Condo,1,2024-10-14,True,upgrader
+143eebb3-e96e-467a-85cd-d76b88c74c53,Trevor,Barton,jessicapayne@example.org,(206)803-8505,Portland,OR,396501,557787,Multi-Family,4,2025-07-10,True,first_time_buyer
+50382372-1b32-4dc0-99ed-610ee3bd0c76,Jessica,Garcia,robertwoodward@example.org,001-441-803-8657x191,Portland,OR,406860,660890,Single Family,3,2026-01-14,True,first_time_buyer
+4032bd63-ea5d-4cb4-baab-1ea9bac4bbd1,Ashley,Graham,joelgreen@example.com,(455)974-3132x9121,Chicago,IL,238876,495788,Townhouse,4,2024-06-27,False,upgrader
+3c6798c5-51d5-4ad7-b72e-e0b7b0ba0f42,Richard,Herrera,shannonford@example.org,524-790-3521,Portland,OR,375832,657549,Single Family,2,2025-04-09,True,investor
+fd4406cf-e753-49a5-96ec-88d477355724,Brandon,Evans,anthonysullivan@example.com,+1-283-517-1210,New York,NY,596427,1127737,Multi-Family,1,2025-02-17,True,upgrader
+9ff91e37-01f9-4613-bdc4-47d2e7f1e1ea,Madison,Watson,aguilarjonathan@example.org,9132721510,Miami,FL,356145,588159,Multi-Family,1,2024-08-07,True,first_time_buyer
+8c734d23-0628-49fd-997b-76b7e5e9d2d9,Audrey,Underwood,ycrawford@example.net,(625)932-4472x09993,Boston,MA,474215,956991,Townhouse,2,2024-09-03,True,upgrader
+5bd49108-ed04-4517-827d-ee61c047154d,Andrea,Brown,patrick63@example.net,638.406.5787x59856,Boston,MA,470107,998922,Multi-Family,1,2025-03-01,False,upgrader
+997af41c-6f71-411f-b082-fdc97e9a694e,Carla,Johnson,brian78@example.com,001-493-421-3348x03965,Nashville,TN,252432,541482,Condo,4,2024-05-23,True,first_time_buyer
+f209dc77-f6cf-4630-b6cd-c7fd6aac0fe5,Louis,Rojas,robin05@example.net,001-229-337-8427,Nashville,TN,341444,513512,Townhouse,2,2024-10-23,True,first_time_buyer
+a84275dc-11b6-435a-8b84-b059fdc4a806,Carolyn,Smith,nsmith@example.org,(352)750-0292,Seattle,WA,615107,1060311,Townhouse,1,2024-06-14,True,upgrader
+fc03c3fa-efbc-4769-af58-274b54a5d1ea,Nathaniel,Mcmahon,vwillis@example.com,622-667-5289x53926,Nashville,TN,282122,476281,Condo,4,2026-04-06,True,first_time_buyer
+0f169122-6b9e-460d-8a0b-a950386ca05b,Jessica,Rush,xrosales@example.net,4297593917,Boston,MA,535491,784918,Multi-Family,4,2024-08-05,True,upgrader
+6495da9b-f8cb-4420-af29-eedff71c7a39,John,Haas,daisymccarty@example.net,+1-957-804-3315x41006,Miami,FL,408239,744208,Single Family,1,2025-10-30,True,first_time_buyer
+107b178a-074f-46a8-aa94-9ebfb2dabed5,Nicole,Snyder,ybell@example.org,793.427.1040x5411,Boston,MA,443060,930130,Multi-Family,4,2026-04-12,True,investor
+d3f63d24-b771-4505-8fb1-2fe181fd00f6,Eugene,Jones,morgantricia@example.com,001-806-629-6201x533,San Francisco,CA,697559,1446452,Townhouse,4,2026-02-12,True,upgrader
+fa31d81d-0e2b-49bb-aecc-89cee35130f3,Kenneth,Davis,farmstrong@example.org,3502614973,Austin,TX,299769,716500,Single Family,1,2025-08-29,True,investor
+4cea5dc1-0707-46df-8ceb-33e0d473a2fe,Danielle,Rowland,tanthony@example.com,674.918.6256x5270,Chicago,IL,290236,435653,Single Family,1,2024-10-02,True,downsizer
+5df483cc-8a87-4dd7-b325-8f79f34aa4b1,Jeremy,Adams,hernandezheather@example.org,858-969-3806,Chicago,IL,223564,478201,Condo,3,2025-04-08,True,first_time_buyer
+ba352bc0-e2bf-46be-9337-21a0e25b7e13,Joe,Evans,torr@example.org,898.399.2172x23320,New York,NY,514779,1326494,Townhouse,4,2025-06-26,True,downsizer
+ddb642e4-0f7f-4ac8-a7ef-04cf4341ff5c,Ryan,Osborn,maryscott@example.net,916-286-8548,Miami,FL,317276,555214,Townhouse,2,2026-04-26,True,downsizer
+0d2fee97-b76d-4ae4-8f82-2b73d758d68e,Cindy,Mills,jrodriguez@example.org,001-799-811-9148,Nashville,TN,250575,608896,Condo,4,2025-11-29,True,first_time_buyer
+e406074d-9203-4343-854b-51c3217d5d40,Diana,Armstrong,rjohnson@example.com,(999)660-6530,New York,NY,731983,1251967,Condo,3,2024-11-13,True,first_time_buyer
+265f99d1-2404-441b-aed4-199b3b760f11,Andrew,Roth,larry71@example.org,(947)554-6913,San Francisco,CA,868964,1501832,Condo,3,2026-02-18,True,investor
+42802be8-9c61-43fd-8860-77f216b7053e,Richard,Washington,lori82@example.org,986-228-9023x3030,Denver,CO,346962,675391,Condo,2,2026-03-02,True,first_time_buyer
+19395959-cbb2-4e52-802b-891b0cdbebe4,Janet,Hill,owagner@example.org,+1-603-357-9727x98552,Chicago,IL,309885,494891,Multi-Family,4,2026-03-06,True,upgrader
+03090bdb-4351-4411-9577-4ed7438b023e,Paul,Martin,mercedesholland@example.net,246.580.0722,Nashville,TN,258114,453657,Multi-Family,3,2024-11-28,True,first_time_buyer
+b65d7090-9565-4b6f-b36a-8e11f3c0becb,Linda,Torres,rodney65@example.com,637-648-9691x085,Nashville,TN,300880,502081,Multi-Family,1,2024-11-04,True,upgrader
+566f44d4-213c-40d4-9a04-82a3639e91ea,Timothy,Rogers,danielle44@example.net,001-943-628-3096x520,Boston,MA,515709,1032644,Single Family,4,2025-09-16,True,first_time_buyer
+0b66511a-7f85-4e05-a9f8-e3b3190dd4a9,Robert,Price,aguilarwanda@example.org,638-475-8428x24172,Portland,OR,436357,692914,Condo,3,2024-11-09,True,investor
+fdd05e02-2d4a-4cc4-b52b-e6fe3ca3e503,Rachel,Pena,michaelgarner@example.com,(955)549-4717x09991,Austin,TX,330820,677467,Townhouse,1,2026-03-27,True,investor
+b685a482-3e9e-4503-b380-fe47f091eb57,Mikayla,James,robert22@example.org,969-672-5217x52500,Austin,TX,303445,593495,Multi-Family,2,2025-05-04,True,upgrader
+9df5d4f5-37f9-4360-8969-06461d710e04,Kim,Johnston,tracygallagher@example.org,(296)566-6760,New York,NY,614236,1078806,Single Family,3,2024-10-04,True,first_time_buyer
+62732f52-28af-4afc-89d3-0d0ccdf988e1,Stephanie,Mcclain,andrewsmith@example.net,635.442.1689,San Francisco,CA,883865,1366280,Condo,3,2025-10-20,True,investor
+ae9665e5-9a21-40bb-8aa1-c7247b1b68a7,Brandon,Fry,mluna@example.net,262-457-5326x03323,Nashville,TN,277227,571210,Multi-Family,2,2024-06-20,True,first_time_buyer
+2f26f436-c34a-402f-8c91-040170706ade,Jennifer,Conner,qmcdowell@example.net,+1-609-901-0016x761,Miami,FL,383838,710873,Townhouse,2,2024-08-02,True,first_time_buyer
+485bc076-8429-4e43-a807-970db1c02848,Jamie,Jennings,turnerdorothy@example.net,549.592.6189x14117,New York,NY,639664,942747,Townhouse,2,2025-09-29,False,upgrader
+b2cb7fa1-79d7-46a5-9c35-053e82bf708b,Marie,Dudley,jade42@example.org,+1-373-975-3001,Portland,OR,328800,799994,Condo,1,2025-11-23,True,first_time_buyer
+cb24c556-85b9-4515-a741-5f9bf0fac9c2,Christopher,Hunt,conwaydawn@example.com,247-201-2045x5611,San Francisco,CA,914388,1669315,Single Family,3,2024-08-21,True,investor
+789677fa-5a10-4ddb-a47a-1a757ae8b188,Elizabeth,Jackson,patricia94@example.net,855-921-6674,Seattle,WA,499111,826786,Condo,4,2026-01-16,True,upgrader
+243137d0-da52-4376-a514-1558ea24436f,Deborah,Robles,andersonjessica@example.org,769-279-7296,Denver,CO,489982,772913,Multi-Family,2,2025-12-09,True,upgrader
+5b27fe7a-808e-4bba-b966-28c0be930884,Nichole,Acosta,timothyfreeman@example.com,301.845.0899x358,Portland,OR,435596,598504,Multi-Family,4,2026-01-24,True,downsizer
+d348ff56-8dd6-4019-8d81-1405ba01d9c0,John,Reed,jhernandez@example.net,7025877217,San Francisco,CA,834061,1741447,Condo,2,2025-08-30,True,first_time_buyer
+9c61970b-2a81-495f-b5db-a6fd59854789,Joshua,Hunter,ppowell@example.org,879.871.7751x701,Portland,OR,431117,688635,Single Family,1,2024-12-31,True,investor
+9aa7016e-4c9d-4dfd-87d1-420c7ac7c353,Andrea,Petersen,pamela83@example.net,+1-375-350-3758x99757,Miami,FL,367397,678338,Multi-Family,1,2024-05-30,False,investor
+0b19a668-d7a3-4e1e-b49d-34468755107b,Jeffrey,Peterson,amy51@example.org,(372)861-4933,Portland,OR,432694,782617,Multi-Family,1,2025-11-10,True,upgrader
+022f67b7-3887-4bc0-87be-b95fe1b9138e,Makayla,Lee,daniel60@example.net,+1-991-477-9827x08086,Denver,CO,393717,627441,Condo,1,2024-10-08,True,first_time_buyer
+77ce5cb9-4e4b-4b9d-a828-9c8344ac0f33,Glenn,Ochoa,hughescaroline@example.com,666.793.4654x72269,Nashville,TN,334965,467519,Townhouse,4,2025-09-21,True,investor
+9efe11cb-00ff-461c-94d7-c60411d16736,Selena,Chen,jasonklein@example.net,(822)688-5158x799,Portland,OR,367290,551312,Single Family,1,2025-10-06,True,investor
+52f5b9e3-8120-4926-8522-bc9218f3cf76,Robert,Smith,johnsondustin@example.net,5342244204,San Francisco,CA,970274,1544884,Multi-Family,1,2026-02-04,True,investor
+6c492b3e-93b9-4e5b-88a1-8ebd58be9d24,Shaun,Jensen,juliahoffman@example.org,540.766.6580x04397,Miami,FL,318277,609609,Multi-Family,1,2025-01-21,True,downsizer
+029976db-2385-4e82-9237-5277c8256681,Amy,Morrison,kellythompson@example.net,622-481-6064,Seattle,WA,532571,991184,Condo,2,2025-11-06,True,first_time_buyer
+79beabb3-3c97-412d-a214-9f31eb6ee4c0,Meghan,Smith,jmckinney@example.org,(759)309-4798,Seattle,WA,494091,969732,Condo,1,2024-08-29,True,upgrader
+40a5a032-ebda-4686-b74b-9f1fa9167e07,Louis,Robinson,abigailhartman@example.org,(988)261-5335x55439,Boston,MA,575913,891826,Single Family,4,2025-11-28,True,first_time_buyer
+b974475f-4d82-4920-89d5-6eb87b17072c,Michael,Allen,susanfleming@example.com,(216)648-4085x8877,New York,NY,760165,1042801,Single Family,3,2024-07-26,True,upgrader
+e06767b8-4c20-4ea6-9bf1-59687388da30,James,Palmer,jacksonstephanie@example.net,+1-801-333-6138,Denver,CO,450935,777770,Townhouse,2,2026-02-19,True,upgrader
+d76c095c-0738-4b4b-8196-9c992698ca22,Eric,Stevens,benjamin10@example.org,281-893-4667x665,Chicago,IL,297190,504819,Multi-Family,2,2025-10-31,True,first_time_buyer
+d8f19ffb-6f58-400c-b746-fb709c22a5f7,Amanda,May,avilabrenda@example.net,958-814-4914,Portland,OR,305547,600397,Condo,1,2025-09-08,True,upgrader
+d060cbb1-cea7-4089-b81c-004f430cf229,Donna,Wells,derekmyers@example.net,824-350-8821x0099,San Francisco,CA,791413,1658473,Multi-Family,3,2025-02-16,True,investor
+4160091e-2706-446d-9f93-3fb4fe2e2245,Kaitlin,Berger,jason82@example.org,(939)343-1290,Miami,FL,353546,745210,Townhouse,3,2024-12-12,True,upgrader
+a6821807-791c-4891-9d22-b9a32f30b2f6,Carlos,Garcia,wlynn@example.org,+1-431-749-1357x75949,New York,NY,736819,1250905,Multi-Family,3,2024-12-02,False,downsizer
+cbc87cf5-55c4-4491-ba49-06dc4beaddcf,Susan,Jackson,john36@example.com,(325)677-7547x812,Portland,OR,355102,749322,Townhouse,1,2025-12-15,True,first_time_buyer
+5e3c7f55-0fe9-4806-8658-47138851e80c,Donald,Ryan,jessica11@example.org,709.896.9308x48872,New York,NY,663625,1284495,Townhouse,3,2026-01-21,True,upgrader
+849c244c-3dd4-4551-a0fc-48685637dfbd,Kelsey,Quinn,dennis88@example.org,(458)903-9282x7229,Miami,FL,345974,700655,Multi-Family,2,2024-10-14,True,upgrader
+b5551b11-f0b6-4569-ba8c-5aeedf791cff,Billy,Juarez,bryanwood@example.org,+1-438-856-7700x51844,Portland,OR,306353,767509,Townhouse,4,2026-03-21,True,first_time_buyer
+4f52f438-4f33-4b96-a22e-1beef2d2288b,Michael,Valdez,blacknicholas@example.org,665.557.7908x27231,Boston,MA,520880,847018,Condo,1,2025-08-24,True,downsizer
+33238cc0-2e68-49f6-af98-c151e2d57757,Eric,Guzman,guerrerorobert@example.com,001-417-477-3926x0302,Austin,TX,287041,548098,Townhouse,3,2024-08-21,True,first_time_buyer
+97a369fc-c561-4ce3-831b-2514423c8ebc,Benjamin,Armstrong,jacksonsandra@example.net,(899)404-1379x7723,Seattle,WA,452222,927472,Townhouse,3,2025-08-07,True,first_time_buyer
+a6a271c9-8b72-4b0e-a828-e3dbedb3f676,Lori,White,gary57@example.net,001-813-466-2103,Seattle,WA,448915,898432,Townhouse,3,2025-12-05,True,first_time_buyer
+85d9d2ea-7cdc-487c-86a8-94146431e0e9,Gregory,Valenzuela,richamanda@example.org,772-298-0686,Austin,TX,369316,607284,Multi-Family,1,2025-07-20,True,upgrader
+f3e79fa5-e0c8-43dd-8eb6-167db331965b,Roy,Mays,yclarke@example.com,001-691-862-4731,Portland,OR,332185,702969,Multi-Family,2,2025-09-25,True,first_time_buyer
+de472182-f80d-419e-9f23-5b04d432b57c,Adam,Manning,lanedavid@example.org,(735)665-1269x4486,Portland,OR,325898,728342,Single Family,3,2024-11-08,True,first_time_buyer
+1232bf7b-9d8e-44ac-9bd1-a52df4a6385a,Raymond,Harris,jwhite@example.net,844.795.6213x7213,San Francisco,CA,838916,1700232,Condo,2,2026-04-29,True,investor
+70f204e3-88d0-4325-be46-b2da3db7e85c,Christina,Cohen,martintamara@example.org,727-396-1143,Boston,MA,582100,972421,Condo,4,2025-12-10,True,upgrader
+95479cf3-92be-4f97-b401-5685e033d7ec,Jenny,Arias,hmendez@example.com,001-590-427-7038x430,Portland,OR,420549,687911,Single Family,1,2025-07-23,True,downsizer
+44fc1c5d-8d29-4941-940b-786a4b3c92ed,Michael,Pena,christopherhill@example.com,(766)793-8011x848,San Francisco,CA,795562,1435188,Single Family,2,2025-09-08,False,first_time_buyer
+b6300b6e-ca2f-4030-80a2-26dd8d9dfb3e,Joshua,Obrien,shawnpowell@example.org,626-681-8184x518,Portland,OR,369874,679340,Condo,2,2026-04-08,True,investor
+984ecb84-dbf8-444e-bfe7-0ffc1fdcfd78,Tammy,Hart,katherineali@example.com,+1-279-607-1416x33565,New York,NY,638230,1303989,Single Family,2,2025-09-23,True,investor
+0e1e6b57-fd83-43c7-b644-21ccba56e2e0,Christopher,Nunez,charles27@example.com,(539)542-3733x343,Nashville,TN,352168,485094,Townhouse,1,2024-11-01,True,upgrader
+39fe4bb2-2658-4943-8e0b-09410a089b0e,Mary,Kelly,wilsonchristian@example.net,490.680.7595x7947,Chicago,IL,275627,492524,Single Family,2,2026-01-04,True,investor
+ccc55d97-7401-4f0a-82d2-2a64ca86131d,Karen,Anderson,imendoza@example.org,356.727.1875x00369,Chicago,IL,279166,511110,Townhouse,1,2025-02-18,True,first_time_buyer
+257a5d89-9286-4ed1-a958-46dd7b54bb80,Michelle,Lopez,joel79@example.com,(427)563-6556x472,Boston,MA,398865,923472,Townhouse,2,2025-01-23,True,downsizer
+3541f91e-7b97-4194-bb58-5883c1cd2b6e,Jennifer,Brock,mchase@example.org,001-627-202-6728x8574,Seattle,WA,554188,944313,Townhouse,3,2025-12-20,True,downsizer
+21600d46-232b-49c3-b690-ab2db828f1b5,Hannah,Brown,thomas17@example.net,445-658-8450x61593,Miami,FL,368031,722153,Condo,4,2025-02-19,True,downsizer
+66094fe1-41ed-4e7d-b588-ae7d85f1c46e,Emily,Freeman,ypreston@example.net,572-725-6996x1125,Denver,CO,386131,644508,Townhouse,3,2025-01-18,False,investor
+51d7e9cf-c83e-48a2-b381-2d6e1efbc5a0,Kelly,Adams,cnelson@example.com,001-498-876-2202x3413,Nashville,TN,301797,461236,Condo,4,2024-12-21,True,downsizer
+91f97339-5cbb-4430-a2eb-f042b5992097,Caleb,Johns,johnsonrandy@example.org,649-921-6433,Denver,CO,353244,618916,Multi-Family,4,2024-07-18,True,investor
+bc0d5832-611b-475f-8b1e-f8f3bf82159c,David,Roberson,johnsonmichael@example.com,878.648.7282x9979,Nashville,TN,352050,584225,Condo,2,2025-08-04,True,downsizer
+369c694c-3721-46ae-8cab-c1d4b894535b,Timothy,Perez,ramosmichael@example.com,(240)908-2547,Portland,OR,431861,674342,Single Family,4,2026-02-27,True,investor
+c684a04a-223e-4843-9a04-75f75c3b9d5e,Thomas,Smith,myates@example.org,4858368663,Denver,CO,426251,618380,Townhouse,4,2026-03-27,True,downsizer
+4cad09bd-00c6-45c2-a75f-2eaa0edd0f08,Jeffrey,Miller,zacharymarsh@example.net,001-944-984-6312x241,Miami,FL,380503,761793,Multi-Family,2,2025-12-30,True,upgrader
+9de6be3b-e3e5-4c76-833f-10b6ada286f2,Cindy,Lopez,hernandeztara@example.org,(414)242-7031,New York,NY,603314,1105247,Condo,3,2024-11-18,True,first_time_buyer
+35ce6357-96ca-4246-8d8f-684cae3b808d,Matthew,Collins,dbolton@example.net,9514204618,New York,NY,638585,1259871,Townhouse,1,2025-04-29,True,first_time_buyer
+6e37caf1-ed51-4538-8e93-139df82bf522,Mckenzie,Roth,martinezkayla@example.org,(473)203-7183x7645,New York,NY,605165,1354384,Townhouse,2,2024-09-21,True,downsizer
+3b556b86-931c-4c1a-bcb5-d8225aff9cb1,Andrea,Martinez,mlittle@example.com,3318365024,San Francisco,CA,673284,1231402,Townhouse,4,2025-10-30,True,investor
+07008ed9-b899-4f78-b849-4f5fba2dc034,Albert,Williams,jbarker@example.com,001-413-927-1950x05281,Seattle,WA,607557,818923,Townhouse,2,2025-12-01,True,upgrader
+aa51112f-3c83-4f7a-a187-66b1fde2f7b4,Tina,Kramer,linda73@example.org,001-565-424-0778x487,Seattle,WA,490638,1059901,Multi-Family,3,2024-10-21,True,first_time_buyer
+5d522116-c054-4f48-975a-8487d2445699,Mario,Mcdonald,caseymoore@example.com,585-770-8620x959,Nashville,TN,279748,461920,Multi-Family,3,2025-06-05,True,first_time_buyer
+4fbc64e6-8e18-462a-8067-7eb10190c646,Dominique,Ryan,rlee@example.com,001-482-294-5651x18102,Seattle,WA,519663,1108474,Condo,1,2025-10-13,True,investor
+9ca7bc8d-d261-4539-bb53-535cb148b405,Todd,Garcia,hbarrett@example.net,001-994-205-3910x371,San Francisco,CA,867578,1550854,Multi-Family,2,2024-09-28,True,investor
+6bbe7a27-c5b6-4160-b1a1-de9d52d51ccd,Julia,Zamora,laura09@example.com,501.441.3811x38633,Austin,TX,347296,652617,Condo,1,2025-01-22,True,downsizer
+4e640277-9228-4f5c-ab77-15df607d83c3,Angela,Reese,emily61@example.org,(786)785-2897,Chicago,IL,253360,420681,Multi-Family,1,2025-06-16,True,investor
+8325d20b-d04c-4585-8202-ce628afd20fa,Wendy,Kirk,bduran@example.net,293-698-3684x57760,San Francisco,CA,767266,1574224,Multi-Family,3,2025-06-10,False,downsizer
+503b4020-3817-4644-843d-36b7f2a2823a,Zachary,Holder,adam33@example.com,2489889921,San Francisco,CA,772967,1404857,Townhouse,4,2025-07-13,True,investor
+fe2ff86b-ce67-4e24-9da8-ec690f2dcf86,Devon,Richardson,jesseshepherd@example.org,001-369-631-5727,Miami,FL,383712,606216,Townhouse,3,2025-01-18,True,downsizer
+a88e63c7-a2cd-41e6-aa18-192d87bafc12,Lindsey,James,weeksmatthew@example.com,(713)590-6048x05892,Nashville,TN,297576,552097,Townhouse,3,2024-05-31,True,downsizer
+ac7781ab-d131-435e-9adc-f67e2ca08e2e,Emily,Osborn,kmullins@example.net,936-246-2251,New York,NY,718686,1340708,Condo,3,2024-08-23,True,first_time_buyer
+dd08cd92-8d0c-423d-916f-6f28f75ff765,Jose,Ross,iayala@example.org,683.876.9389x8331,Nashville,TN,350881,571194,Multi-Family,2,2025-06-08,True,upgrader
+1580210e-75a1-4397-a212-02c552c97aa9,Sandra,Davis,whenderson@example.org,559-704-2597x92703,San Francisco,CA,889736,1285500,Condo,2,2024-12-26,True,investor
+ee6dcfa1-fb6e-4696-b1a9-c969cbb72eab,Jessica,Miller,sanchezchristine@example.org,605-914-7705x3833,Denver,CO,338661,718657,Multi-Family,1,2024-08-26,True,investor
+4eedfafb-7746-4e78-884c-4bb900ed10e9,Victoria,Neal,bennettrebecca@example.net,9422043940,Austin,TX,400210,715029,Condo,4,2025-08-02,True,downsizer
+e7f67577-a0f1-4e11-b791-8a4dd58a654f,Donna,Alvarado,michelle04@example.net,(936)281-5798x1238,Portland,OR,397580,738977,Townhouse,3,2024-06-21,True,first_time_buyer
+296b3ca9-4bbb-4762-9a9c-e0d9e147c89c,Sandra,Torres,klong@example.org,(655)543-8404x608,Boston,MA,517198,790471,Single Family,2,2024-06-02,True,investor
+1801175f-6444-4d15-b351-25b5d89b4406,Penny,Sandoval,blairabigail@example.net,+1-436-539-2649x578,Austin,TX,404618,584323,Multi-Family,2,2024-08-22,False,upgrader
+214f46ed-4a6d-4098-9e02-c4259a2b4abd,Bianca,Sutton,michelleparker@example.net,226.729.2518x81252,Austin,TX,271251,622791,Single Family,3,2025-08-23,True,downsizer
+0ffed406-e3e0-4daf-9f1d-8c7777c26500,Robert,Jenkins,oreese@example.net,523-512-2099x499,Chicago,IL,299361,466903,Condo,1,2026-02-06,True,downsizer
+fcf1bb64-1dcf-4db2-959b-3f5611aec2a9,Anthony,Miller,manderson@example.com,001-252-667-7223x306,Miami,FL,407789,553521,Townhouse,3,2024-10-19,True,investor
+88350cb7-abcd-4232-b20b-d25a1a8e5c3c,Jeffrey,Powers,katherinejones@example.com,+1-275-373-6609x656,Chicago,IL,274150,496777,Multi-Family,4,2026-03-29,True,first_time_buyer
+493de173-e042-40ea-be0f-6020a3d36ba0,Margaret,Williams,aprilfoster@example.net,6866803476,New York,NY,680660,1013532,Condo,4,2025-03-30,True,investor
+2e48553d-3066-4f20-babb-0e04ba77c951,Roberto,Austin,vaughnrebecca@example.com,+1-271-481-2982x6657,Austin,TX,305206,547992,Townhouse,3,2025-04-06,True,first_time_buyer
+f2070e88-93b0-4d70-8d2f-436cd108da7b,Peggy,Huang,udavis@example.net,+1-821-811-7518x6892,Miami,FL,398052,723192,Single Family,1,2025-03-31,True,investor
+dec863a1-40db-4bf4-bd94-9ab427ae6f46,George,Rogers,fernandothomas@example.net,5642474212,New York,NY,684948,1327320,Townhouse,1,2024-06-05,True,upgrader
+d0cc35ff-9738-4701-ae56-f5a5d7658d2f,Johnny,Ellis,astephens@example.net,633.597.7671x9903,Nashville,TN,313755,483825,Condo,4,2025-08-02,True,upgrader
+b09ea646-4397-4720-b2c7-f3342068c4dc,Eddie,Delgado,thomasantonio@example.net,+1-445-910-1622x499,New York,NY,688994,1322938,Condo,2,2024-06-08,True,first_time_buyer
+9d160e20-ea76-486b-8fcb-6253ddcbad50,Michael,Johnson,marcus61@example.com,+1-814-572-1458,San Francisco,CA,807426,1597071,Single Family,1,2025-11-02,True,investor
+ece461c1-9248-4210-af1c-e6c92af71268,Cheryl,Rodriguez,webbhaley@example.net,969-954-8995x2997,Seattle,WA,532698,827588,Multi-Family,1,2025-09-24,True,downsizer
+bc75f3aa-6d03-4118-8a07-2b3513158e0d,Nicole,Hall,tiffany01@example.org,513.696.6055x830,Boston,MA,565283,859781,Single Family,4,2025-12-15,True,downsizer
+f3a2c564-747a-4199-89ec-0a879a3a064f,Carlos,Evans,katie15@example.com,(499)902-3557x7027,Portland,OR,384586,689699,Townhouse,1,2024-11-05,True,first_time_buyer
+fdd07ea2-bd8a-46f8-aec8-997cb6b01bbe,Amanda,Rogers,dreilly@example.net,295-788-0395x5124,Denver,CO,425421,617454,Townhouse,1,2026-02-15,True,first_time_buyer
+ab5284a5-22fc-426b-80d6-0dcdf55dfba5,Courtney,Kirby,hlopez@example.com,001-650-446-1735x743,Boston,MA,582296,868423,Townhouse,4,2026-04-23,True,investor
+b84ab4fe-d0b3-4af8-acd8-890fffceb4cd,Kristen,Strickland,wallaceangel@example.com,923.857.8452x18230,New York,NY,605487,1313816,Multi-Family,4,2024-07-25,True,investor
+006a0d7a-159c-440a-ac85-ffd82bc3d62e,Alexandra,Smith,mcdanielbrooke@example.org,670-718-4094x35334,Nashville,TN,254235,638569,Multi-Family,2,2025-10-07,True,investor
+37f96a3e-8353-4a49-a2df-5182a72d230b,Emily,Nelson,joshuasmith@example.net,+1-481-638-5854,Austin,TX,372084,715160,Multi-Family,4,2025-11-19,True,investor
+2f58d40f-18ab-4d8f-9696-c6eddf25a7ca,George,Collins,amber02@example.org,701.660.1662x9979,Denver,CO,406003,647658,Condo,1,2025-06-27,True,downsizer
+c4ead792-2ee9-436d-b838-2684badd1020,James,Chang,beltrankatelyn@example.com,001-521-571-7477,Seattle,WA,580871,1079314,Single Family,2,2025-01-01,True,first_time_buyer
+ff515f47-48f6-497c-bc36-1c9c6e266eb0,Paula,Scott,philip55@example.com,401.371.5772x4599,Seattle,WA,427051,979224,Single Family,2,2024-08-17,True,downsizer
+13fe3b1c-8ee2-46b5-a63c-c31f090386f9,Jennifer,Rodriguez,sparksamanda@example.com,001-363-793-8276,Portland,OR,335150,604317,Single Family,2,2025-02-24,True,upgrader
+6e8ebd54-f467-42fd-ab76-7aba78266626,Heather,Reynolds,vbradley@example.net,001-332-919-7199x758,Denver,CO,464604,806167,Townhouse,3,2024-10-03,True,investor
+4ab424f0-c5e8-4cd7-8ca4-16b0c049e182,Stephanie,Jones,jenningscandace@example.com,970-513-2902x27846,San Francisco,CA,732944,1375275,Single Family,2,2024-09-09,True,downsizer
+64cd6517-15d1-4084-83ed-d6f0f9e95486,Natalie,Evans,samantha65@example.org,001-209-286-2405,San Francisco,CA,823554,1744759,Multi-Family,3,2024-10-01,True,downsizer
+6d27b30f-e879-435a-9b29-439e8750e678,Lori,Howard,michelle36@example.net,001-465-966-6683,Chicago,IL,241488,417178,Multi-Family,2,2025-09-30,True,upgrader
+94300cc9-0cf6-46ea-9a59-d3a003bc2787,Angela,Bridges,mary24@example.net,(320)410-2762,Chicago,IL,294606,545079,Multi-Family,4,2024-08-13,True,investor
+02955df7-f18b-4562-8d8f-c755e9148f1f,Robert,Bryant,dhanson@example.net,(687)865-3269x09738,New York,NY,571928,1021418,Single Family,4,2025-08-16,True,first_time_buyer
+7ecf8029-c59f-4947-b7e5-b51bf3c42e82,Barbara,Johnson,carrolljanet@example.org,001-371-528-4781,San Francisco,CA,899112,1314764,Townhouse,4,2026-03-12,True,first_time_buyer
+af3adfac-639e-4371-9566-ed28d7886255,Judith,Horne,suttonamber@example.net,790-658-0778x7956,Boston,MA,426691,962551,Condo,4,2025-04-14,True,upgrader
+09e86caf-0265-40cf-86e2-68350a0d183d,Austin,Livingston,jessica94@example.org,+1-379-629-0490x4712,Miami,FL,443552,553833,Condo,1,2024-12-01,True,downsizer
+a77b3211-cd24-4a68-922b-5e086f6263fd,Christina,Hill,alexis19@example.org,001-227-752-4372,Denver,CO,444778,798536,Multi-Family,2,2024-11-04,True,upgrader
+10ee96fb-77f8-4fa3-a5aa-d86a64906915,Tammy,Larson,marymullins@example.com,001-863-972-3950x41027,New York,NY,628893,1210706,Townhouse,3,2026-04-23,True,downsizer
+63434eec-20bc-4a03-b5da-8ac1803cfafe,Julie,Goodwin,noahthornton@example.com,728-860-4765x801,Portland,OR,314791,795329,Multi-Family,3,2024-12-10,False,upgrader
+54d8c32e-fa78-42f3-8ed3-b5f1642eed5d,Denise,Nelson,joseph14@example.net,001-767-239-3852,Nashville,TN,289671,552504,Condo,2,2025-07-24,True,downsizer
+bda74185-9c01-452b-91b2-790c250da8e4,Marie,Smith,foxgina@example.com,544.330.0910,Miami,FL,322861,632466,Multi-Family,2,2025-09-07,True,upgrader
+27ecd775-c71a-4c46-b751-43b2bf6640fa,David,Gates,nicholasgallagher@example.net,001-621-824-4717,Miami,FL,414504,672155,Multi-Family,4,2025-10-03,True,upgrader
+8ca8b6e0-fd50-49c5-a3b6-d043327337c7,Elizabeth,Carrillo,fernando14@example.org,(465)904-4271x7396,Chicago,IL,224695,480645,Condo,1,2025-09-22,True,first_time_buyer
+ed5f234b-6114-4d4b-918c-4142d3bbbbd6,Amber,Reynolds,gainesjennifer@example.org,2112947072,Austin,TX,373185,587788,Condo,1,2024-07-22,True,first_time_buyer
+6589d631-8b98-45dd-b333-8337913598f3,Joseph,Graves,gandrews@example.net,001-777-766-1830x67198,Denver,CO,413445,707630,Multi-Family,4,2025-09-01,True,downsizer
+752f3429-1b49-40ea-affd-753004040248,Richard,Chen,diazmelissa@example.com,674-832-8063,Austin,TX,272258,657493,Townhouse,1,2025-09-14,True,downsizer
+ab3a0420-59ff-41a0-81f8-734432cd9965,Crystal,Howard,mccluresamuel@example.org,(603)909-3761,Chicago,IL,221236,401854,Condo,2,2026-02-18,True,upgrader
+c36d960a-d526-4ecd-89d7-ec888394a048,Mary,Cole,johnsonbrian@example.net,5613387829,Nashville,TN,272078,519379,Townhouse,4,2025-05-29,True,investor
+e13db82e-10df-46bb-8917-0bb310ab52ed,Donald,Valdez,nmeadows@example.org,420.320.4179,Denver,CO,379495,832717,Single Family,1,2024-05-30,True,downsizer
+6cea74f6-fc76-4a1a-97e1-f09fec1cb7b9,Daniel,Crawford,bryanharris@example.com,001-365-319-8253x0925,New York,NY,650938,958848,Single Family,2,2025-12-22,True,downsizer
+782341a9-9366-4ea7-8d3e-6a7e8ade30c0,Katherine,Jackson,angela73@example.net,2212962071,Nashville,TN,307902,611592,Single Family,1,2024-11-20,True,downsizer
+8db76b11-a5c3-4a45-a5d9-c5582da11a8a,Christopher,Pearson,robert72@example.org,(448)976-3290,Miami,FL,306984,568587,Townhouse,1,2024-09-12,True,upgrader
+0400632f-eb54-4bab-b40d-56593559eb87,Christopher,Serrano,michael08@example.org,918.519.5883,Austin,TX,399798,627083,Multi-Family,1,2025-07-25,True,investor
+1fc9ca47-6067-4b10-9402-886dd07636ca,James,Hogan,kjimenez@example.net,9052436459,Seattle,WA,595276,906204,Townhouse,4,2024-11-22,True,investor
+89107b9e-69e6-49c1-a52a-20b938e3f061,Brian,Medina,kristenwashington@example.org,537-399-5635,Boston,MA,487654,1031655,Single Family,1,2024-07-19,True,first_time_buyer
+a79985d6-3cba-4d7e-8cd1-27717d0530cb,Corey,Rojas,nicholaswalker@example.com,001-870-762-3972,Nashville,TN,312620,562773,Multi-Family,3,2024-12-28,True,upgrader
+763f893a-d8ee-45f1-b986-0474b0db1ff2,Jennifer,Chen,james20@example.net,001-704-521-7762,Portland,OR,373590,638952,Multi-Family,4,2024-08-11,True,downsizer
+1707cdaa-38c4-4849-9d6e-83ed4d579256,Cassandra,Clarke,belindatran@example.org,268-873-9774,Boston,MA,540572,810998,Condo,1,2026-02-10,True,investor
+fbddc2be-7a34-41a8-9223-355386e806f7,John,Murphy,patriciavargas@example.org,001-806-900-7806,New York,NY,691477,1204407,Multi-Family,3,2025-10-24,True,first_time_buyer
+0a04aefd-b5a3-4f9d-9ed9-43f5986b0665,Heather,Garcia,jallen@example.org,001-963-225-4310x742,Austin,TX,397299,595065,Townhouse,1,2025-12-16,True,investor
+a69d435c-8df6-4530-8f6f-2fd415df094a,Steven,Taylor,xlopez@example.net,501.365.8046x498,New York,NY,624455,1170764,Multi-Family,1,2026-04-17,True,upgrader
+db4b2f58-9408-4dca-b658-01cd2d4861ac,Matthew,Randolph,pamela16@example.com,590.355.2818x325,San Francisco,CA,690711,1538924,Townhouse,4,2025-07-31,True,downsizer
+2de87dc6-3286-4a7c-bd97-663973851201,Jo,Goodwin,karenhodges@example.com,(348)964-0155x778,New York,NY,708688,1243058,Condo,2,2025-08-21,True,investor
+51d3c599-0a61-4a3d-bf63-0e40cfd205d2,Erika,Patel,shannon51@example.org,911.462.4112x412,Chicago,IL,238236,431971,Condo,1,2025-10-04,True,upgrader
+df6ee0f8-c691-492e-aa1c-1afd40c86727,Abigail,Burton,robert82@example.com,(767)704-3103x856,New York,NY,586436,1267633,Townhouse,3,2026-02-02,False,downsizer
+308687c8-5aca-4f31-85eb-18fbd1718e6e,Elizabeth,Moreno,kellis@example.org,424-637-5402x5472,Seattle,WA,549500,930251,Condo,3,2025-04-24,True,downsizer
+03f7af94-87e0-4951-b677-ec4b9d48b35e,Gregory,Erickson,evanwilson@example.com,001-727-745-2380,Nashville,TN,340993,515977,Townhouse,4,2024-09-14,True,investor
+763abab1-3823-46ea-9ae7-ec9d9227e2f3,Shane,Cantrell,david06@example.com,001-927-752-0885x47492,Miami,FL,348099,786819,Condo,4,2024-08-20,True,downsizer
+010a46b3-ae94-411c-9970-09d6eda27bab,Jessica,Mccullough,ericawilson@example.org,(693)575-1509x3983,Nashville,TN,274973,578991,Multi-Family,2,2025-09-19,True,upgrader
+466dedf6-0067-4797-a499-8349e560f980,Amanda,Griffin,daughertypreston@example.com,799-780-5626x56504,New York,NY,603078,1331128,Condo,2,2024-05-20,True,first_time_buyer
+dcd067a2-ec3c-4207-83be-4b19d71cfe0f,Sean,Hoffman,jessicawallace@example.com,942.766.2991x234,Portland,OR,441446,602412,Townhouse,1,2024-12-15,True,downsizer
+af8a1fe3-1068-4038-a249-303f4983fb7e,Susan,Avila,smithdanielle@example.com,(628)979-2326x48704,Portland,OR,320876,625708,Townhouse,2,2024-06-21,True,downsizer
+3b83cd09-e16f-48d9-a558-85fcac3c68fb,Steven,Johnson,moorekevin@example.net,+1-771-946-2730x1471,Boston,MA,477568,909328,Multi-Family,4,2025-06-16,True,upgrader
+3b69e0e8-0539-46f4-b5ce-26873a4fcaea,Miranda,Burton,hmccann@example.com,690.742.9025x72520,San Francisco,CA,855960,1712920,Single Family,2,2025-06-21,True,upgrader
+3fca92cd-01e2-4246-83d2-8952fa7bcf54,Rhonda,Kelly,kelly18@example.org,001-721-492-8554x45189,Chicago,IL,277934,392751,Multi-Family,3,2025-03-06,False,downsizer
+57710400-68ea-48ee-be08-7ac49ae66bb5,April,Watson,kjenkins@example.org,328.833.8988,Boston,MA,392056,799089,Condo,4,2024-05-13,True,downsizer
+de0c1d31-8ad8-4ba4-9d10-0cee01f7f04d,Charles,Fuentes,mendozalarry@example.com,(579)485-2401,Seattle,WA,564991,822760,Single Family,4,2025-04-05,True,downsizer
+44cb458a-6e61-4ce2-897c-a89e1a0a5f16,Douglas,Perez,jasonzavala@example.com,001-211-907-6031x089,Boston,MA,412633,1020719,Condo,3,2026-01-20,True,downsizer
+df90cfcb-fc6c-4248-8b6f-b24e8d089d6d,Johnny,Jones,websterkimberly@example.net,793.725.0124,Denver,CO,415983,700782,Single Family,4,2024-07-29,True,downsizer
+387eab36-bcbc-407e-b895-2c24eeabc945,Vincent,Chandler,williamjones@example.net,001-408-933-4280x13875,Nashville,TN,248060,448936,Single Family,1,2024-08-29,True,first_time_buyer
+f0f1e5c7-76aa-4293-ab0d-eca1a819afd8,Daniel,Davenport,gcoleman@example.org,(715)917-1827x54801,Chicago,IL,307641,514585,Condo,2,2025-09-08,True,downsizer
+25e92f3a-9b1d-41a7-b6fc-de634282c565,Justin,Burke,gloria73@example.net,(346)331-7520x71678,Portland,OR,334778,651261,Condo,2,2024-07-27,True,downsizer
+d40d10af-7d53-4ecb-be4a-490ad0957b7a,Richard,Garza,figueroapatricia@example.org,853-953-9613,New York,NY,517444,1195995,Condo,4,2024-08-16,True,downsizer
+336ce97f-ff65-4942-af96-c71502cb1413,Jennifer,Perkins,katelyn65@example.com,+1-496-278-4271x14773,Austin,TX,365139,541301,Single Family,1,2024-11-23,True,investor
+8b11a1c2-6ab4-4681-a448-718c0e972bdc,Brian,Jones,stantonpatrick@example.net,624-799-1187x73477,Nashville,TN,279118,531510,Townhouse,4,2024-07-15,True,upgrader
+8284d631-d45c-4d64-b8c2-556578cc6779,Amber,Smith,ewingnicole@example.org,(875)467-7002x8427,Seattle,WA,501614,907390,Single Family,3,2025-12-16,True,downsizer
+772bcce0-ce3c-4556-a6c3-dae856ecd851,Paul,Gallagher,rkeller@example.net,001-977-882-8064,Seattle,WA,456230,1005756,Townhouse,1,2024-12-18,True,upgrader
+c1217292-bab5-4cc6-8562-239cb1b20351,Michael,Levine,bryan90@example.org,(259)505-6165x565,Boston,MA,436521,753008,Townhouse,2,2025-07-28,True,downsizer
+0335b1f9-1a21-42c8-adc7-d5b27b04428e,Deborah,Watkins,meltondanny@example.org,6852076986,Seattle,WA,448952,904298,Condo,4,2024-11-01,True,investor
+72c5dbcc-20e5-4db0-8e2f-cfbe8ce9bde1,Brianna,Odom,uhudson@example.net,671-735-7852,San Francisco,CA,715065,1368859,Condo,3,2025-09-24,True,first_time_buyer
+9a555e53-ac23-4f59-a292-aaaadcbf4cd2,James,Reid,pittmanamanda@example.com,604-396-3919x195,Nashville,TN,354221,536921,Condo,4,2026-04-12,False,downsizer
+264edad3-cbf1-466d-8e43-9b195a483626,Amanda,Simmons,laura48@example.com,(485)936-6498x78208,New York,NY,684597,1111642,Multi-Family,4,2025-06-22,True,first_time_buyer
+5d31c952-7f36-40db-9530-7589151efb72,Suzanne,Harmon,oadams@example.net,+1-869-808-3572x324,Denver,CO,378194,680584,Townhouse,2,2024-10-06,True,downsizer
+fc0877c5-b188-412a-8ccf-6a9703ed984c,Maria,Brown,meghanadams@example.com,+1-924-993-6312x3034,San Francisco,CA,828565,1524992,Townhouse,3,2024-12-22,True,first_time_buyer
+bae0124f-ec3b-4fba-9253-eba3d96a7844,Ryan,Lucas,harrisjoseph@example.org,348-820-7001x594,Portland,OR,381952,797443,Single Family,2,2025-06-17,True,first_time_buyer
+b408d675-ccdf-4926-8098-f2661f2a36b3,Emily,Blackwell,uhahn@example.org,919.381.8984,Portland,OR,339422,765549,Single Family,4,2026-02-18,True,first_time_buyer
+1b3d263c-b463-420e-bb14-836b7e6add70,David,Roman,marisa63@example.com,221.923.4764,Denver,CO,364629,807843,Townhouse,4,2024-10-25,True,investor
+09854d0b-8378-4d41-a29e-e260e6e09df2,Holly,Rodriguez,pwells@example.com,(557)654-0900,Denver,CO,464232,826496,Townhouse,3,2025-05-28,True,investor
+ab566f75-0457-41cf-9c3a-bc2bfd12c6b4,Kyle,Mullen,rebecca18@example.org,760.864.4134x327,Nashville,TN,357480,498526,Townhouse,1,2025-06-12,True,downsizer
+b70def70-e828-4f9c-9f1e-6fc8b73ba534,Joshua,Miller,aruiz@example.com,001-961-224-8156x985,Austin,TX,403985,690085,Condo,2,2025-12-01,True,upgrader
+93c4b563-6ddd-4384-9366-cc1975f82cb4,Danielle,White,igibbs@example.org,(734)959-1123x8296,Denver,CO,455643,790964,Multi-Family,2,2025-11-12,True,upgrader
+3441a764-8d41-4192-8a82-396dd534a5b8,Jill,Green,lauren31@example.com,(926)569-3008x931,New York,NY,605668,967094,Single Family,4,2025-04-18,True,upgrader
+fc5cef38-e508-4e56-8b72-1f708955f437,Melissa,Williams,jburke@example.org,(529)610-8677x133,Nashville,TN,294563,537608,Single Family,1,2024-11-11,True,downsizer
+ed4978ab-664b-4b21-9529-543caf90580f,Troy,Anderson,carolcarney@example.com,001-736-926-2044x3973,Nashville,TN,342012,599135,Multi-Family,2,2024-11-30,False,investor
+9e7bc21e-ef6a-4abb-928e-334fcce1ca1e,Taylor,Savage,tmcdaniel@example.com,001-769-241-1800x537,Portland,OR,340280,757085,Townhouse,2,2024-07-05,True,downsizer
+8f08def4-61db-4920-affd-fd077c744dac,William,James,ilambert@example.net,4923428757,Nashville,TN,347298,592450,Single Family,1,2024-05-07,True,downsizer
+9bfa5eda-be5f-4225-b4a3-1a67ee637fbb,Alyssa,Thomas,edwardstiffany@example.com,956-444-9485x625,Austin,TX,286772,687971,Multi-Family,4,2024-12-21,True,downsizer
+488dd3d3-7738-4cdb-8ce6-bdf7e36b912b,Sandra,Fields,jbrown@example.org,920.274.2761,Denver,CO,494289,855086,Townhouse,2,2025-06-14,True,upgrader
+2e4f56d3-700e-4f29-ab93-419471286c8b,Vanessa,Hoffman,uvasquez@example.org,551-234-2284,Boston,MA,517644,796376,Townhouse,2,2025-03-22,True,upgrader
+43f48d00-016a-431e-b442-1ca3ae834da3,Ashley,Butler,sancheztyler@example.org,904-616-5915x20177,Denver,CO,400823,630079,Single Family,1,2025-05-23,True,first_time_buyer
+f2c65f4c-6553-4037-8cb3-ec0daed8da7f,Adam,Booker,unguyen@example.net,001-823-304-5018,Chicago,IL,272336,475902,Multi-Family,1,2025-07-12,True,upgrader
+2cd2cac3-e042-42c3-b19e-7daa909cd935,Gregory,Hanna,ndavis@example.org,(764)521-4764x9251,Boston,MA,582690,852252,Condo,4,2025-02-19,True,downsizer
+47069c22-3fbf-4a3d-87b2-3289e01fd52b,Nicole,Alvarez,bdavis@example.com,+1-326-661-0857x327,Boston,MA,532498,748288,Townhouse,3,2025-04-26,True,investor
+88144104-0a59-46a7-8fe8-31101fcc8a2e,Christian,Solis,edgar24@example.org,964.690.8108x18661,New York,NY,707232,1255092,Condo,2,2025-04-11,True,first_time_buyer
+070fee81-5da5-4ed5-b156-a3315f9c252f,Brenda,Mack,wilsondorothy@example.org,(960)616-4597,Seattle,WA,556504,924034,Condo,2,2025-01-18,False,downsizer
+b408296e-57af-4907-ac03-0c74b38f5b6f,Samantha,Patrick,jacobburgess@example.net,816-980-0610x277,Denver,CO,344303,632627,Single Family,4,2025-01-08,True,downsizer
+a72c7b02-acea-402c-804f-e4db789e4ce0,Lisa,Jensen,fballard@example.org,(403)510-3037,Nashville,TN,334929,489557,Single Family,2,2024-12-11,True,upgrader
+b2b12db4-2cf0-4b53-ab4a-930bb593f9e4,Connie,Tyler,christophercarrillo@example.org,560.612.2777x0793,Austin,TX,384465,643141,Townhouse,2,2025-03-18,True,investor
+a6d08128-4ff1-4baf-813b-6052b96137da,Martha,Williams,garciamelanie@example.com,(579)298-4076x78997,New York,NY,585363,958191,Condo,4,2025-06-24,True,investor
+76569561-afdd-4b03-a543-c1907c21cb65,Robert,Stewart,adamsdeborah@example.com,579-957-6024,Portland,OR,395712,567753,Single Family,3,2025-05-25,False,investor
+6e3312b9-9fd5-4e79-8cd5-5ac932c60208,Jesse,Robinson,sandra72@example.com,001-566-457-2934x1722,New York,NY,729507,1176561,Townhouse,2,2025-01-10,True,first_time_buyer
+c809e1d3-10b7-4e8f-bfd3-0a6a218168be,Craig,Perry,ntorres@example.net,3057452280,Austin,TX,349294,498103,Condo,1,2025-07-20,False,downsizer
+94d5495f-b8ef-445e-b74f-49a72aa21639,Christina,Martinez,tomchaney@example.com,001-308-242-8910x77119,San Francisco,CA,754540,1601945,Multi-Family,4,2025-03-14,True,first_time_buyer
+4d483110-d090-4f08-9a1f-a377ad91306f,Gary,Wilson,rhondamoore@example.com,001-878-271-2552x137,San Francisco,CA,837426,1293974,Single Family,3,2025-05-09,True,investor
+b7792e27-8f99-4a1c-a040-fbfd59941063,Lisa,Peterson,christopherwatson@example.com,(732)286-3266x678,Chicago,IL,266320,453378,Single Family,3,2024-10-30,True,investor
+a6896016-8eff-406e-a470-2eaa312252fd,Kayla,Robbins,millerleroy@example.org,(706)202-9084x66845,Austin,TX,303004,703041,Single Family,4,2025-03-23,True,first_time_buyer
+405dbdd5-5846-4ca0-bfb3-8162aad7ade5,Rachel,Bishop,isabellagriffin@example.org,+1-299-775-6341,Miami,FL,399911,714513,Condo,1,2025-12-29,True,investor
+df68497b-da51-4c72-948c-4ef8fa1c3deb,Jennifer,Hobbs,jason88@example.com,752.600.8943x46810,Austin,TX,292117,709428,Townhouse,2,2025-02-13,True,upgrader
+fa93e8e1-2a29-459a-bf05-b729c79bbdd8,Michael,Williams,westashley@example.org,453.899.8935x449,Boston,MA,540428,724540,Multi-Family,3,2025-08-05,True,upgrader
+8b99250b-3106-4f6e-a222-cfff188c5da8,John,Murphy,mackenzieward@example.org,(566)911-0627,Seattle,WA,551781,943651,Townhouse,1,2025-05-18,True,investor
+b79ce473-4072-4ca1-beef-7dd9f89545d1,Erica,Powell,lwiggins@example.com,+1-367-576-2282x7728,Nashville,TN,258877,594665,Single Family,2,2024-06-30,True,first_time_buyer
+ae6dad9b-edc3-45e8-a858-f38948526349,Antonio,Moore,sandra19@example.com,715-694-0821,Austin,TX,385923,497764,Single Family,4,2025-04-01,True,investor
+f0f8c1dd-eb05-44fb-bc10-6dec8d17ef9b,Kevin,Tucker,douglaslawrence@example.org,643-927-0185x1067,Chicago,IL,307771,535059,Multi-Family,2,2026-04-28,True,downsizer
+9cf7b4ea-f07d-4f28-8d02-11673311d09c,Kimberly,Alvarez,kathleenwagner@example.com,001-277-925-1996x63658,Nashville,TN,272550,455577,Townhouse,1,2026-02-21,True,first_time_buyer
+ce80ad7a-3713-4987-bc58-435cf4389d76,Debbie,Cline,armstronglaura@example.net,981-281-3989x0983,Chicago,IL,233434,475260,Single Family,4,2025-10-23,True,downsizer
+9c356923-22a6-4252-a6d0-10c69029bf67,Sharon,White,hilljamie@example.net,001-971-289-5690,Miami,FL,416029,627674,Single Family,4,2024-07-30,True,investor
+32aadb35-0f19-4b5c-a5a8-2998d731ddd3,Henry,Johnson,patrick11@example.org,+1-824-422-4124,Miami,FL,384571,625977,Condo,4,2025-01-07,True,downsizer
+7da8d4cc-b153-4916-8db3-317e7ddc9b35,Susan,White,evanscorey@example.org,(854)361-0339x93788,Denver,CO,450856,755303,Condo,2,2024-06-16,True,downsizer
+1c7cce62-2cb0-4e47-b439-35060ff6a068,Lucas,Tran,washingtonrick@example.org,8489913824,Austin,TX,301454,572945,Single Family,3,2024-11-16,True,downsizer
+7a539889-9277-4f51-b8b4-c15ff1b0d85d,Cynthia,Harris,nathanielgalloway@example.org,+1-468-270-0794,Miami,FL,315592,682453,Condo,4,2024-07-04,True,first_time_buyer
+ba9c9bdd-df60-439d-9a71-ba054a8c2283,Sandra,Nelson,mary65@example.net,698.340.2891,Chicago,IL,284723,401279,Condo,4,2024-06-16,True,upgrader
+4ec211e4-0457-44ae-92dc-ea7374574629,David,Taylor,natalie39@example.net,254-974-3553x79502,Portland,OR,446183,571225,Single Family,2,2025-02-16,True,downsizer
+7e4a44d4-5ef0-475e-826a-5f6410006043,Albert,Thompson,ifarmer@example.org,+1-318-907-1569x5620,Boston,MA,505419,735241,Condo,2,2024-05-07,True,upgrader
+d9a67702-f45c-4a54-bff7-43b293fc2a56,James,Smith,changerin@example.net,(531)294-3375x047,New York,NY,688685,1247524,Townhouse,4,2025-01-29,True,first_time_buyer
+d5bead56-3067-4d19-b09e-565f0bf587c2,Lori,Foster,ashley72@example.net,499.692.1921,Denver,CO,352458,816790,Single Family,2,2024-09-24,True,downsizer
+7e2ff2e9-9235-45dc-b026-319ba076bb01,Melissa,Ibarra,james08@example.net,987-906-0566x418,Portland,OR,347104,580184,Townhouse,2,2026-03-17,True,downsizer
+4f02e10c-d963-4722-8cb3-6c5512b807be,Katherine,Stephenson,brandonhull@example.net,550.563.5190x361,Miami,FL,427872,572605,Townhouse,1,2025-01-23,True,upgrader
+64045d22-b7e9-41eb-b08a-f990cc8a0c4a,Lance,Garrett,johnsonryan@example.org,001-754-531-7350,Chicago,IL,219577,428438,Townhouse,4,2024-09-01,True,upgrader
+6ee0ebd4-e3e6-4c4c-a858-eec061692e4c,Kimberly,Harvey,garrettbeth@example.org,6068512070,Miami,FL,423013,593466,Multi-Family,4,2026-03-24,True,investor
+458ecdcc-c5ce-4095-803c-78c1ff0e8db3,Erica,Hansen,melissa61@example.net,001-263-999-0767x69915,Boston,MA,480098,976266,Condo,1,2024-06-21,True,investor
+13803893-eafb-4f0b-ac7d-2164aad83167,Briana,Rodriguez,larsoncarlos@example.org,001-428-545-6797,Chicago,IL,230803,455101,Single Family,3,2025-05-17,False,first_time_buyer
+473a76c0-5cd4-484f-92ad-267ce62d0ca2,Bradley,Anderson,ppalmer@example.com,498-222-7495x4508,Austin,TX,404616,539493,Multi-Family,2,2024-08-12,True,upgrader
+5f49dc5f-68f3-4f75-b95a-060dfa0c8e7c,Lori,Hansen,hendersonjames@example.org,+1-631-853-7795x9959,Boston,MA,398325,864823,Condo,4,2024-10-24,True,downsizer
+e272713c-902b-4a3f-9d30-72abe8a40609,Daniel,Walter,crawfordsamantha@example.net,537.893.3756,Portland,OR,304422,720803,Condo,3,2024-12-30,True,investor
+51934f18-40d8-4c58-b0c1-01d31ff03aa7,Veronica,Cox,howardangela@example.org,473-795-0033x4234,Miami,FL,341978,770855,Single Family,2,2024-09-15,True,downsizer
+2794ecde-323d-498b-af78-b731207cb699,John,Gonzalez,meganlozano@example.org,+1-826-315-3473x55289,New York,NY,735108,1138588,Single Family,3,2026-01-13,True,downsizer
+852530b4-009d-4f8a-a555-bb9cfd2f09ee,Nicole,Anderson,jamesgray@example.com,696-430-9938x42530,Denver,CO,436037,824229,Condo,1,2024-07-29,False,upgrader
+fd7f931c-f4e9-47ac-a2d1-9ddfc8258002,Tanya,Blackwell,jessicamueller@example.net,+1-712-986-8578x725,Portland,OR,381677,671169,Townhouse,4,2026-01-16,True,first_time_buyer
+a8c0deb5-b6c7-4f2d-b5d3-86e878fdef0a,Troy,Adams,ylittle@example.net,+1-403-733-7363x4669,Nashville,TN,311653,445860,Townhouse,1,2025-10-09,True,downsizer
+3d376db7-0a11-44d0-8fa0-f6e356feda0b,Christopher,Walton,sean53@example.net,8787956776,San Francisco,CA,777952,1531193,Condo,2,2024-11-06,True,investor
+5ca7e000-f962-4803-8df1-eea7c5c0febb,Logan,Reyes,scottbaker@example.org,(714)288-8143x111,Miami,FL,380053,747809,Single Family,2,2025-12-13,True,downsizer
+908e6948-7061-474b-b72e-88d679739727,Matthew,Leonard,kevin43@example.net,+1-928-440-4456x690,Nashville,TN,352224,638308,Condo,2,2025-06-07,True,upgrader
+0ec1a416-7e30-4cfc-9bc2-b2201a3c9e1f,Jeremy,Cummings,thomasblack@example.net,001-777-451-5366x37780,Nashville,TN,349677,445641,Townhouse,2,2026-01-26,True,investor
+c1afed4c-8a5b-46ba-b3e8-93ffb6ba2a0a,David,Harding,porterdonna@example.com,736-866-8459x09022,Portland,OR,381318,593889,Single Family,1,2025-06-30,True,investor
+1072f3f8-f44f-410c-b50a-c4ae2b544808,James,Myers,glopez@example.com,001-974-212-1820,Austin,TX,341070,495153,Condo,2,2026-04-20,True,investor
+8c3a4626-c74b-4da7-8c6d-1124fd633c28,Chad,Mccarty,jamie48@example.org,805.980.2566x212,Nashville,TN,247146,469542,Condo,1,2024-09-17,True,upgrader
+419ba7e2-2d07-4515-ac8b-04d97fa05478,Paul,Berger,davidharris@example.com,001-272-499-4938x743,Boston,MA,462850,1021125,Multi-Family,1,2025-10-29,True,upgrader
+418d846d-3960-4ea0-b67b-4e5dd37d0d53,Makayla,Jacobs,aliciakent@example.com,879.501.4754x692,Chicago,IL,312465,513161,Multi-Family,4,2025-03-25,True,investor
+e04a60dd-328c-45de-8516-62d90a3e356e,Christine,Reynolds,lbartlett@example.net,001-316-503-2484,San Francisco,CA,888874,1720864,Townhouse,2,2024-09-12,True,investor
+03e0fa34-05e3-42f6-8277-a71419f1e09b,Robert,Gill,carneycharles@example.org,756.872.4380x70176,New York,NY,588239,1227611,Condo,2,2026-02-27,True,downsizer
+5125b871-0a57-4e7f-846f-10fa47d4696d,Randy,Smith,fletcherderek@example.net,001-477-271-1837x2742,Seattle,WA,426800,980836,Condo,1,2026-01-19,False,investor
+a4507621-7265-4b5d-9830-26e4e260a401,Gregory,Martinez,qjackson@example.org,+1-842-675-2308x37081,Nashville,TN,329441,487599,Townhouse,2,2025-07-21,True,first_time_buyer
+85500dae-fe71-4290-9874-a27163ce578a,Carly,Williams,pwang@example.com,331.506.0053,Nashville,TN,293595,493042,Condo,1,2025-03-24,True,first_time_buyer
+42fe5928-cf35-46fd-a667-3741c6e597aa,Colin,Conley,jenniferwilliams@example.net,855-383-9386,Austin,TX,276499,593599,Multi-Family,2,2026-04-04,True,downsizer
+af3c4ecb-29ed-403b-9129-89c11bf20631,Daniel,Morris,moralesleslie@example.com,573.814.9501,New York,NY,599563,1094522,Multi-Family,2,2024-10-20,True,first_time_buyer
+96edc63f-8989-417d-81a2-38d3f053f388,Carol,Bird,marquezkylie@example.net,(741)995-6252,Austin,TX,309812,566711,Single Family,1,2024-12-10,True,downsizer
+5f481da1-c608-4daf-9108-1b29fe01a5d8,Andres,Barr,oreyes@example.net,589.803.0914,Chicago,IL,286858,480733,Single Family,3,2024-06-22,True,downsizer
+07c543ca-fd01-4ebb-a316-e73bb9fff8ec,Christine,Brown,victor32@example.com,203.897.5245,Austin,TX,328228,642067,Multi-Family,2,2025-11-08,True,upgrader
+2c7592bf-ebb6-4b66-8540-935c61b4d81b,Keith,Johnson,matthew38@example.org,+1-233-496-8527x01713,Denver,CO,490775,717551,Townhouse,3,2025-08-20,True,first_time_buyer
+fb28583f-4fd7-44f5-a407-87cae0fd4008,David,Thompson,joelmiller@example.net,942.533.6293x449,Austin,TX,323041,618674,Multi-Family,2,2026-03-20,True,first_time_buyer
+71afc40c-7816-469f-851d-79692567400d,Kimberly,Miller,raymond27@example.com,(489)662-7066x14982,New York,NY,532345,1285156,Multi-Family,2,2024-11-18,True,investor
+9889666f-b2e1-4591-a814-470b4d304efa,Kevin,Campbell,ijones@example.net,832.930.0857x6665,Chicago,IL,277010,555985,Multi-Family,1,2025-02-06,True,downsizer
+28c4bec0-843f-4788-ba88-3f0ea95f8c49,Vanessa,Jones,riddledavid@example.net,(836)845-8750,Portland,OR,373364,715260,Single Family,4,2024-12-15,True,downsizer
+f65ce849-a6d0-45c1-a2e4-488cbb4a8197,John,Johnson,crystal02@example.com,+1-872-343-9920x116,Nashville,TN,262389,448923,Multi-Family,4,2025-10-23,True,upgrader
+1c36c42f-e2cc-40d1-b6a4-7a65da4dee42,Jacob,Henderson,tking@example.net,+1-469-646-1195,Seattle,WA,432944,1033282,Single Family,1,2025-05-18,True,downsizer
+417c38cb-5c66-4bc2-920f-95e6ff5d7d5a,Sarah,Sanders,adam27@example.org,716-486-4622,Seattle,WA,467777,791344,Multi-Family,4,2025-11-02,False,downsizer
+af90beda-cf35-4e81-91ea-40d3e45dcde8,James,White,hayeslisa@example.org,402.334.6791,Seattle,WA,605147,936691,Single Family,4,2025-09-30,False,first_time_buyer
+6d8d7c78-d669-4723-80ef-a987aab0856e,Nicholas,Hill,anthony37@example.com,+1-610-904-0901x38069,San Francisco,CA,848502,1494249,Condo,1,2024-12-04,False,downsizer
+c2a6cfa5-ead6-4bb6-8baa-3ca5176e5563,Matthew,Jordan,evelyn55@example.org,(266)390-5510x762,Chicago,IL,309651,414253,Condo,2,2025-04-14,True,downsizer
+f208f6ac-4f8f-4796-bf2b-7ba0c07e8bd6,Joshua,Lyons,miguelmontgomery@example.net,986.830.5050x5739,Boston,MA,582714,856502,Condo,3,2026-01-29,True,first_time_buyer
+517e1734-daf0-4ff5-ba22-a56e3540f423,Laura,Bailey,shatfield@example.org,001-664-993-2898x0271,Boston,MA,465679,844140,Townhouse,3,2025-10-26,True,first_time_buyer
+b8cb17e3-36a6-4b0f-acb8-6a2d42309e1e,Sean,Wilson,johnjackson@example.net,001-311-460-2564x347,Seattle,WA,543390,1043589,Single Family,4,2024-09-03,True,first_time_buyer
+0ef293ec-0373-47ec-9bbb-211c0c6dc2fd,Cynthia,Vasquez,monica99@example.org,+1-356-768-6334x1411,Boston,MA,499723,747821,Townhouse,3,2026-03-09,True,upgrader
+f1cf8753-706e-4fa4-8248-ca33aeac0816,Sharon,Garner,berrydavid@example.com,(590)340-9836x6552,New York,NY,676970,1178109,Multi-Family,1,2025-10-27,True,downsizer
+916e78cf-5da6-4ee7-baa2-a88776bf969b,Amanda,Murray,lisaphillips@example.org,972.594.2095x4814,Chicago,IL,274915,504142,Multi-Family,1,2025-02-16,True,upgrader
+17efe7e2-e5cf-400d-b226-75ea15ca3cbf,Janet,Bennett,eric33@example.net,001-702-876-4208x6567,Denver,CO,338133,735685,Townhouse,3,2025-04-30,True,upgrader
+04f56e3a-682b-4aad-84f5-e61bf23bc52a,Allison,Campbell,jacquelinekelley@example.org,(959)904-7292,Miami,FL,342051,672904,Single Family,2,2025-02-13,True,downsizer
+3803a4bc-14e1-46dd-a038-879cb7b7c3cf,Duane,Robinson,jillsmith@example.net,001-912-466-2015,Nashville,TN,272330,523354,Single Family,2,2024-12-02,True,downsizer
+be0d2f5a-76d0-4f24-a69d-a2906e7a4550,David,Robertson,brittney26@example.org,3139674926,Portland,OR,413923,766797,Single Family,2,2026-03-25,True,downsizer
+8239e441-f9df-47c6-9e5e-9723591b34dc,Debra,Hill,hrichardson@example.org,917-683-0999,Chicago,IL,291954,476750,Single Family,2,2026-01-26,True,investor
+1697b368-160a-4c25-95b2-4a5906738df3,Cody,Watkins,pwashington@example.net,(949)321-5182x60688,Austin,TX,303681,597700,Townhouse,2,2025-09-23,True,downsizer
+907813dc-2c46-4935-a531-1e46fd6e47ff,Brenda,Reeves,molinajared@example.net,229-420-8751,San Francisco,CA,790990,1717690,Single Family,2,2025-05-18,True,downsizer
+b54a99cf-87a0-4081-bdf0-81c9b88d7c64,Denise,Miller,melissa01@example.org,445.982.6034x08487,Chicago,IL,310854,468051,Townhouse,3,2025-06-28,True,upgrader
+16750515-747e-43bf-b924-cfc5034e1e0f,Alexandra,Andersen,catherine83@example.net,503-703-2432,Boston,MA,445588,840633,Condo,2,2025-09-24,True,investor
+ba066b02-97ab-40f3-b36d-66ef940c56c5,Jessica,Henderson,jorge26@example.com,746-428-3143,Denver,CO,374398,717614,Single Family,1,2024-11-22,True,investor
+c30b38b1-cd83-4fc4-9cb8-33f6b5d328d4,Eric,Riddle,mgray@example.org,341-781-8615,Chicago,IL,273119,386481,Townhouse,3,2025-03-06,True,upgrader
+dc7256c2-14e4-40c7-b89f-0e76067cd1d6,Kimberly,Thomas,joshuagarcia@example.org,(611)328-4971x8594,New York,NY,738348,1296924,Multi-Family,3,2026-02-27,True,upgrader
+5e3a23c8-38f1-40f6-a551-ecc2497d838e,George,Potts,zwhite@example.net,+1-888-696-7924x08222,San Francisco,CA,932022,1428433,Single Family,1,2026-02-18,True,upgrader
+5e333aa7-a4ae-4a02-b50c-7c7366d8b606,Jessica,Villegas,erikabarnes@example.com,(575)678-4468,San Francisco,CA,873622,1544977,Townhouse,1,2024-06-11,True,upgrader
+d4e5b889-ed8a-4b9c-ac84-3394e8d090eb,Christopher,Torres,megan11@example.net,212.890.1487,Miami,FL,396089,765372,Townhouse,3,2025-08-11,True,investor
+61d95137-361e-4554-a03e-7564ce7ab5fb,Sarah,Taylor,rrobertson@example.net,001-216-909-3068x538,Austin,TX,378733,675531,Multi-Family,3,2025-09-10,True,first_time_buyer
+5cb08ada-05f9-482e-a96d-531cabcbb97f,Emily,Macias,gregoryrichardson@example.org,650.967.6251x53814,Portland,OR,449620,614856,Multi-Family,4,2026-04-09,True,first_time_buyer
+90d3586d-6dbd-4636-ab60-beb0ae349e7f,Jason,Rojas,trobinson@example.net,207.797.0509x75451,Seattle,WA,568694,970214,Condo,3,2024-12-04,True,investor
+d042a52b-c403-45f7-a246-542a67b72dd0,Jacob,Gomez,jordanjames@example.net,826.417.0243x76545,San Francisco,CA,870643,1471654,Townhouse,3,2026-02-13,True,investor
+36870d17-7d0d-4720-a3eb-95e0acdd38fc,Joseph,Mayo,wmartin@example.net,(505)931-3402x66502,Miami,FL,314640,581986,Townhouse,2,2025-05-31,False,upgrader
+751b51aa-305c-45fa-8733-dbb42d42d206,Tonya,Wilson,zpierce@example.net,001-725-268-6211x022,Boston,MA,433339,787581,Townhouse,4,2026-04-05,True,upgrader
+0f2e9081-fc84-4e27-bc74-636c11d1278c,Joel,Gregory,russell90@example.com,344.671.6392x8234,Nashville,TN,271267,498810,Single Family,4,2025-11-15,True,first_time_buyer
+0b3b94cf-9062-47ec-b191-e3721cd4ee6a,John,Hoover,thomaspatton@example.org,001-689-523-9231x260,Portland,OR,433413,675119,Multi-Family,3,2026-04-30,True,investor
+b88b6697-a2ce-46ed-a1e9-84a7b4c91d15,Ronald,Jensen,linomar@example.net,733-656-7086x0414,Chicago,IL,314196,444967,Multi-Family,2,2026-03-14,True,investor
+7ebfa138-3556-49e8-a6e5-6ac1941c830b,Jennifer,Wright,whiteaaron@example.net,001-753-647-4916x2475,Boston,MA,485078,920085,Condo,3,2026-03-24,True,first_time_buyer
+2926bce1-8914-4a6a-96e8-fd99ce1e8697,Elizabeth,Vega,markfigueroa@example.com,001-398-295-3439x6112,Portland,OR,341029,740298,Condo,2,2024-07-24,True,first_time_buyer
+824511b6-14ca-49c3-9fe8-5eb3d8857b31,Rhonda,Pena,jamesgriffin@example.org,289-454-7382,Chicago,IL,274520,495860,Multi-Family,4,2025-07-06,False,downsizer
+264bb757-93e1-441d-b028-090f1fd7d238,Andrea,King,patricia71@example.com,476-688-0294,Austin,TX,275092,539868,Townhouse,1,2024-09-21,True,investor
+cd4fe6ed-51df-457f-b717-78a902482860,Ashlee,Bauer,joysanders@example.net,+1-881-627-8686,Austin,TX,361360,636004,Condo,2,2024-06-06,True,upgrader
+a68adcb1-bdd1-45e1-9ab8-d065fedd7e52,Adam,Armstrong,suarezkrystal@example.com,684.243.4481x23083,Miami,FL,319339,645887,Townhouse,2,2024-10-02,True,first_time_buyer
+f6a8612b-cf79-444c-a180-d942c43fec8a,Sheri,Ramirez,josephgibbs@example.net,338.610.5955,Miami,FL,442269,663981,Townhouse,4,2025-08-14,True,investor
+afeb1748-752a-44cd-bf8a-c4f5ef3bc434,Ricky,Carr,tracie05@example.org,001-942-540-8916x4983,Nashville,TN,359536,538035,Condo,2,2025-10-13,False,downsizer
+07474d9c-a56b-4d8f-afc4-5ba30bb009b8,James,Soto,omoore@example.net,001-965-427-1727x2239,Austin,TX,300836,658612,Condo,2,2024-12-27,True,investor
+c5cef91e-de0d-48f6-bbda-b57fc15bbba3,Andrew,Martin,lisamcdaniel@example.org,421-263-7618,Boston,MA,461485,926425,Single Family,4,2025-08-20,True,upgrader
+9db75022-a757-4c33-81b5-2aa0f63a493c,Nicholas,Smith,hinesdeanna@example.org,(731)342-9001,San Francisco,CA,865634,1536658,Single Family,1,2025-07-19,True,first_time_buyer
+c0f78005-6d03-4e55-a2b9-f979016356d4,Timothy,Hart,tochoa@example.com,323.808.4810x0184,Austin,TX,363116,588774,Multi-Family,1,2024-09-28,True,downsizer
+4e11f928-bdb1-46a0-ad28-623e7196c47f,Rhonda,Johnson,wcruz@example.net,736-317-2131x4519,Chicago,IL,231576,505004,Single Family,3,2024-08-15,True,first_time_buyer
+d0c68c32-b461-4700-8f95-25347c64052b,Sandy,Miller,munozgregory@example.net,392-262-4945x14754,San Francisco,CA,749092,1543098,Condo,4,2025-01-22,True,first_time_buyer
+af1a0c3f-826f-4c81-924b-f386b9930d3c,Tiffany,Strickland,lukemyers@example.net,711.996.4215x2265,San Francisco,CA,897192,1274754,Single Family,1,2026-01-23,True,investor
+d1093de6-1720-4e2c-98f5-b13dd20458c8,Heather,Gutierrez,devon36@example.com,+1-378-887-8836,Miami,FL,424724,793279,Townhouse,4,2025-03-09,True,first_time_buyer
+7e72fef6-08fd-4c61-9d80-427004af680d,Kimberly,Shepherd,jacquelineyoung@example.org,705.487.2105,San Francisco,CA,823797,1324231,Multi-Family,3,2025-05-24,True,first_time_buyer
