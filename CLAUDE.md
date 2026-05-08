@@ -77,6 +77,7 @@ Browser → FastAPI (port 8000) → serves frontend/dist/ (static) + REST API (/
 - Dashboard API client: `frontend/src/api/campaign.ts`
 - Data generation: `notebooks/01_generate_data.py`
 - Lakebase migration: `notebooks/02_migrate_to_lakebase.py`
+- Lakebase data exports (CSV): `data/` (users, properties, browsing_activity, recommendations, campaign_tracking, campaign_emails)
 - Deployment: `databricks.yml`, `databricks-genie.yml`, `app.yaml`
 
 ## Key Patterns

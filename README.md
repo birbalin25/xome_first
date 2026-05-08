@@ -97,6 +97,8 @@ Six tables in Lakebase (PostgreSQL). First four seeded by notebooks, last two au
 | `campaign_tracking` | — | Records which emails were sent for which user+property+recommendation |
 | `campaign_emails` | — | Saved email content (subject, html_body, plain_text, filename) |
 
+CSV exports of all tables are available in `data/` for offline reference.
+
 ---
 
 ## Project Structure
@@ -126,6 +128,13 @@ frontend/
       email/           # EmailPreview, EmailActions
     types/index.ts     # TypeScript interfaces
   dist/                # Built frontend (served as static files)
+data/
+  users.csv                   # 500 buyer profiles
+  properties.csv              # 1K property listings
+  browsing_activity.csv       # 10K browsing events
+  recommendations.csv         # 5K ML-scored recommendations
+  campaign_tracking.csv       # Campaign send records
+  campaign_emails.csv         # Saved email content
 notebooks/
   01_generate_data.py         # Data generation pipeline
   02_migrate_to_lakebase.py   # Delta → Lakebase migration
