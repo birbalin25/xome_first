@@ -64,6 +64,8 @@ Two paths (4 nodes total) routed by the `source` field in `CampaignState`:
 - Follow-up queries call `create_message()` on the same conversation
 - Returns raw `columns` + `rows` directly to the frontend as a table
 
+**MLflow Tracing** — `mlflow.langchain.autolog()` traces the overall graph invocation and LLM calls. Manual `@mlflow.trace` decorators on `enrich_context`, `generate_email`, and `query_genie_node` capture per-node input/output as child spans. Traces are logged to the experiment `/Shared/xome-lakebase-campaign-tracing`.
+
 ---
 
 ## REST API

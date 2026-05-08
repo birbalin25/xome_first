@@ -95,7 +95,7 @@ Browser → FastAPI (port 8000) → serves frontend/dist/ (static) + REST API (/
 
 **Connection pooling** — `tools.py` uses a thread-safe singleton psycopg2 connection (`_lock` + `_conn`) with auto-reconnect: on `OperationalError` (token expiry or connection drop), it refreshes the Databricks-issued Lakebase token and retries once.
 
-**MLflow tracing** — `start_server.py` calls `mlflow.langchain.autolog()` on experiment `/Shared/xome-lakebase-campaign-tracing`. All LangGraph invocations are traced automatically.
+**MLflow tracing** — `start_server.py` calls `mlflow.langchain.autolog()` on experiment `/Shared/xome-lakebase-campaign-tracing`. All LangGraph invocations are traced automatically. Additionally, `@mlflow.trace` decorators on `enrich_context` (span_type=tool), `generate_email` (span_type=chain), and `query_genie_node` (span_type=tool) in `graph_nodes.py` capture per-node input/output as child spans within each trace.
 
 **Startup table creation** — FastAPI lifespan hook in `start_server.py` auto-creates `campaign_tracking` and `campaign_emails` tables via `CREATE TABLE IF NOT EXISTS`.
 
