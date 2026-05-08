@@ -1,10 +1,9 @@
 import type {
   FilterOptions,
-  FilterState,
   GeneratedEmail,
+  GenieQueryResponse,
   Property,
   UserProfile,
-  UserSummary,
 } from "../types";
 
 const BASE = "/api/campaign";
@@ -22,16 +21,18 @@ export async function fetchFilters(): Promise<FilterOptions> {
   return json(res);
 }
 
-export async function searchUsers(
-  filters: Partial<FilterState>
-): Promise<UserSummary[]> {
-  const res = await fetch(`${BASE}/users`, {
+export async function queryGenie(
+  query: string,
+  conversationId?: string | null
+): Promise<GenieQueryResponse> {
+  const body: Record<string, string> = { query };
+  if (conversationId) body.conversation_id = conversationId;
+  const res = await fetch(`${BASE}/genie-query`, {
     method: "POST",
     headers: { "Content-Type": "application/json" },
-    body: JSON.stringify(filters),
+    body: JSON.stringify(body),
   });
-  const data = await json<{ users: UserSummary[] }>(res);
-  return data.users;
+  return json(res);
 }
 
 export async function fetchUserProfile(

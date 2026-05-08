@@ -188,7 +188,7 @@ export default function FilterPanel({
         disabled={loading}
         className="w-full rounded-md bg-xome-600 px-4 py-2.5 text-sm font-medium text-white shadow-sm transition hover:bg-xome-700 disabled:opacity-50"
       >
-        {loading ? "Searching..." : "Search Users"}
+        {loading ? "Applying..." : "Apply Filters"}
       </button>
     </div>
   );

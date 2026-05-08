@@ -12,6 +12,12 @@ from pydantic import BaseModel
 # Load env vars from .env before importing other modules for proper auth
 load_dotenv(dotenv_path=Path(__file__).parent.parent / ".env", override=True)
 
+import mlflow  # noqa: E402
+
+mlflow.set_tracking_uri("databricks")
+mlflow.set_experiment("/Shared/xome-lakebase-campaign-tracing")
+mlflow.langchain.autolog()
+
 from agent_server.campaign_api import router as campaign_router  # noqa: E402
 from agent_server.chat_api import router as chat_router  # noqa: E402
 from agent_server.tools import _execute_sql  # noqa: E402

@@ -1,5 +1,7 @@
 # CLAUDE.md
 
+This file provides guidance to Claude Code when working with the Xome Campaign Platform codebase.
+
 ## Project Overview
 
 Xome Campaign Platform — an AI-powered real estate campaign tool that generates personalized emails promoting recommended properties to high-intent buyers. Built with FastAPI backend, React + TailwindCSS frontend, LangGraph orchestration, deployed as a single-process Databricks App.
@@ -14,7 +16,8 @@ Xome Campaign Platform — an AI-powered real estate campaign tool that generate
 - LangGraph graph: `agent_server/graph.py`
 - Email generation logic: `agent_server/email_generator.py`
 - LLM setup: `agent_server/agent.py`
-- SQL helper: `agent_server/tools.py`
+- Lakebase helper (psycopg2): `agent_server/tools.py`
+- Config constants: `agent_server/config.py`
 - Prompts: `agent_server/prompts.py`
 - Server entry point: `agent_server/start_server.py`
 - Frontend (React): `frontend/`
@@ -43,45 +46,6 @@ Browser → FastAPI (port 8000) → serves frontend/dist/ (static) + REST API (/
 - Dashboard: `React UI → campaign_api.py → LangGraph (source=dashboard) → email_generator.py → Claude LLM`
 - Chat: `React UI → chat_api.py → LangGraph (source=chat) → email_generator.py → Claude LLM`
 
-**LangGraph StateGraph:**
-
-```mermaid
-graph TD
-    subgraph Legend
-        direction LR
-        L1[Node] -->|solid = graph flow| L2[Node]
-        L3[Data] -. dashed = data from frontend .-> L4[Node]
-    end
-
-    subgraph Frontend["React Frontend -- already fetched"]
-        FE_PROFILE[user_profile]
-        FE_PROPS[properties]
-    end
-
-    START([START]) --> process_input
-
-    FE_PROFILE -. dashboard: reuses profile, skips DB .-> process_input
-    process_input -->|error| handle_error
-    process_input -->|ok| retrieve_candidates
-
-    FE_PROPS -. dashboard: reuses properties, skips DB .-> retrieve_candidates
-    retrieve_candidates --> rank_and_select
-    rank_and_select -->|error| handle_error
-    rank_and_select -->|dashboard: pass-through| enrich_context
-
-    enrich_context -->|Lakebase query: browsing_activity| generate_email
-    generate_email -->|Claude LLM call| END_NODE([END])
-    handle_error --> END_NODE
-
-    style Legend fill:#fff,stroke:#ccc,stroke-dasharray: 5 5
-    style Frontend fill:#e8f4e8,stroke:#4a9,stroke-width:2px
-    style process_input fill:#f0f0f0,stroke:#999
-    style retrieve_candidates fill:#f0f0f0,stroke:#999
-    style rank_and_select fill:#f0f0f0,stroke:#999
-    style enrich_context fill:#dbeafe,stroke:#3b82f6,stroke-width:2px
-    style generate_email fill:#fef3c7,stroke:#f59e0b,stroke-width:2px
-```
-
 **Dashboard path through the graph:**
 | Node | Dashboard behavior | DB call? |
 |------|-------------------|----------|
@@ -95,6 +59,23 @@ graph TD
 
 **Single-process deployment:** FastAPI on port 8000 serves both the pre-built React frontend (from `frontend/dist/`) and all API endpoints. Databricks Apps only exposes port 8000.
 
+## Key Patterns
+
+**`source` field routing** — The `source` field in `CampaignState` (`"dashboard"` or `"chat"`) controls which graph nodes query Lakebase vs. reuse data already provided by the frontend. Dashboard skips DB calls for user profile and properties; chat executes all queries.
+
+**`CampaignState`** — TypedDict in `graph_state.py` with three field groups:
+- *Input:* `user_id`, `city`, `state`, `raw_message` (chat only), `source`, `properties_input` (dashboard only)
+- *Intermediate:* `user_profile`, `candidates`, `selected_properties`, `browsing_context`
+- *Output:* `generated_email` (`{subject, html, plain_text, raw}`), `error`, `chat_response` (chat only)
+
+**`_SanitizedChatDatabricks`** — Subclass in `agent.py` that strips `id` keys from tool message content blocks before sending to the Foundation Model API. Some LLM endpoints reject the extra `id` field that LangChain adds to content blocks.
+
+**Email parsing** — `email_generator.py` uses regex (not JSON) to extract `SUBJECT:`, `HTML:`, and `PLAIN TEXT:` sections from raw LLM output. The prompt instructs the LLM to output in this delimited format.
+
+**Connection pooling** — `tools.py` uses a thread-safe singleton psycopg2 connection (`_lock` + `_conn`) with auto-reconnect: on `OperationalError` (token expiry or connection drop), it refreshes the Databricks-issued Lakebase token and retries once.
+
+**MLflow tracing** — `start_server.py` calls `mlflow.langchain.autolog()` on experiment `/Shared/xome-lakebase-campaign-tracing`. All LangGraph invocations are traced automatically.
+
 ## Critical Rules
 
 - Campaign email properties come ONLY from the `recommendations` table. Browsing data is for personalization context only.
@@ -103,16 +84,9 @@ graph TD
 
 ## Configuration
 
-- Catalog: `serverless_stable_14ey07_catalog` (used only for UC Volume file storage)
-- Schema: `xome`
 - Workspace: fevm (`https://fevm-serverless-stable-14ey07.cloud.databricks.com`)
-- SQL Warehouse: `1f01d0f9de5b5108` (retained for UC Volume access)
-- Lakebase Instance: `xome-campaign` (Provisioned, CU_2)
-- Lakebase DNS: `ep-blue-shape-d2evoduc.database.us-east-1.cloud.databricks.com`
-- Lakebase DB: `xome-campaign`, Schema: `xome`
-- LLM: `databricks-claude-sonnet-4-6`
-- UC Volume: `campaign_emails`
 - App URL: `https://agent-xome-lakebase-campaign-7474645414452466.aws.databricksapps.com`
+- All other config values (catalog, schema, Lakebase DNS, LLM endpoint, etc.) are in `agent_server/config.py`.
 
 ## REST API Endpoints
 
@@ -150,25 +124,3 @@ databricks bundle run xome_migrate_to_lakebase --target prod
 databricks apps get agent-xome-lakebase-campaign --profile fevm
 databricks apps logs agent-xome-lakebase-campaign --profile fevm
 ```
-
-## Data Tables
-
-| Table | Rows | PK | FKs |
-|-------|------|----|-----|
-| `users` | 500 | `user_id` | — |
-| `properties` | 1,000 | `property_id` | — |
-| `browsing_activity` | 10,000 | `activity_id` | `user_id` → users, `property_id` → properties |
-| `recommendations` | 5,000 | `recommendation_id` | `user_id` → users, `property_id` → properties |
-| `campaign_tracking` | varies | — | `user_id` → users, `property_id` → properties |
-
-## Dependencies
-
-**Backend:** `fastapi`, `uvicorn`, `databricks-langchain`, `databricks-sdk`, `python-dotenv`, `langgraph`, `psycopg2-binary`. Data gen uses `faker`.
-
-**Frontend:** `react`, `vite`, `tailwindcss`, `lucide-react`, `typescript`.
-
-## Known Deployment Notes
-
-- Frontend must be built before deploy — `frontend/dist/` is served as static files by FastAPI.
-- `frontend/dist/` must be included in bundle deploy — the `!frontend/dist/` exception in `.gitignore` overrides the global `dist/` exclusion pattern.
-- npm registry: `.npmrc` in `frontend/` points to `https://registry.npmmirror.com` for corporate network compatibility.

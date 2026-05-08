@@ -72,6 +72,13 @@ export interface GeneratedEmail {
   raw: string;
 }
 
+export interface GenieQueryResponse {
+  users: UserSummary[];
+  conversation_id: string | null;
+  message_id: string | null;
+  error?: string;
+}
+
 export interface ChatMessage {
   id: string;
   role: "user" | "assistant";

@@ -7,6 +7,8 @@ import re
 from langchain_core.messages import HumanMessage, SystemMessage
 
 from agent_server.email_generator import generate_campaign_email, parse_email_response
+from agent_server.genie_client import query_genie
+from agent_server.genie_normalizer import extract_user_ids, normalize_genie_to_users
 from agent_server.graph_state import CampaignState
 from agent_server.prompts import EXTRACTION_PROMPT
 from agent_server.tools import _execute_sql
@@ -231,6 +233,120 @@ async def generate_email(state: CampaignState) -> dict:
         )
 
     return result
+
+
+# ── Node: query_genie ──────────────────────────────────────────────────────
+
+
+async def query_genie_node(state: CampaignState) -> dict:
+    """Query Genie Spaces API with a natural language query.
+
+    Supports both new conversations and follow-ups.
+    """
+    genie_query_text = state.get("genie_query", "")
+    conversation_id = state.get("genie_conversation_id")
+
+    if not genie_query_text:
+        return {"error": "No Genie query provided."}
+
+    try:
+        result = await query_genie(
+            query=genie_query_text,
+            conversation_id=conversation_id,
+        )
+        logger.debug(
+            "Genie returned %d columns, %d rows",
+            len(result.get("columns", [])),
+            len(result.get("rows", [])),
+        )
+        return {
+            "genie_raw_result": {
+                "columns": result["columns"],
+                "rows": result["rows"],
+                "description": result.get("description", ""),
+                "sql": result.get("sql", ""),
+            },
+            "genie_conversation_id_out": result["conversation_id"],
+            "genie_message_id": result["message_id"],
+        }
+    except TimeoutError as e:
+        logger.exception("Genie query timed out")
+        return {"error": f"Genie query timed out: {e}"}
+    except Exception as e:
+        logger.exception("Genie query failed")
+        return {"error": f"Genie query failed: {e}"}
+
+
+# ── Node: enrich_genie ──────────────────────────────────────────────────────
+
+
+async def enrich_genie_node(state: CampaignState) -> dict:
+    """Normalize Genie results, deduplicate by user_id, and enrich with full profiles + rec_count from Lakebase."""
+    raw = state.get("genie_raw_result")
+    if not raw:
+        return {"error": "No Genie results to enrich."}
+
+    columns = raw.get("columns", [])
+    rows = raw.get("rows", [])
+
+    # Normalize column names to canonical UserSummary fields
+    normalized = normalize_genie_to_users(columns, rows)
+    logger.debug("Genie normalization: %d rows normalized", len(normalized))
+    if not normalized:
+        return {"genie_users": []}
+
+    # Deduplicate by user_id — Genie may return multiple activity rows per user
+    seen_ids: set[str] = set()
+    unique_users: list[dict] = []
+    for user in normalized:
+        uid = str(user.get("user_id", ""))
+        if uid and uid not in seen_ids:
+            seen_ids.add(uid)
+            unique_users.append(user)
+    logger.debug("Deduplicated to %d unique users from %d rows", len(unique_users), len(normalized))
+
+    # Extract user_ids for SQL enrichment
+    user_ids = extract_user_ids(unique_users)
+    if not user_ids:
+        return {"genie_users": unique_users}
+
+    # Enrich with full profiles + rec_count from Lakebase
+    try:
+        placeholders = ", ".join(f"'{uid}'" for uid in user_ids)
+        enrichment_rows = _execute_sql(f"""
+            SELECT u.user_id, u.first_name, u.last_name, u.email, u.phone,
+                   u.preferred_city, u.preferred_state, u.budget_min, u.budget_max,
+                   u.preferred_property_type, u.preferred_beds_min,
+                   u.signup_date, u.is_active, u.user_segment,
+                   COUNT(r.recommendation_id) AS rec_count
+            FROM xome.users u
+            LEFT JOIN xome.recommendations r
+                ON u.user_id = r.user_id AND r.is_active = true
+            WHERE u.user_id IN ({placeholders})
+            GROUP BY u.user_id, u.first_name, u.last_name, u.email, u.phone,
+                     u.preferred_city, u.preferred_state, u.budget_min, u.budget_max,
+                     u.preferred_property_type, u.preferred_beds_min,
+                     u.signup_date, u.is_active, u.user_segment
+        """)
+
+        if enrichment_rows:
+            # Build lookup by user_id — already unique from GROUP BY
+            enriched_map = {str(r["user_id"]): r for r in enrichment_rows}
+            # Preserve order from Genie results, use enriched data when available
+            enriched_users = []
+            for user in unique_users:
+                uid = str(user.get("user_id", ""))
+                if uid in enriched_map:
+                    enriched_users.append(enriched_map[uid])
+                else:
+                    enriched_users.append(user)
+            return {"genie_users": enriched_users}
+        else:
+            logger.warning("SQL enrichment returned 0 rows for user_ids: %s", user_ids)
+            return {"genie_users": unique_users}
+    except Exception as e:
+        logger.exception("SQL enrichment failed (%s), returning deduplicated Genie data", e)
+        return {"genie_users": unique_users}
 
 
 # ── Node: handle_error ──────────────────────────────────────────────────────

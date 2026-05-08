@@ -2,19 +2,13 @@ import { useCallback, useEffect, useState } from "react";
 import type {
   FilterOptions,
   FilterState,
-  GeneratedEmail,
-  Property,
-  UserProfile,
   UserSummary,
 } from "../../types";
 import * as api from "../../api/campaign";
 import FilterPanel from "../filters/FilterPanel";
-import UserDropdown from "../users/UserDropdown";
-import UserProfileCard from "../users/UserProfileCard";
-import PropertyGrid from "../properties/PropertyGrid";
-import EmailActions from "../email/EmailActions";
-import EmailPreview from "../email/EmailPreview";
-import PropertyDetailModal from "../properties/PropertyDetailModal";
+import GenieSearchBar from "../genie/GenieSearchBar";
+import GenieUserList from "../genie/GenieUserList";
+import GenieUserDetail from "../genie/GenieUserDetail";
 import Sidebar from "./Sidebar";
 
 const INITIAL_FILTERS: FilterState = {
@@ -32,25 +26,15 @@ export default function AppShell() {
   const [filterOptions, setFilterOptions] = useState<FilterOptions | null>(null);
   const [filters, setFilters] = useState<FilterState>(INITIAL_FILTERS);
 
-  // ── Users ───────────────────────────────────
-  const [users, setUsers] = useState<UserSummary[]>([]);
+  // ── Genie state ─────────────────────────────
+  const [genieUsers, setGenieUsers] = useState<UserSummary[]>([]);
+  const [genieLoading, setGenieLoading] = useState(false);
+  const [conversationId, setConversationId] = useState<string | null>(null);
+  const [genieError, setGenieError] = useState("");
+
+  // ── View state ──────────────────────────────
+  const [view, setView] = useState<"list" | "detail">("list");
   const [selectedUserId, setSelectedUserId] = useState("");
-  const [userProfile, setUserProfile] = useState<UserProfile | null>(null);
-  const [usersLoading, setUsersLoading] = useState(false);
-
-  // ── Properties ──────────────────────────────
-  const [properties, setProperties] = useState<Property[]>([]);
-  const [propsLoading, setPropsLoading] = useState(false);
-  const [selectedPropertyIds, setSelectedPropertyIds] = useState<Set<string>>(new Set());
-
-  // ── Email ───────────────────────────────────
-  const [email, setEmail] = useState<GeneratedEmail | null>(null);
-  const [generating, setGenerating] = useState(false);
-  const [saving, setSaving] = useState(false);
-  const [savedPath, setSavedPath] = useState("");
-
-  // ── Property detail modal ─────────────────
-  const [modalProperty, setModalProperty] = useState<Property | null>(null);
 
   // ── Load filter options on mount ────────────
   useEffect(() => {
@@ -69,111 +53,54 @@ export default function AppShell() {
     setFilters((prev) => ({ ...prev, ...patch }));
   }, []);
 
-  // ── Search users ────────────────────────────
-  const handleSearchUsers = useCallback(async () => {
-    setUsersLoading(true);
-    setSelectedUserId("");
-    setUserProfile(null);
-    setProperties([]);
-    setEmail(null);
-    setSavedPath("");
-    try {
-      const result = await api.searchUsers(filters);
-      setUsers(result);
-    } catch (err) {
-      console.error("Failed to search users", err);
-    } finally {
-      setUsersLoading(false);
-    }
-  }, [filters]);
-
-  // ── Select user → load profile + listings ───
-  const handleSelectUser = useCallback(
-    async (userId: string) => {
-      setSelectedUserId(userId);
-      setEmail(null);
-      setSavedPath("");
-      setPropsLoading(true);
+  // ── Genie query ─────────────────────────────
+  const handleGenieQuery = useCallback(
+    async (query: string) => {
+      setGenieLoading(true);
+      setGenieError("");
       try {
-        const [profile, listings] = await Promise.all([
-          api.fetchUserProfile(userId),
-          api.fetchListings(userId, {
-            city: filters.city || undefined,
-            state: filters.state || undefined,
-            listing_count: filters.listing_count,
-          }),
-        ]);
-        setUserProfile(profile);
-        setProperties(listings);
-        setSelectedPropertyIds(new Set(listings.map((p) => p.property_id)));
+        const result = await api.queryGenie(query, conversationId);
+        setGenieUsers(result.users);
+        setConversationId(result.conversation_id);
+        if (result.error) {
+          setGenieError(result.error);
+        }
+        setView("list");
       } catch (err) {
-        console.error("Failed to load user data", err);
+        console.error("Genie query failed", err);
+        setGenieError(err instanceof Error ? err.message : "Query failed");
       } finally {
-        setPropsLoading(false);
+        setGenieLoading(false);
       }
     },
-    [filters.city, filters.state, filters.listing_count]
+    [conversationId]
   );
 
-  // ── Toggle property selection ──────────────
-  const handleToggleProperty = useCallback((propertyId: string) => {
-    setSelectedPropertyIds((prev) => {
-      const next = new Set(prev);
-      if (next.has(propertyId)) next.delete(propertyId);
-      else next.add(propertyId);
-      return next;
-    });
+  // ── New search (clear conversation) ─────────
+  const handleNewSearch = useCallback(() => {
+    setConversationId(null);
+    setGenieUsers([]);
+    setGenieError("");
+    setView("list");
   }, []);
 
-  // ── Generate email ──────────────────────────
-  const selectedProperties = properties.filter((p) => selectedPropertyIds.has(p.property_id));
+  // ── Select user → detail view ───────────────
+  const handleSelectUser = useCallback((userId: string) => {
+    setSelectedUserId(userId);
+    setView("detail");
+  }, []);
 
-  const handleGenerateEmail = useCallback(async () => {
-    if (!selectedUserId || selectedProperties.length === 0 || !userProfile) return;
-    setGenerating(true);
-    setSavedPath("");
-    try {
-      const result = await api.generateEmail(selectedUserId, selectedProperties, userProfile);
-      setEmail(result);
-    } catch (err) {
-      console.error("Failed to generate email", err);
-    } finally {
-      setGenerating(false);
-    }
-  }, [selectedUserId, selectedProperties, userProfile]);
+  // ── Back to list ────────────────────────────
+  const handleBack = useCallback(() => {
+    setView("list");
+  }, []);
 
-  // ── Save email ──────────────────────────────
-  const handleSaveEmail = useCallback(async () => {
-    if (!email || !selectedUserId) return;
-    setSaving(true);
-    try {
-      const result = await api.saveEmail({
-        user_id: selectedUserId,
-        subject: email.subject,
-        html: email.html,
-        plain_text: email.plain_text,
-        properties: selectedProperties.map((p) => ({
-          property_id: p.property_id,
-          recommendation_id: p.recommendation_id,
-        })),
-      });
-      setSavedPath(result.path);
-
-      // Optimistically update selected properties with today's campaign date
-      const today = new Date().toISOString().split("T")[0];
-      setProperties((prev) =>
-        prev.map((p) =>
-          selectedPropertyIds.has(p.property_id)
-            ? { ...p, campaign_sent_date: p.campaign_sent_date ?? today }
-            : p
-        )
-      );
-    } catch (err) {
-      console.error("Failed to save email", err);
-    } finally {
-      setSaving(false);
-    }
-  }, [email, selectedUserId, selectedProperties, selectedPropertyIds]);
+  // ── Apply filters (no-op on list view — filtering is client-side) ──
+  const handleApplyFilters = useCallback(() => {
+    // On list view, filtering is automatic via GenieUserList.
+    // On detail view, this triggers a re-render of GenieUserDetail which
+    // re-fetches listings because filters are passed as props.
+  }, []);
 
   return (
     <div className="flex h-[calc(100vh-64px)]">
@@ -183,88 +110,39 @@ export default function AppShell() {
           options={filterOptions}
           filters={filters}
           onChange={handleFilterChange}
-          onSearch={handleSearchUsers}
-          loading={usersLoading}
+          onSearch={handleApplyFilters}
+          loading={false}
         />
       </Sidebar>
 
       {/* Main content */}
       <main className="flex-1 overflow-y-auto p-6">
         <div className="mx-auto max-w-7xl space-y-4">
-          {/* User dropdown */}
-          <UserDropdown
-            users={users}
-            selectedId={selectedUserId}
-            onSelect={handleSelectUser}
-            loading={usersLoading}
+          {/* Genie search bar */}
+          <GenieSearchBar
+            onSubmit={handleGenieQuery}
+            loading={genieLoading}
+            conversationId={conversationId}
+            onNewSearch={handleNewSearch}
+            error={genieError}
           />
 
-          {/* User profile banner */}
-          {userProfile && <UserProfileCard profile={userProfile} />}
-
-          {/* Property grid */}
-          <div>
-            <div className="mb-3 flex items-center justify-between">
-              <h2 className="text-lg font-semibold text-gray-800">
-                Top Recommended Listings
-              </h2>
-              {properties.length > 0 && (
-                <label className="flex cursor-pointer items-center gap-2 text-sm text-gray-600">
-                  <input
-                    type="checkbox"
-                    checked={properties.length > 0 && selectedPropertyIds.size === properties.length}
-                    ref={(el) => {
-                      if (el) el.indeterminate = selectedPropertyIds.size > 0 && selectedPropertyIds.size < properties.length;
-                    }}
-                    onChange={(e) => {
-                      if (e.target.checked) {
-                        setSelectedPropertyIds(new Set(properties.map((p) => p.property_id)));
-                      } else {
-                        setSelectedPropertyIds(new Set());
-                      }
-                    }}
-                    className="h-4 w-4 rounded border-gray-300 text-xome-600 accent-xome-600"
-                  />
-                  Select All ({selectedPropertyIds.size}/{properties.length})
-                </label>
-              )}
-            </div>
-            <PropertyGrid
-              properties={properties}
-              loading={propsLoading}
-              selectedIds={selectedPropertyIds}
-              onToggle={handleToggleProperty}
+          {/* View switching */}
+          {view === "list" ? (
+            <GenieUserList
+              users={genieUsers}
+              filters={filters}
+              onSelectUser={handleSelectUser}
             />
-          </div>
-
-          {/* Email actions + preview */}
-          <div className="space-y-4">
-            <EmailActions
-              selectedUserId={selectedUserId}
-              properties={selectedProperties}
-              email={email}
-              onGenerate={handleGenerateEmail}
-              onSave={handleSaveEmail}
-              generating={generating}
-              saving={saving}
-              savedPath={savedPath}
+          ) : (
+            <GenieUserDetail
+              userId={selectedUserId}
+              filters={filters}
+              onBack={handleBack}
             />
-            <EmailPreview
-              email={email}
-              properties={properties}
-              onPropertyClick={(p) => setModalProperty(p)}
-            />
-          </div>
+          )}
         </div>
       </main>
-
-      {/* Property detail modal */}
-      {modalProperty && (
-        <PropertyDetailModal
-          property={modalProperty}
-          onClose={() => setModalProperty(null)}
-        />
-      )}
     </div>
   );
 }

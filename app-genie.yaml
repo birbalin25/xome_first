@@ -1,0 +1,5 @@
+command: ["uv", "run", "start-server"]
+# Xome Genie Campaign Platform
+# Single-process: FastAPI on port 8000 serves both REST API and built frontend static files
+# frontend/dist/ is pre-built and included in the bundle
+# Uses Genie Spaces for natural language user discovery

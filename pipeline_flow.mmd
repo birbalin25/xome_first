@@ -2,11 +2,13 @@ flowchart TD
     classDef ui fill:#4ade80,stroke:#16a34a,stroke-width:2px,color:#000
     classDef api fill:#60a5fa,stroke:#2563eb,stroke-width:2px,color:#000
     classDef gn fill:#f9a8d4,stroke:#ec4899,stroke-width:2px,color:#000
+    classDef genie fill:#fbbf24,stroke:#d97706,stroke-width:2px,color:#000
     classDef er fill:#fca5a5,stroke:#ef4444,stroke-width:2px,color:#000
     classDef llm fill:#c084fc,stroke:#9333ea,stroke-width:2px,color:#000
     classDef db fill:#7dd3fc,stroke:#0ea5e9,stroke-width:2px,color:#000
     classDef lb fill:#86efac,stroke:#22c55e,stroke-width:2px,color:#000
     classDef pt fill:#e9d5ff,stroke:#a855f7,stroke-width:3px,color:#000
+    classDef ext fill:#fde68a,stroke:#f59e0b,stroke-width:2px,color:#000
     classDef legend fill:#fff,stroke:#94a3b8,stroke-width:1px,color:#000
 
     %% ── Legend ──
@@ -19,7 +21,7 @@ flowchart TD
     %% ── Frontend ──
     subgraph FE["Frontend — React + TailwindCSS"]
         direction LR
-        D["Dashboard View<br/>Filters → Users → Select Properties<br/>→ Generate Email"]:::ui
+        D["Dashboard View<br/>Genie Search → User List<br/>→ User Detail → Generate Email"]:::ui
         C["Chat View<br/>Natural language input"]:::ui
     end
 
@@ -28,34 +30,51 @@ flowchart TD
         direction LR
         subgraph SQL_EP["Direct SQL Endpoints"]
             A1["GET /filters"]:::api
-            A2["POST /users"]:::api
             A3["GET /users/:id/profile"]:::api
             A4["POST /users/:id/listings"]:::api
             A5["POST /save-email"]:::api
         end
         subgraph LG_EP["LangGraph Endpoints"]
+            GQ["POST /genie-query"]:::api
             G1["POST /generate-email"]:::api
             G2["POST /chat/message"]:::api
             G3["POST /invocations"]:::api
         end
     end
 
-    %% ── LangGraph + Data + LLM (single layer) ──
+    %% ── LangGraph + Data + LLM ──
     subgraph CORE["LangGraph Pipeline + Data + LLM"]
         direction LR
 
-        subgraph LG["StateGraph — 6 Nodes"]
+        subgraph LG["StateGraph — 9 Nodes"]
             direction TB
             S(["START"]):::pt
-            P1["1. process_input<br/>Dashboard: reuses profile from frontend<br/>Chat: fetches from users table"]:::gn
-            P2["2. retrieve_candidates<br/>Dashboard: reuses properties from frontend<br/>Chat: queries recommendations table"]:::gn
-            P3["3. rank_and_select<br/>Dashboard: pass-through, no processing<br/>Chat: sort by score, pick top N"]:::gn
-            P4["4. enrich_context<br/>Always runs: fetches browsing history<br/>from Lakebase"]:::gn
-            P5["5. generate_email<br/>Prompt → Claude → parse"]:::gn
-            ERR["6. handle_error<br/>Format error response"]:::er
+            RE["0. route_entry<br/>No-op pass-through<br/>Routes by source field"]:::gn
+
+            subgraph GENIE_BRANCH["Genie Branch — source='genie'"]
+                direction TB
+                QG["1a. query_genie<br/>Calls Genie Spaces API<br/>Returns columns + rows"]:::genie
+                EG["2a. enrich_genie<br/>Normalize columns → deduplicate<br/>Enrich with Lakebase profiles + rec_count"]:::genie
+            end
+
+            subgraph EMAIL_BRANCH["Email Branch — source='dashboard' | 'chat'"]
+                direction TB
+                P1["1b. process_input<br/>Dashboard: reuses profile from frontend<br/>Chat: fetches from users table"]:::gn
+                P2["2b. retrieve_candidates<br/>Dashboard: reuses properties from frontend<br/>Chat: queries recommendations table"]:::gn
+                P3["3b. rank_and_select<br/>Dashboard: pass-through, no processing<br/>Chat: sort by score, pick top N"]:::gn
+                P4["4b. enrich_context<br/>Always runs: fetches browsing history<br/>from Lakebase"]:::gn
+                P5["5b. generate_email<br/>Prompt → Claude → parse"]:::gn
+            end
+
+            ERR["handle_error<br/>Format error response"]:::er
             EN(["END"]):::pt
 
-            S --> P1
+            S --> RE
+            RE -->|"source=genie"| QG
+            RE -->|"source=dashboard/chat"| P1
+            QG -->|ok| EG
+            QG -.->|error| ERR
+            EG --> EN
             P1 -->|ok| P2
             P1 -.->|error| ERR
             P2 --> P3
@@ -66,6 +85,7 @@ flowchart TD
             ERR --> EN
         end
 
+        GENIE_API["Genie Spaces API<br/>Space: 01f148...<br/>NL → SQL → Results"]:::ext
         LLM["Claude Sonnet 4.6<br/>Foundation Model API"]:::llm
 
         subgraph LB_DB["Lakebase — Managed PostgreSQL"]
@@ -83,23 +103,30 @@ flowchart TD
     %% ── Output ──
     subgraph OUT["Output"]
         direction LR
+        O0["Dashboard<br/>User List + Detail"]:::ui
         O1["Dashboard<br/>Email Preview + Save"]:::ui
         O2["Chat<br/>Reply + Inline Email"]:::ui
     end
 
     %% ── Vertical flow ──
+    D -->|"NL query"| GQ
     D -->|"user_id + profile + properties"| G1
-    D -.->|"filters, users, listings"| SQL_EP
+    D -.->|"filters, profile, listings"| SQL_EP
     C -->|"raw_message"| G2
+    GQ --> S
     G1 & G2 & G3 --> S
     P5 --> LLM
     SQL_EP --> LB_DB
-    EN -->|dashboard| O1
-    EN -->|chat| O2
+    EN -->|"genie: user list"| O0
+    EN -->|"dashboard: email"| O1
+    EN -->|"chat: email"| O2
     O1 -->|save file| VOL
     O1 -->|"track sent"| T5
 
     %% ── Data reads ──
+    QG -->|"query"| GENIE_API
+    EG -.->|"enrich profiles + rec_count"| T1
+    EG -.->|"count active recs"| T3
     P1 -.->|"chat path only"| T1
     P2 -.->|"chat path only"| T3
     P4 -.->|"always: browsing context"| T4

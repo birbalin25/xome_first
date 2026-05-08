@@ -10,6 +10,8 @@ LAKEBASE_DNS = "ep-blue-shape-d2evoduc.database.us-east-1.cloud.databricks.com"
 LAKEBASE_DB = "xome-campaign"
 LAKEBASE_SCHEMA = "xome"
 
+GENIE_SPACE_ID = "01f1484fd22e1d558c5ed706de7b522d"
+
 METROS = {
     "Austin": {"state": "TX", "base_price": 450000},
     "Boston": {"state": "MA", "base_price": 650000},

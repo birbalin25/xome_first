@@ -20,6 +20,16 @@ class CampaignState(TypedDict, total=False):
     selected_properties: Optional[list[dict]]
     browsing_context: Optional[list[dict]]
 
+    # ── Genie input fields ─────────────────────────────────────
+    genie_query: Optional[str]  # natural language query
+    genie_conversation_id: Optional[str]  # for follow-up queries
+
+    # ── Genie output fields ────────────────────────────────────
+    genie_users: Optional[list[dict]]  # enriched user list
+    genie_raw_result: Optional[dict]  # raw columns+rows from Genie
+    genie_conversation_id_out: Optional[str]  # returned conversation_id
+    genie_message_id: Optional[str]  # returned message_id
+
     # ── Output fields ────────────────────────────────────────
     generated_email: Optional[dict]  # {subject, html, plain_text, raw}
     error: Optional[str]

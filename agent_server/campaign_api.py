@@ -21,13 +21,9 @@ _ws = WorkspaceClient()
 # ── Pydantic request/response models ──────────────────────────────────────────
 
 
-class UserFilterRequest(BaseModel):
-    city: Optional[str] = None
-    state: Optional[str] = None
-    property_type: Optional[str] = None
-    segment: Optional[str] = None
-    price_min: Optional[float] = None
-    price_max: Optional[float] = None
+class GenieQueryRequest(BaseModel):
+    query: str
+    conversation_id: Optional[str] = None
 
 
 class ListingsRequest(BaseModel):
@@ -84,46 +80,36 @@ async def get_filters():
         raise HTTPException(status_code=500, detail=str(e))
 
 
-@router.post("/users")
-async def search_users(req: UserFilterRequest):
-    """Return top 20 active users matching the given filters."""
-    where = ["u.is_active = true"]
+@router.post("/genie-query")
+async def genie_query(req: GenieQueryRequest):
+    """Query Genie Spaces for user discovery via natural language."""
+    from agent_server.graph import campaign_graph
 
-    if req.city:
-        where.append(f"u.preferred_city = '{req.city}'")
-    if req.state:
-        where.append(f"u.preferred_state = '{req.state}'")
-    if req.property_type:
-        where.append(f"u.preferred_property_type = '{req.property_type}'")
-    if req.segment:
-        where.append(f"u.user_segment = '{req.segment}'")
-    if req.price_min is not None:
-        where.append(f"u.budget_max >= {req.price_min}")
-    if req.price_max is not None:
-        where.append(f"u.budget_min <= {req.price_max}")
-
-    where_str = " AND ".join(where)
-
-    query = f"""
-    SELECT u.user_id, u.first_name, u.last_name, u.email,
-           u.preferred_city, u.preferred_state, u.user_segment,
-           u.budget_min, u.budget_max, u.preferred_property_type,
-           COUNT(r.recommendation_id) AS rec_count
-    FROM users u
-    LEFT JOIN recommendations r
-        ON u.user_id = r.user_id AND r.is_active = true
-    WHERE {where_str}
-    GROUP BY u.user_id, u.first_name, u.last_name, u.email,
-             u.preferred_city, u.preferred_state, u.user_segment,
-             u.budget_min, u.budget_max, u.preferred_property_type
-    ORDER BY rec_count DESC
-    LIMIT 20
-    """
     try:
-        rows = _execute_sql(query)
-        return {"users": rows}
+        invoke_input: dict = {
+            "source": "genie",
+            "genie_query": req.query,
+        }
+        if req.conversation_id:
+            invoke_input["genie_conversation_id"] = req.conversation_id
+
+        result = await campaign_graph.ainvoke(invoke_input)
+
+        if result.get("error"):
+            return {
+                "users": [],
+                "conversation_id": result.get("genie_conversation_id_out"),
+                "message_id": result.get("genie_message_id"),
+                "error": result["error"],
+            }
+
+        return {
+            "users": result.get("genie_users", []),
+            "conversation_id": result.get("genie_conversation_id_out"),
+            "message_id": result.get("genie_message_id"),
+        }
     except Exception as e:
-        logger.exception("Failed to search users")
+        logger.exception("Genie query failed")
         raise HTTPException(status_code=500, detail=str(e))
 
 
