@@ -1,14 +1,3 @@
-EXTRACTION_PROMPT = """Extract user information from the following message.
-
-Return ONLY a JSON object with these fields:
-- "user_id": the user ID (e.g. "USER_001" or a UUID like "fb28583f-4fd7-44f5-a407-87cae0fd4008") or null if not found
-- "city": the city name or null if not mentioned
-- "state": the state name or abbreviation or null if not mentioned
-
-Message: {message}
-
-JSON:"""
-
 SYSTEM_PROMPT = """You are the Xome Campaign Email Generator. You generate personalized email campaigns promoting recommended properties to high-intent real estate buyers.
 
 ## Critical Rules

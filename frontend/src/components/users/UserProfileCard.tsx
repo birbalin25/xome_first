@@ -1,4 +1,4 @@
-import { BedDouble, DollarSign, Heart, Mail, MapPin, Phone, Tag, User } from "lucide-react";
+import { BedDouble, DollarSign, Heart, Mail, MapPin, Phone, Tag } from "lucide-react";
 import type { UserProfile } from "../../types";
 import { formatPrice } from "../../lib/utils";
 

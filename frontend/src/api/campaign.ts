@@ -35,6 +35,11 @@ export async function queryGenie(
   return json(res);
 }
 
+export async function fetchProperty(propertyId: string): Promise<Property> {
+  const res = await fetch(`${BASE}/properties/${propertyId}`);
+  return json(res);
+}
+
 export async function fetchUserProfile(
   userId: string
 ): Promise<UserProfile> {

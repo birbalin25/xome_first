@@ -15,10 +15,6 @@ export interface UserProfile {
   user_segment: string;
 }
 
-export interface UserSummary extends UserProfile {
-  rec_count: string;
-}
-
 export interface Property {
   property_id: string;
   address: string;
@@ -72,16 +68,17 @@ export interface GeneratedEmail {
   raw: string;
 }
 
+export interface GenieColumn {
+  name: string;
+  type: string;
+}
+
 export interface GenieQueryResponse {
-  users: UserSummary[];
+  columns: GenieColumn[];
+  rows: (string | null)[][];
+  description: string;
+  sql: string;
   conversation_id: string | null;
   message_id: string | null;
   error?: string;
-}
-
-export interface ChatMessage {
-  id: string;
-  role: "user" | "assistant";
-  content: string;
-  email?: GeneratedEmail | null;
 }

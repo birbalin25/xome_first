@@ -1,11 +1,11 @@
 bundle:
-  name: xome_lakebase_campaign
+  name: xome_lakebase_campaign_genie
 
 resources:
   apps:
-    agent_xome_lakebase_campaign:
-      name: "agent-xome-lakebase-campaign"
-      description: "Xome Campaign Platform — LangGraph + Lakebase powered personalized real estate email campaigns"
+    xome_lakebase_campaign_genie:
+      name: "xome-lakebase-campaign-genie"
+      description: "Xome Genie Campaign Platform — Genie Spaces powered user discovery + LangGraph personalized email campaigns"
       source_code_path: ./
       config:
         command: ["uv", "run", "start-server"]
@@ -20,21 +20,11 @@ resources:
             instance_name: "xome-campaign"
             database_name: "xome-campaign"
             permission: "CAN_CONNECT_AND_CREATE"
-
-  jobs:
-    xome_setup_pipeline:
-      name: "xome_setup_pipeline"
-      tasks:
-        - task_key: "generate_data"
-          notebook_task:
-            notebook_path: ./notebooks/01_generate_data.py
-
-    xome_migrate_to_lakebase:
-      name: "xome_migrate_to_lakebase"
-      tasks:
-        - task_key: "migrate_data"
-          notebook_task:
-            notebook_path: ./notebooks/02_migrate_to_lakebase.py
+        - name: "genie_space"
+          genie_space:
+            name: "Xome Real Estate Analytics"
+            space_id: "01f1484fd22e1d558c5ed706de7b522d"
+            permission: "CAN_RUN"
 
 targets:
   dev:
@@ -49,5 +39,5 @@ targets:
       root_path: /Workspace/Users/${workspace.current_user.userName}/.bundle/${bundle.name}/${bundle.target}
     resources:
       apps:
-        agent_xome_lakebase_campaign:
-          name: agent-xome-lakebase-campaign
+        xome_lakebase_campaign_genie:
+          name: xome-lakebase-campaign-genie

@@ -1,5 +1,5 @@
 import { Loader2, MessageSquarePlus, Search, X } from "lucide-react";
-import { useState } from "react";
+import { useEffect, useRef, useState } from "react";
 
 interface GenieSearchBarProps {
   onSubmit: (query: string) => void;
@@ -17,12 +17,22 @@ export default function GenieSearchBar({
   error,
 }: GenieSearchBarProps) {
   const [query, setQuery] = useState("");
+  const [lastQuery, setLastQuery] = useState("");
+  const wasLoading = useRef(false);
+
+  // Clear input once loading finishes so last query appears as placeholder
+  useEffect(() => {
+    if (wasLoading.current && !loading) {
+      setQuery("");
+    }
+    wasLoading.current = loading;
+  }, [loading]);
 
   const handleSubmit = () => {
     const trimmed = query.trim();
     if (!trimmed || loading) return;
+    setLastQuery(trimmed);
     onSubmit(trimmed);
-    setQuery("");
   };
 
   return (
@@ -35,7 +45,7 @@ export default function GenieSearchBar({
             value={query}
             onChange={(e) => setQuery(e.target.value)}
             onKeyDown={(e) => e.key === "Enter" && handleSubmit()}
-            placeholder="Ask Genie to find users... e.g. 'Show me investors in Miami'"
+            placeholder={lastQuery || "Ask Genie to find users... e.g. 'Show me investors in Miami'"}
             disabled={loading}
             className="w-full rounded-lg border border-gray-300 bg-white py-2.5 pl-10 pr-4 text-sm shadow-sm transition placeholder:text-gray-400 focus:border-xome-500 focus:outline-none focus:ring-1 focus:ring-xome-500 disabled:opacity-50"
           />

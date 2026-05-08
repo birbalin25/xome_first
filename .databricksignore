@@ -1,0 +1,16 @@
+notebooks/
+.git/
+.venv/
+__pycache__/
+*.pyc
+node_modules/
+frontend/src/
+frontend/node_modules/
+frontend/package-lock.json
+frontend/tsconfig*.json
+frontend/vite.config.ts
+frontend/tailwind.config.js
+frontend/postcss.config.js
+frontend/eslint.config.js
+*.mmd
+*.md

@@ -20,6 +20,11 @@ resources:
             instance_name: "xome-campaign"
             database_name: "xome-campaign"
             permission: "CAN_CONNECT_AND_CREATE"
+        - name: "genie_space"
+          genie_space:
+            name: "Xome Real Estate Analytics"
+            space_id: "01f1484fd22e1d558c5ed706de7b522d"
+            permission: "CAN_RUN"
 
 targets:
   dev:

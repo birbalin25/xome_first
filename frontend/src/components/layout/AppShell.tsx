@@ -2,13 +2,15 @@ import { useCallback, useEffect, useState } from "react";
 import type {
   FilterOptions,
   FilterState,
-  UserSummary,
+  GenieColumn,
+  Property,
 } from "../../types";
 import * as api from "../../api/campaign";
 import FilterPanel from "../filters/FilterPanel";
 import GenieSearchBar from "../genie/GenieSearchBar";
-import GenieUserList from "../genie/GenieUserList";
+import GenieResultTable from "../genie/GenieResultTable";
 import GenieUserDetail from "../genie/GenieUserDetail";
+import PropertyDetailModal from "../properties/PropertyDetailModal";
 import Sidebar from "./Sidebar";
 
 const INITIAL_FILTERS: FilterState = {
@@ -27,7 +29,9 @@ export default function AppShell() {
   const [filters, setFilters] = useState<FilterState>(INITIAL_FILTERS);
 
   // ── Genie state ─────────────────────────────
-  const [genieUsers, setGenieUsers] = useState<UserSummary[]>([]);
+  const [genieColumns, setGenieColumns] = useState<GenieColumn[]>([]);
+  const [genieRows, setGenieRows] = useState<(string | null)[][]>([]);
+  const [genieDescription, setGenieDescription] = useState("");
   const [genieLoading, setGenieLoading] = useState(false);
   const [conversationId, setConversationId] = useState<string | null>(null);
   const [genieError, setGenieError] = useState("");
@@ -35,6 +39,9 @@ export default function AppShell() {
   // ── View state ──────────────────────────────
   const [view, setView] = useState<"list" | "detail">("list");
   const [selectedUserId, setSelectedUserId] = useState("");
+
+  // ── Property modal state ──────────────────
+  const [modalProperty, setModalProperty] = useState<Property | null>(null);
 
   // ── Load filter options on mount ────────────
   useEffect(() => {
@@ -60,7 +67,9 @@ export default function AppShell() {
       setGenieError("");
       try {
         const result = await api.queryGenie(query, conversationId);
-        setGenieUsers(result.users);
+        setGenieColumns(result.columns);
+        setGenieRows(result.rows);
+        setGenieDescription(result.description || "");
         setConversationId(result.conversation_id);
         if (result.error) {
           setGenieError(result.error);
@@ -79,7 +88,9 @@ export default function AppShell() {
   // ── New search (clear conversation) ─────────
   const handleNewSearch = useCallback(() => {
     setConversationId(null);
-    setGenieUsers([]);
+    setGenieColumns([]);
+    setGenieRows([]);
+    setGenieDescription("");
     setGenieError("");
     setView("list");
   }, []);
@@ -90,6 +101,16 @@ export default function AppShell() {
     setView("detail");
   }, []);
 
+  // ── Select property → modal ────────────────
+  const handleSelectProperty = useCallback(async (propertyId: string) => {
+    try {
+      const property = await api.fetchProperty(propertyId);
+      setModalProperty(property);
+    } catch (err) {
+      console.error("Failed to fetch property", err);
+    }
+  }, []);
+
   // ── Back to list ────────────────────────────
   const handleBack = useCallback(() => {
     setView("list");
@@ -97,7 +118,6 @@ export default function AppShell() {
 
   // ── Apply filters (no-op on list view — filtering is client-side) ──
   const handleApplyFilters = useCallback(() => {
-    // On list view, filtering is automatic via GenieUserList.
     // On detail view, this triggers a re-render of GenieUserDetail which
     // re-fetches listings because filters are passed as props.
   }, []);
@@ -129,10 +149,12 @@ export default function AppShell() {
 
           {/* View switching */}
           {view === "list" ? (
-            <GenieUserList
-              users={genieUsers}
-              filters={filters}
+            <GenieResultTable
+              columns={genieColumns}
+              rows={genieRows}
+              description={genieDescription}
               onSelectUser={handleSelectUser}
+              onSelectProperty={handleSelectProperty}
             />
           ) : (
             <GenieUserDetail
@@ -143,6 +165,14 @@ export default function AppShell() {
           )}
         </div>
       </main>
+
+      {/* Property detail modal */}
+      {modalProperty && (
+        <PropertyDetailModal
+          property={modalProperty}
+          onClose={() => setModalProperty(null)}
+        />
+      )}
     </div>
   );
 }

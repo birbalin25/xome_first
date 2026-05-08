@@ -16,7 +16,3 @@ export function formatDate(value: string | undefined): string {
     return value;
   }
 }
-
-export function cn(...classes: (string | false | null | undefined)[]): string {
-  return classes.filter(Boolean).join(" ");
-}

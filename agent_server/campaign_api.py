@@ -1,21 +1,16 @@
 """REST API router for the campaign dashboard UI."""
 
-import io
 import logging
 from datetime import datetime
 from typing import Optional
 
-from databricks.sdk import WorkspaceClient
 from fastapi import APIRouter, HTTPException
 from pydantic import BaseModel
 
-from agent_server.config import CATALOG, SCHEMA, VOLUME_NAME  # CATALOG/SCHEMA still used for UC Volume path
 from agent_server.tools import _execute_sql
 
 logger = logging.getLogger(__name__)
 router = APIRouter(prefix="/api/campaign", tags=["campaign"])
-
-_ws = WorkspaceClient()
 
 
 # ── Pydantic request/response models ──────────────────────────────────────────
@@ -95,21 +90,55 @@ async def genie_query(req: GenieQueryRequest):
 
         result = await campaign_graph.ainvoke(invoke_input)
 
+        raw = result.get("genie_raw_result") or {}
+
         if result.get("error"):
             return {
-                "users": [],
+                "columns": raw.get("columns", []),
+                "rows": raw.get("rows", []),
+                "description": raw.get("description", ""),
+                "sql": raw.get("sql", ""),
                 "conversation_id": result.get("genie_conversation_id_out"),
                 "message_id": result.get("genie_message_id"),
                 "error": result["error"],
             }
 
         return {
-            "users": result.get("genie_users", []),
+            "columns": raw.get("columns", []),
+            "rows": raw.get("rows", []),
+            "description": raw.get("description", ""),
+            "sql": raw.get("sql", ""),
             "conversation_id": result.get("genie_conversation_id_out"),
             "message_id": result.get("genie_message_id"),
         }
     except Exception as e:
         logger.exception("Genie query failed")
+        raise HTTPException(status_code=500, detail=str(e))
+
+
+@router.get("/properties/{property_id}")
+async def get_property(property_id: str):
+    """Return full details for a single property."""
+    query = f"""
+    SELECT property_id, address, city, state, zip_code,
+           price, beds, baths, sqft, property_type,
+           year_built, school_rating, neighborhood,
+           listing_status, days_on_market,
+           auction_date, auction_start_price,
+           hoa_fee, description, image_url
+    FROM properties
+    WHERE property_id = '{property_id}'
+    LIMIT 1
+    """
+    try:
+        rows = _execute_sql(query)
+        if not rows:
+            raise HTTPException(status_code=404, detail="Property not found")
+        return rows[0]
+    except HTTPException:
+        raise
+    except Exception as e:
+        logger.exception("Failed to fetch property")
         raise HTTPException(status_code=500, detail=str(e))
 
 
@@ -207,19 +236,20 @@ async def generate_email_endpoint(req: GenerateEmailRequest):
 
 @router.post("/save-email")
 async def save_email(req: SaveEmailRequest):
-    """Save the generated email as a .txt file to a Unity Catalog Volume."""
+    """Save the generated email to Lakebase and track campaign sends."""
     timestamp = datetime.utcnow().strftime("%Y%m%d_%H%M%S")
     filename = f"campaign_{req.user_id}_{timestamp}.txt"
-    volume_path = f"/Volumes/{CATALOG}/{SCHEMA}/{VOLUME_NAME}/{filename}"
-
-    content = f"SUBJECT: {req.subject}\n\nHTML:\n{req.html}\n\nPLAIN TEXT:\n{req.plain_text}"
 
     try:
-        _ws.files.upload(
-            file_path=volume_path,
-            contents=io.BytesIO(content.encode("utf-8")),
-            overwrite=True,
-        )
+        # Save email content to Lakebase
+        escaped_subject = req.subject.replace("'", "''")
+        escaped_html = req.html.replace("'", "''")
+        escaped_plain = req.plain_text.replace("'", "''")
+        _execute_sql(f"""
+            INSERT INTO campaign_emails (user_id, filename, subject, html_body, plain_text, saved_at)
+            VALUES ('{req.user_id}', '{filename}', '{escaped_subject}',
+                    '{escaped_html}', '{escaped_plain}', NOW())
+        """)
 
         # Insert campaign tracking rows for each property
         if req.properties:
@@ -237,7 +267,8 @@ async def save_email(req: SaveEmailRequest):
             )
             _execute_sql(insert_sql)
 
-        return {"path": volume_path, "filename": filename}
+        saved_path = f"lakebase://xome/campaign_emails/{filename}"
+        return {"path": saved_path, "filename": filename}
     except Exception as e:
-        logger.exception("Failed to save email to Volume")
+        logger.exception("Failed to save email")
         raise HTTPException(status_code=500, detail=str(e))
