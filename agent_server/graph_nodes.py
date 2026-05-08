@@ -2,6 +2,8 @@
 
 import logging
 
+import mlflow
+
 from agent_server.email_generator import generate_campaign_email
 from agent_server.genie_client import query_genie
 from agent_server.graph_state import CampaignState
@@ -13,6 +15,7 @@ logger = logging.getLogger(__name__)
 # ── Node: enrich_context ────────────────────────────────────────────────────
 
 
+@mlflow.trace(name="enrich_context", span_type="tool")
 async def enrich_context(state: CampaignState) -> dict:
     """Fetch last 20 browsing activities for personalization context."""
     if state.get("error"):
@@ -36,6 +39,7 @@ async def enrich_context(state: CampaignState) -> dict:
 # ── Node: generate_email ────────────────────────────────────────────────────
 
 
+@mlflow.trace(name="generate_email", span_type="chain")
 async def generate_email(state: CampaignState) -> dict:
     """Call the LLM to generate a campaign email."""
     if state.get("error"):
@@ -63,6 +67,7 @@ async def generate_email(state: CampaignState) -> dict:
 # ── Node: query_genie ──────────────────────────────────────────────────────
 
 
+@mlflow.trace(name="query_genie", span_type="tool")
 async def query_genie_node(state: CampaignState) -> dict:
     """Query Genie Spaces API with a natural language query.
 
