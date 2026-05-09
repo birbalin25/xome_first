@@ -10,6 +10,7 @@ import FilterPanel from "../filters/FilterPanel";
 import GenieSearchBar from "../genie/GenieSearchBar";
 import GenieResultTable from "../genie/GenieResultTable";
 import GenieUserDetail from "../genie/GenieUserDetail";
+import GenieMultiUserDetail from "../genie/GenieMultiUserDetail";
 import PropertyDetailModal from "../properties/PropertyDetailModal";
 import Sidebar from "./Sidebar";
 
@@ -37,8 +38,10 @@ export default function AppShell() {
   const [genieError, setGenieError] = useState("");
 
   // ── View state ──────────────────────────────
-  const [view, setView] = useState<"list" | "detail">("list");
+  const [view, setView] = useState<"list" | "detail" | "multi-detail">("list");
   const [selectedUserId, setSelectedUserId] = useState("");
+  const [selectedUserIds, setSelectedUserIds] = useState<string[]>([]);
+  const [selectedModel, setSelectedModel] = useState("");
 
   // ── Property modal state ──────────────────
   const [modalProperty, setModalProperty] = useState<Property | null>(null);
@@ -95,11 +98,21 @@ export default function AppShell() {
     setView("list");
   }, []);
 
-  // ── Select user → detail view ───────────────
+  // ── Select user → detail view (kept for backward compat) ──
   const handleSelectUser = useCallback((userId: string) => {
     setSelectedUserId(userId);
     setView("detail");
   }, []);
+
+  // ── Multi-user → multi-detail view ────────
+  const handleViewRecommendations = useCallback(
+    (userIds: string[], model: string) => {
+      setSelectedUserIds(userIds);
+      setSelectedModel(model);
+      setView("multi-detail");
+    },
+    []
+  );
 
   // ── Select property → modal ────────────────
   const handleSelectProperty = useCallback(async (propertyId: string) => {
@@ -153,8 +166,15 @@ export default function AppShell() {
               columns={genieColumns}
               rows={genieRows}
               description={genieDescription}
-              onSelectUser={handleSelectUser}
+              onViewRecommendations={handleViewRecommendations}
               onSelectProperty={handleSelectProperty}
+            />
+          ) : view === "multi-detail" ? (
+            <GenieMultiUserDetail
+              userIds={selectedUserIds}
+              model={selectedModel}
+              filters={filters}
+              onBack={handleBack}
             />
           ) : (
             <GenieUserDetail

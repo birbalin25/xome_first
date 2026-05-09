@@ -25,6 +25,7 @@ class ListingsRequest(BaseModel):
     city: Optional[str] = None
     state: Optional[str] = None
     listing_count: int = 10
+    model: str = "Model A"
 
 
 class GenerateEmailRequest(BaseModel):
@@ -166,14 +167,15 @@ async def get_user_profile(user_id: str):
         raise HTTPException(status_code=500, detail=str(e))
 
 
-@router.post("/users/{user_id}/listings")
-async def get_user_listings(user_id: str, req: ListingsRequest):
-    """Return top 5 recommended properties for a user."""
+def _fetch_listings_model_a(
+    user_id: str, city: Optional[str], state: Optional[str], listing_count: int
+) -> list[dict]:
+    """Model A listing strategy — recommendations ranked by score."""
     where = [f"r.user_id = '{user_id}'", "r.is_active = true"]
-    if req.city:
-        where.append(f"p.city = '{req.city}'")
-    if req.state:
-        where.append(f"p.state = '{req.state}'")
+    if city:
+        where.append(f"p.city = '{city}'")
+    if state:
+        where.append(f"p.state = '{state}'")
     where_str = " AND ".join(where)
 
     query = f"""
@@ -198,10 +200,101 @@ async def get_user_listings(user_id: str, req: ListingsRequest):
         AND ct.property_id = p.property_id
     WHERE {where_str}
     ORDER BY r.recommendation_score DESC
-    LIMIT {min(max(req.listing_count, 1), 30)}
+    LIMIT {min(max(listing_count, 1), 30)}
     """
+    return _execute_sql(query)
+
+
+def _fetch_listings_model_b(
+    user_id: str, city: Optional[str], state: Optional[str], listing_count: int
+) -> list[dict]:
+    """Model B listing strategy — recommendations ranked by score."""
+    where = [f"r.user_id = '{user_id}'", "r.is_active = true"]
+    if city:
+        where.append(f"p.city = '{city}'")
+    if state:
+        where.append(f"p.state = '{state}'")
+    where_str = " AND ".join(where)
+
+    query = f"""
+    SELECT r.recommendation_id, r.recommendation_score, r.recommendation_reason,
+           r.generated_at,
+           p.property_id, p.address, p.city, p.state, p.zip_code,
+           p.price, p.beds, p.baths, p.sqft, p.property_type,
+           p.year_built, p.school_rating, p.neighborhood,
+           p.listing_status, p.days_on_market,
+           p.auction_date, p.auction_start_price,
+           p.hoa_fee, p.description, p.image_url,
+           ct.campaign_sent_date
+    FROM recommendations r
+    JOIN properties p ON r.property_id = p.property_id
+    LEFT JOIN (
+        SELECT user_id, property_id, MAX(campaign_date) AS campaign_sent_date
+        FROM campaign_tracking
+        WHERE campaign_status = true
+        GROUP BY user_id, property_id
+    ) ct
+        ON ct.user_id = r.user_id
+        AND ct.property_id = p.property_id
+    WHERE {where_str}
+    ORDER BY r.recommendation_score DESC
+    LIMIT {min(max(listing_count, 1), 30)}
+    """
+    return _execute_sql(query)
+
+
+def _fetch_listings_on_the_fly(
+    user_id: str, city: Optional[str], state: Optional[str], listing_count: int
+) -> list[dict]:
+    """On-the-fly-logic listing strategy — recommendations ranked by score."""
+    where = [f"r.user_id = '{user_id}'", "r.is_active = true"]
+    if city:
+        where.append(f"p.city = '{city}'")
+    if state:
+        where.append(f"p.state = '{state}'")
+    where_str = " AND ".join(where)
+
+    query = f"""
+    SELECT r.recommendation_id, r.recommendation_score, r.recommendation_reason,
+           r.generated_at,
+           p.property_id, p.address, p.city, p.state, p.zip_code,
+           p.price, p.beds, p.baths, p.sqft, p.property_type,
+           p.year_built, p.school_rating, p.neighborhood,
+           p.listing_status, p.days_on_market,
+           p.auction_date, p.auction_start_price,
+           p.hoa_fee, p.description, p.image_url,
+           ct.campaign_sent_date
+    FROM recommendations r
+    JOIN properties p ON r.property_id = p.property_id
+    LEFT JOIN (
+        SELECT user_id, property_id, MAX(campaign_date) AS campaign_sent_date
+        FROM campaign_tracking
+        WHERE campaign_status = true
+        GROUP BY user_id, property_id
+    ) ct
+        ON ct.user_id = r.user_id
+        AND ct.property_id = p.property_id
+    WHERE {where_str}
+    ORDER BY r.recommendation_score DESC
+    LIMIT {min(max(listing_count, 1), 30)}
+    """
+    return _execute_sql(query)
+
+
+_MODEL_STRATEGIES = {
+    "Model A": _fetch_listings_model_a,
+    "Model B": _fetch_listings_model_b,
+    "On-the-fly-logic": _fetch_listings_on_the_fly,
+}
+
+
+@router.post("/users/{user_id}/listings")
+async def get_user_listings(user_id: str, req: ListingsRequest):
+    """Return top recommended properties for a user using the selected model strategy."""
+    strategy = _MODEL_STRATEGIES.get(req.model, _fetch_listings_model_a)
+    logger.info("Fetching listings for user=%s model=%s", user_id, req.model)
     try:
-        rows = _execute_sql(query)
+        rows = strategy(user_id, req.city, req.state, req.listing_count)
         return {"properties": rows}
     except Exception as e:
         logger.exception("Failed to fetch listings")

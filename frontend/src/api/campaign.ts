@@ -49,7 +49,7 @@ export async function fetchUserProfile(
 
 export async function fetchListings(
   userId: string,
-  filters?: { city?: string; state?: string; listing_count?: number }
+  filters?: { city?: string; state?: string; listing_count?: number; model?: string }
 ): Promise<Property[]> {
   const res = await fetch(`${BASE}/users/${userId}/listings`, {
     method: "POST",

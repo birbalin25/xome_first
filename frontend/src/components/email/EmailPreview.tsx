@@ -16,19 +16,30 @@ document.addEventListener('click', function(e) {
   e.preventDefault();
   e.stopPropagation();
 
-  // Walk up from the link to find the nearest property block.
-  // Collect all text in the parent container to help identify the property.
-  var container = link.closest('tr') || link.closest('div') || link.closest('td') || link.parentElement;
-  // Go up a few levels to capture more context (address, price, etc.)
-  for (var i = 0; i < 4 && container && container.parentElement; i++) {
-    container = container.parentElement;
+  // Walk up from the link, stopping at the first ancestor with meaningful
+  // context beyond just the button text (i.e. address, price, etc.).
+  // This avoids overshooting into a parent that contains ALL properties.
+  var linkText = link.innerText || '';
+  var contextText = '';
+  var node = link.parentElement;
+
+  for (var i = 0; i < 8 && node && node !== document.body; i++) {
+    var text = node.innerText || '';
+    if (text.length > linkText.length + 30) {
+      contextText = text;
+      break;
+    }
+    node = node.parentElement;
   }
-  var contextText = container ? container.innerText : '';
+
+  if (!contextText && node) {
+    contextText = node.innerText || '';
+  }
 
   window.parent.postMessage({
     type: 'xome-property-click',
     context: contextText,
-    linkText: link.innerText
+    linkText: linkText
   }, '*');
 });
 </script>
@@ -56,15 +67,22 @@ export default function EmailPreview({ email, properties, onPropertyClick }: Ema
       if (e.data?.type !== "xome-property-click") return;
       const context: string = e.data.context || "";
 
-      // Try to match by address — find the property whose address appears in the context text
-      const matched = properties.find((p) =>
-        context.includes(p.address)
-      );
+      // Match by address — if multiple properties match, pick the one whose
+      // address appears latest in the context (closest to the button).
+      let bestMatch: Property | null = null;
+      let bestPos = -1;
+      for (const p of properties) {
+        const pos = context.lastIndexOf(p.address);
+        if (pos !== -1 && pos > bestPos) {
+          bestPos = pos;
+          bestMatch = p;
+        }
+      }
 
-      if (matched) {
-        onPropertyClick(matched);
+      if (bestMatch) {
+        onPropertyClick(bestMatch);
       } else {
-        // Fallback: try partial match on neighborhood or price
+        // Fallback: try partial match on neighborhood or city
         const fallback = properties.find(
           (p) => context.includes(p.neighborhood) || context.includes(p.city)
         );
