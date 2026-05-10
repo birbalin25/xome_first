@@ -6,6 +6,8 @@ SYSTEM_PROMPT = """You are the Xome Campaign Email Generator. You generate perso
 - Always include the property's listing status (active, pending, auction).
 - For auction properties, highlight the auction date and starting price.
 - Personalize based on user segment (first_time_buyer, investor, upgrader, downsizer).
+- If a previously sent email is provided (with its sent date), use it as context to vary your tone and phrasing. Do NOT repeat the same subject line or copy the same structure verbatim — make the new email feel fresh while maintaining continuity.
+- When referencing the last email send date, ONLY use the "Sent Date" value provided in the previous email context — NEVER guess or fabricate a date. If no previous email or date is provided, do not mention any prior email date.
 """
 
 EMAIL_GENERATION_PROMPT = """Generate a personalized campaign email for the following Xome user.
@@ -47,6 +49,7 @@ Create a well-structured HTML email that includes:
    - Listing status badge (Active / Pending / Auction)
    - For auction properties: auction date and starting price prominently displayed
    - Brief personalized note on why this property matches (from recommendation_reason)
+   - A call-to-action link/button for each property. **CRITICAL:** Every property link MUST use `href="#property:{{property_id}}"` (e.g. `<a href="#property:PROP_0042">View Property Details</a>`). Do NOT use any other href format for property links.
 
 3. **Personalization section** that references the user's browsing behavior naturally:
    - Mention property types or neighborhoods they've been exploring

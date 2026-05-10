@@ -1,12 +1,15 @@
 """REST API router for the campaign dashboard UI."""
 
 import logging
+import re
 from datetime import datetime
 from typing import Optional
 
 from fastapi import APIRouter, HTTPException
+from langchain_core.messages import HumanMessage, SystemMessage
 from pydantic import BaseModel
 
+from agent_server.refine_email_prompts import REFINE_EMAIL_SYSTEM_PROMPT
 from agent_server.tools import _execute_sql
 
 logger = logging.getLogger(__name__)
@@ -28,10 +31,21 @@ class ListingsRequest(BaseModel):
     model: str = "Model A"
 
 
+class PreviousEmail(BaseModel):
+    subject: str
+    plain_text: str
+    saved_at: Optional[str] = None
+
+
 class GenerateEmailRequest(BaseModel):
     user_id: str
     properties: list[dict]
     user_profile: Optional[dict] = None
+    previous_email: Optional[PreviousEmail] = None
+
+
+class PastEmailsRequest(BaseModel):
+    property_ids: list[str] = []
 
 
 class SaveEmailRequest(BaseModel):
@@ -40,6 +54,13 @@ class SaveEmailRequest(BaseModel):
     html: str
     plain_text: str
     properties: list[dict] = []
+
+
+class RefineEmailRequest(BaseModel):
+    subject: str
+    plain_text: str
+    prompt: str
+    previous_email: Optional[PreviousEmail] = None
 
 
 # ── Endpoints ─────────────────────────────────────────────────────────────────
@@ -301,6 +322,40 @@ async def get_user_listings(user_id: str, req: ListingsRequest):
         raise HTTPException(status_code=500, detail=str(e))
 
 
+@router.post("/users/{user_id}/past-emails")
+async def get_past_emails(user_id: str, req: PastEmailsRequest):
+    """Return recent saved emails for a user+properties combo."""
+    try:
+        if not req.property_ids:
+            return {"emails": []}
+
+        escaped_ids = ", ".join(f"'{pid}'" for pid in req.property_ids)
+        query = f"""
+        SELECT DISTINCT ce.saved_at, ce.subject, ce.plain_text
+        FROM campaign_emails ce
+        JOIN campaign_tracking ct
+            ON ct.user_id = ce.user_id
+            AND ct.campaign_date = ce.saved_at::date
+        WHERE ce.user_id = '{user_id}'
+            AND ct.property_id IN ({escaped_ids})
+        ORDER BY ce.saved_at DESC
+        LIMIT 5
+        """
+        rows = _execute_sql(query)
+        emails = [
+            {
+                "saved_at": str(r["saved_at"]),
+                "subject": r["subject"],
+                "plain_text": r["plain_text"],
+            }
+            for r in rows
+        ]
+        return {"emails": emails}
+    except Exception as e:
+        logger.exception("Failed to fetch past emails")
+        raise HTTPException(status_code=500, detail=str(e))
+
+
 @router.post("/generate-email")
 async def generate_email_endpoint(req: GenerateEmailRequest):
     """Generate a campaign email for the given user + properties via LangGraph."""
@@ -314,6 +369,8 @@ async def generate_email_endpoint(req: GenerateEmailRequest):
         }
         if req.user_profile:
             invoke_input["user_profile"] = req.user_profile
+        if req.previous_email:
+            invoke_input["previous_email"] = req.previous_email.model_dump()
         result = await campaign_graph.ainvoke(invoke_input)
 
         if result.get("error"):
@@ -364,4 +421,55 @@ async def save_email(req: SaveEmailRequest):
         return {"path": saved_path, "filename": filename}
     except Exception as e:
         logger.exception("Failed to save email")
+        raise HTTPException(status_code=500, detail=str(e))
+
+
+@router.post("/refine-email")
+async def refine_email(req: RefineEmailRequest):
+    """Refine an email subject + plain text using LLM based on a user prompt."""
+    from agent_server.agent import get_llm
+
+    previous_context = ""
+    if req.previous_email:
+        sent_date = req.previous_email.saved_at or "unknown"
+        previous_context = (
+            f"Here is the most recently sent email to this user for context:\n\n"
+            f"PREVIOUS EMAIL SENT DATE: {sent_date}\n"
+            f"PREVIOUS SUBJECT:\n{req.previous_email.subject}\n\n"
+            f"PREVIOUS PLAIN TEXT:\n{req.previous_email.plain_text}\n\n"
+            f"---\n\n"
+        )
+
+    human = (
+        f"{previous_context}"
+        f"Here is the current email to refine:\n\n"
+        f"SUBJECT:\n{req.subject}\n\n"
+        f"PLAIN TEXT:\n{req.plain_text}\n\n"
+        f"---\n"
+        f"Please refine this email according to these instructions: {req.prompt}"
+    )
+
+    try:
+        llm = get_llm()
+        response = await llm.ainvoke([
+            SystemMessage(content=REFINE_EMAIL_SYSTEM_PROMPT),
+            HumanMessage(content=human),
+        ])
+        raw = response.content
+
+        # Parse subject
+        subject = req.subject
+        subject_match = re.search(r"SUBJECT:\s*\n?(.+?)(?:\n|$)", raw)
+        if subject_match:
+            subject = subject_match.group(1).strip()
+
+        # Parse plain text
+        plain_text = req.plain_text
+        plain_match = re.search(r"PLAIN TEXT:\s*\n(.*)", raw, re.DOTALL)
+        if plain_match:
+            plain_text = plain_match.group(1).strip()
+
+        return {"subject": subject, "plain_text": plain_text}
+    except Exception as e:
+        logger.exception("Failed to refine email")
         raise HTTPException(status_code=500, detail=str(e))

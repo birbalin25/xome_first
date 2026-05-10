@@ -2,6 +2,7 @@ import type {
   FilterOptions,
   GeneratedEmail,
   GenieQueryResponse,
+  PastEmail,
   Property,
   UserProfile,
 } from "../types";
@@ -63,12 +64,52 @@ export async function fetchListings(
 export async function generateEmail(
   userId: string,
   properties: Property[],
-  userProfile: UserProfile
+  userProfile: UserProfile,
+  previousEmail?: { subject: string; plain_text: string; saved_at?: string } | null
 ): Promise<GeneratedEmail> {
+  const payload: Record<string, unknown> = {
+    user_id: userId,
+    properties,
+    user_profile: userProfile,
+  };
+  if (previousEmail) {
+    payload.previous_email = previousEmail;
+  }
   const res = await fetch(`${BASE}/generate-email`, {
     method: "POST",
     headers: { "Content-Type": "application/json" },
-    body: JSON.stringify({ user_id: userId, properties, user_profile: userProfile }),
+    body: JSON.stringify(payload),
+  });
+  return json(res);
+}
+
+export async function fetchPastEmails(
+  userId: string,
+  propertyIds: string[]
+): Promise<PastEmail[]> {
+  const res = await fetch(`${BASE}/users/${userId}/past-emails`, {
+    method: "POST",
+    headers: { "Content-Type": "application/json" },
+    body: JSON.stringify({ property_ids: propertyIds }),
+  });
+  const data = await json<{ emails: PastEmail[] }>(res);
+  return data.emails;
+}
+
+export async function refineEmail(
+  subject: string,
+  plainText: string,
+  prompt: string,
+  previousEmail?: { subject: string; plain_text: string; saved_at?: string } | null
+): Promise<{ subject: string; plain_text: string }> {
+  const payload: Record<string, unknown> = { subject, plain_text: plainText, prompt };
+  if (previousEmail) {
+    payload.previous_email = previousEmail;
+  }
+  const res = await fetch(`${BASE}/refine-email`, {
+    method: "POST",
+    headers: { "Content-Type": "application/json" },
+    body: JSON.stringify(payload),
   });
   return json(res);
 }

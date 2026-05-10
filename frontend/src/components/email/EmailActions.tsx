@@ -1,4 +1,4 @@
-import { Download, Mail, Loader2, Check } from "lucide-react";
+import { Send, Mail, Loader2, Check } from "lucide-react";
 import type { GeneratedEmail } from "../../types";
 
 interface EmailActionsProps {
@@ -47,14 +47,14 @@ export default function EmailActions({
         ) : savedPath ? (
           <Check className="h-4 w-4 text-green-600" />
         ) : (
-          <Download className="h-4 w-4" />
+          <Send className="h-4 w-4" />
         )}
-        {saving ? "Saving..." : savedPath ? "Saved" : "Save to Volume"}
+        {saving ? "Sending..." : savedPath ? "Sent" : "Send Email"}
       </button>
 
       {savedPath && (
         <span className="text-xs text-gray-500">
-          Saved to: <code className="rounded bg-gray-100 px-1.5 py-0.5">{savedPath}</code>
+          Sent: <code className="rounded bg-gray-100 px-1.5 py-0.5">{savedPath}</code>
         </span>
       )}
     </div>

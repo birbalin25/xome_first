@@ -57,9 +57,10 @@ async def generate_email(state: CampaignState) -> dict:
     profile = state["user_profile"]
     properties = state["properties_input"]
     browsing = state.get("browsing_context", [])
+    previous_email = state.get("previous_email")
 
     llm = get_llm()
-    email_result = await generate_campaign_email(llm, profile, properties, browsing)
+    email_result = await generate_campaign_email(llm, profile, properties, browsing, previous_email)
 
     return {"generated_email": email_result}
 

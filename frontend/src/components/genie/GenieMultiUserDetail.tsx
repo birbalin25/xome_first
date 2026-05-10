@@ -3,6 +3,7 @@ import { useCallback, useEffect, useState } from "react";
 import type {
   FilterState,
   GeneratedEmail,
+  PastEmail,
   Property,
   UserProfile,
 } from "../../types";
@@ -27,6 +28,8 @@ interface UserState {
   properties: Property[];
   selectedPropertyIds: Set<string>;
   email: GeneratedEmail | null;
+  originalPlainText: string;
+  pastEmails: PastEmail[];
   generating: boolean;
   saving: boolean;
   savedPath: string;
@@ -42,6 +45,8 @@ function makeInitialUserState(userId: string): UserState {
     properties: [],
     selectedPropertyIds: new Set(),
     email: null,
+    originalPlainText: "",
+    pastEmails: [],
     generating: false,
     saving: false,
     savedPath: "",
@@ -139,12 +144,28 @@ export default function GenieMultiUserDetail({
       );
       updateUser(idx, { generating: true, savedPath: "" });
       try {
+        const recentPast = u.pastEmails.length > 0
+          ? { subject: u.pastEmails[0].subject, plain_text: u.pastEmails[0].plain_text, saved_at: u.pastEmails[0].saved_at }
+          : null;
         const result = await api.generateEmail(
           u.userId,
           selectedProps,
-          u.profile
+          u.profile,
+          recentPast
         );
-        updateUser(idx, { email: result, generating: false });
+        updateUser(idx, {
+          email: result,
+          originalPlainText: result.plain_text,
+          generating: false,
+        });
+        // Fetch past emails in the background
+        api
+          .fetchPastEmails(
+            u.userId,
+            selectedProps.map((p) => p.property_id)
+          )
+          .then((pastEmails) => updateUser(idx, { pastEmails }))
+          .catch(() => {});
       } catch (err) {
         console.error("Failed to generate email", err);
         updateUser(idx, { generating: false });
@@ -188,6 +209,39 @@ export default function GenieMultiUserDetail({
       }
     },
     [users, updateUser]
+  );
+
+  const handleUpdatePlainText = useCallback(
+    (idx: number, text: string) => {
+      updateUser(idx, (prev) => {
+        if (!prev.email) return {};
+        return { email: { ...prev.email, plain_text: text } };
+      });
+    },
+    [updateUser]
+  );
+
+  const handleRefineWithAI = useCallback(
+    async (
+      idx: number,
+      subject: string,
+      plainText: string,
+      prompt: string,
+      previousEmail?: { subject: string; plain_text: string; saved_at?: string } | null
+    ) => {
+      return api.refineEmail(subject, plainText, prompt, previousEmail);
+    },
+    []
+  );
+
+  const handleUpdateSubject = useCallback(
+    (idx: number, subject: string) => {
+      updateUser(idx, (prev) => {
+        if (!prev.email) return {};
+        return { email: { ...prev.email, subject } };
+      });
+    },
+    [updateUser]
   );
 
   const toggleCollapse = useCallback(
@@ -333,6 +387,16 @@ export default function GenieMultiUserDetail({
                         email={u.email}
                         properties={u.properties}
                         onPropertyClick={(p) => setModalProperty(p)}
+                        pastEmails={u.pastEmails}
+                        onUpdatePlainText={(text) =>
+                          handleUpdatePlainText(idx, text)
+                        }
+                        onRefineWithAI={(subject, plainText, prompt, previousEmail) =>
+                          handleRefineWithAI(idx, subject, plainText, prompt, previousEmail)
+                        }
+                        onUpdateSubject={(subject) =>
+                          handleUpdateSubject(idx, subject)
+                        }
                       />
                     </div>
                   </>

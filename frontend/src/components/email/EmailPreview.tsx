@@ -1,10 +1,20 @@
 import { useState, useRef, useEffect } from "react";
-import type { GeneratedEmail, Property } from "../../types";
+import { Loader2, Sparkles, X } from "lucide-react";
+import type { GeneratedEmail, PastEmail, Property } from "../../types";
 
 interface EmailPreviewProps {
   email: GeneratedEmail | null;
   properties: Property[];
   onPropertyClick: (property: Property) => void;
+  pastEmails?: PastEmail[];
+  onUpdatePlainText?: (text: string) => void;
+  onRefineWithAI?: (
+    subject: string,
+    plainText: string,
+    prompt: string,
+    previousEmail?: { subject: string; plain_text: string; saved_at?: string } | null
+  ) => Promise<{ subject: string; plain_text: string }>;
+  onUpdateSubject?: (subject: string) => void;
 }
 
 // Script injected into the iframe to intercept link clicks
@@ -16,9 +26,19 @@ document.addEventListener('click', function(e) {
   e.preventDefault();
   e.stopPropagation();
 
-  // Walk up from the link, stopping at the first ancestor with meaningful
-  // context beyond just the button text (i.e. address, price, etc.).
-  // This avoids overshooting into a parent that contains ALL properties.
+  var href = link.getAttribute('href') || '';
+
+  // Check for #property:{id} format first
+  var match = href.match(/^#property:(.+)$/);
+  if (match) {
+    window.parent.postMessage({
+      type: 'xome-property-click',
+      propertyId: match[1]
+    }, '*');
+    return;
+  }
+
+  // Fallback: walk up the DOM for context text
   var linkText = link.innerText || '';
   var contextText = '';
   var node = link.parentElement;
@@ -45,9 +65,36 @@ document.addEventListener('click', function(e) {
 </script>
 `;
 
-export default function EmailPreview({ email, properties, onPropertyClick }: EmailPreviewProps) {
+export default function EmailPreview({
+  email,
+  properties,
+  onPropertyClick,
+  pastEmails = [],
+  onUpdatePlainText,
+  onRefineWithAI,
+  onUpdateSubject,
+}: EmailPreviewProps) {
   const [tab, setTab] = useState<"html" | "plain">("html");
   const iframeRef = useRef<HTMLIFrameElement>(null);
+  const [editing, setEditing] = useState(false);
+  const [draftText, setDraftText] = useState("");
+  const [viewingPast, setViewingPast] = useState(false);
+  const [viewingPastText, setViewingPastText] = useState("");
+  const [draftSubject, setDraftSubject] = useState("");
+  const [showRefineBar, setShowRefineBar] = useState(false);
+  const [refinePrompt, setRefinePrompt] = useState("");
+  const [refining, setRefining] = useState(false);
+
+  // Reset editing/viewing state when email changes (new generation)
+  useEffect(() => {
+    setEditing(false);
+    setViewingPast(false);
+    setViewingPastText("");
+    setDraftSubject("");
+    setShowRefineBar(false);
+    setRefinePrompt("");
+    setRefining(false);
+  }, [email]);
 
   // Write HTML into the iframe with click interceptor
   useEffect(() => {
@@ -65,10 +112,18 @@ export default function EmailPreview({ email, properties, onPropertyClick }: Ema
   useEffect(() => {
     function handleMessage(e: MessageEvent) {
       if (e.data?.type !== "xome-property-click") return;
-      const context: string = e.data.context || "";
 
-      // Match by address — if multiple properties match, pick the one whose
-      // address appears latest in the context (closest to the button).
+      // Exact match by property_id from href="#property:{id}"
+      if (e.data.propertyId) {
+        const exact = properties.find((p) => p.property_id === e.data.propertyId);
+        if (exact) {
+          onPropertyClick(exact);
+          return;
+        }
+      }
+
+      // Fallback: match by address in context text
+      const context: string = e.data.context || "";
       let bestMatch: Property | null = null;
       let bestPos = -1;
       for (const p of properties) {
@@ -82,7 +137,6 @@ export default function EmailPreview({ email, properties, onPropertyClick }: Ema
       if (bestMatch) {
         onPropertyClick(bestMatch);
       } else {
-        // Fallback: try partial match on neighborhood or city
         const fallback = properties.find(
           (p) => context.includes(p.neighborhood) || context.includes(p.city)
         );
@@ -96,12 +150,89 @@ export default function EmailPreview({ email, properties, onPropertyClick }: Ema
 
   if (!email) return null;
 
+  const handleDropdownChange = (e: React.ChangeEvent<HTMLSelectElement>) => {
+    const value = e.target.value;
+    if (value === "") return; // "Load past email..." placeholder
+    if (value === "__current__") {
+      // Go back to current email view
+      setViewingPast(false);
+      setViewingPastText("");
+      setEditing(false);
+    } else {
+      const idx = parseInt(value, 10);
+      const past = pastEmails[idx];
+      if (past) {
+        setViewingPast(true);
+        setViewingPastText(past.plain_text);
+        setEditing(false);
+      }
+    }
+  };
+
+  const handleEdit = () => {
+    setDraftText(email.plain_text);
+    setDraftSubject(email.subject);
+    setEditing(true);
+  };
+
+  const handleSave = () => {
+    if (onUpdatePlainText) {
+      onUpdatePlainText(draftText);
+    }
+    if (onUpdateSubject && draftSubject !== email.subject) {
+      onUpdateSubject(draftSubject);
+    }
+    setEditing(false);
+    setShowRefineBar(false);
+    setRefinePrompt("");
+  };
+
+  const handleCancel = () => {
+    setEditing(false);
+    setDraftSubject("");
+    setShowRefineBar(false);
+    setRefinePrompt("");
+  };
+
+  const handleApplyRefine = async () => {
+    if (!onRefineWithAI || !email || !refinePrompt.trim()) return;
+    setRefining(true);
+    try {
+      const recentPast = pastEmails.length > 0
+        ? { subject: pastEmails[0].subject, plain_text: pastEmails[0].plain_text, saved_at: pastEmails[0].saved_at }
+        : null;
+      const result = await onRefineWithAI(
+        draftSubject,
+        draftText,
+        refinePrompt.trim(),
+        recentPast
+      );
+      setDraftText(result.plain_text);
+      setDraftSubject(result.subject);
+      setRefinePrompt("");
+      setShowRefineBar(false);
+    } catch (err) {
+      console.error("Failed to refine email", err);
+    } finally {
+      setRefining(false);
+    }
+  };
+
   return (
     <div className="rounded-lg border border-gray-200 bg-white shadow-sm">
       {/* Subject */}
       <div className="border-b border-gray-200 px-5 py-3">
         <span className="text-xs font-medium text-gray-500">Subject:</span>{" "}
-        <span className="font-medium text-gray-900">{email.subject}</span>
+        {editing ? (
+          <input
+            type="text"
+            value={draftSubject}
+            onChange={(e) => setDraftSubject(e.target.value)}
+            className="ml-1 inline-block w-[calc(100%-60px)] rounded border border-gray-300 px-2 py-0.5 text-sm font-medium text-gray-900 focus:border-xome-500 focus:outline-none focus:ring-1 focus:ring-xome-500"
+          />
+        ) : (
+          <span className="font-medium text-gray-900">{email.subject}</span>
+        )}
       </div>
 
       {/* Tabs */}
@@ -138,9 +269,113 @@ export default function EmailPreview({ email, properties, onPropertyClick }: Ema
             sandbox="allow-same-origin allow-scripts"
           />
         ) : (
-          <pre className="max-h-[500px] overflow-auto whitespace-pre-wrap p-4 text-sm text-gray-700">
-            {email.plain_text}
-          </pre>
+          <div>
+            {/* Toolbar */}
+            <div className="flex items-center justify-between border-b border-gray-100 px-4 py-2">
+              <select
+                onChange={handleDropdownChange}
+                defaultValue=""
+                className="rounded border border-gray-300 bg-white px-2 py-1 text-xs text-gray-700 focus:border-xome-500 focus:outline-none focus:ring-1 focus:ring-xome-500"
+              >
+                <option value="" disabled>
+                  Load past email...
+                </option>
+                <option value="__current__">Current email</option>
+                {pastEmails.map((pe, i) => (
+                  <option key={i} value={i}>
+                    email_sent_on_{pe.saved_at.replace(/[: ]/g, "_")}
+                  </option>
+                ))}
+              </select>
+              {!viewingPast && (
+                <div className="flex gap-2">
+                  {editing ? (
+                    <>
+                      {onRefineWithAI && (
+                        <button
+                          onClick={() => setShowRefineBar((v) => !v)}
+                          className="flex items-center gap-1 rounded bg-gradient-to-r from-purple-600 to-indigo-600 px-3 py-1 text-xs font-medium text-white transition hover:from-purple-700 hover:to-indigo-700"
+                        >
+                          <Sparkles className="h-3 w-3" />
+                          Refine with AI
+                        </button>
+                      )}
+                      <button
+                        onClick={handleCancel}
+                        className="rounded border border-gray-300 px-3 py-1 text-xs font-medium text-gray-600 transition hover:bg-gray-50"
+                      >
+                        Cancel
+                      </button>
+                      <button
+                        onClick={handleSave}
+                        className="rounded bg-xome-600 px-3 py-1 text-xs font-medium text-white transition hover:bg-xome-700"
+                      >
+                        Save
+                      </button>
+                    </>
+                  ) : (
+                    <button
+                      onClick={handleEdit}
+                      className="rounded border border-gray-300 px-3 py-1 text-xs font-medium text-gray-600 transition hover:bg-gray-50"
+                    >
+                      Edit
+                    </button>
+                  )}
+                </div>
+              )}
+            </div>
+
+            {/* Refine with AI prompt bar */}
+            {editing && showRefineBar && (
+              <div className="flex items-center gap-2 border-b border-gray-100 bg-purple-50 px-4 py-2">
+                <input
+                  type="text"
+                  value={refinePrompt}
+                  onChange={(e) => setRefinePrompt(e.target.value)}
+                  onKeyDown={(e) => {
+                    if (e.key === "Enter" && !refining) handleApplyRefine();
+                  }}
+                  placeholder="e.g. make it shorter and more urgent"
+                  className="flex-1 rounded border border-purple-200 bg-white px-3 py-1.5 text-sm text-gray-700 placeholder-gray-400 focus:border-purple-500 focus:outline-none focus:ring-1 focus:ring-purple-500"
+                  disabled={refining}
+                />
+                <button
+                  onClick={handleApplyRefine}
+                  disabled={refining || !refinePrompt.trim()}
+                  className="flex items-center gap-1.5 rounded bg-purple-600 px-3 py-1.5 text-xs font-medium text-white transition hover:bg-purple-700 disabled:opacity-50"
+                >
+                  {refining && <Loader2 className="h-3 w-3 animate-spin" />}
+                  {refining ? "Refining..." : "Apply"}
+                </button>
+                <button
+                  onClick={() => {
+                    setShowRefineBar(false);
+                    setRefinePrompt("");
+                  }}
+                  className="rounded p-1 text-gray-400 transition hover:bg-gray-100 hover:text-gray-600"
+                >
+                  <X className="h-4 w-4" />
+                </button>
+              </div>
+            )}
+
+            {/* Text area (editing current) or read-only pre */}
+            {viewingPast ? (
+              <pre className="max-h-[500px] overflow-auto whitespace-pre-wrap p-4 text-sm text-gray-500 bg-gray-50">
+                {viewingPastText}
+              </pre>
+            ) : editing ? (
+              <textarea
+                value={draftText}
+                onChange={(e) => setDraftText(e.target.value)}
+                className="h-[500px] w-full resize-none p-4 text-sm text-gray-700 font-mono focus:outline-none"
+              />
+            ) : (
+              <pre className="max-h-[500px] overflow-auto whitespace-pre-wrap p-4 text-sm text-gray-700">
+                {email.plain_text}
+              </pre>
+            )}
+          </div>
         )}
       </div>
     </div>

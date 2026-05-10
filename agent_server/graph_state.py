@@ -16,6 +16,7 @@ class CampaignState(TypedDict, total=False):
     # ── Intermediate fields ──────────────────────────────────
     user_profile: Optional[dict]
     browsing_context: Optional[list[dict]]
+    previous_email: Optional[dict]  # {subject, plain_text} — most recent sent email
 
     # ── Genie input fields ─────────────────────────────────────
     genie_query: Optional[str]  # natural language query
